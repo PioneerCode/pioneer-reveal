@@ -1,0 +1,6 @@
+@import "../../../../../src/variables.scss";
+
+:host {
+  background: theme-color("light");
+  display: block;
+}

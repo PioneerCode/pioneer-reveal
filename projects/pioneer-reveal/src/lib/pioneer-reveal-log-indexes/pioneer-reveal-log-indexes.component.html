@@ -1,0 +1,5 @@
+<form [formGroup]="form">
+  <select name="contactMethod" id="contactMethod" class="form-control" formControlName="index">
+    <option *ngFor="let index of indices" [value]="index.index">{{ index.index }}</option>
+  </select>
+</form>

@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-pioneer-reveal',
-  template: `
-    <p>
-      pioneer-reveal works!
-    </p>
-  `,
+  selector: 'pioneer-reveal',
+  templateUrl: './pioneer-reveal.component.html',
   styles: []
 })
 export class PioneerRevealComponent implements OnInit {

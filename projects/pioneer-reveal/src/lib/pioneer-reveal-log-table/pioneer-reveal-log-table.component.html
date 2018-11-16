@@ -1,0 +1,13 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Datetime</th>
+      <th>Log</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr pioneer-reveal-log-row *ngFor="let log of logs" [log]="log"></tr>
+  </tbody>
+</table>
+<pre>{{logs|json}}</pre>

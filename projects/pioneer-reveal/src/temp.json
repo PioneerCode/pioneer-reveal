@@ -1,0 +1,149 @@
+{
+  "responses": [
+    {
+      "took": 46,
+      "timed_out": false,
+      "_shards": {
+        "total": 1,
+        "successful": 1,
+        "skipped": 0,
+        "failed": 0
+      },
+      "hits": {
+        "total": 2,
+        "max_score": null,
+        "hits": [
+          {
+            "_index": "kibana_sample_data_logs",
+            "_type": "_doc",
+            "_id": "ZwV1HWcBagVAFNdF48MV",
+            "_version": 1,
+            "_score": null,
+            "_source": {
+              "referer": "http://www.elastic-elastic-elastic.com/error/john-herrington",
+              "clientip": "23.172.49.99",
+              "response": "503",
+              "tags": [
+                "success",
+                "security"
+              ],
+              "message": "23.172.49.99 - - [2018-08-03T17:55:30.824Z] \"GET /kibana/kibana-6.3.2-darwin-x86_64.tar.gz HTTP/1.1\" 503 0 \"-\" \"Mozilla/5.0 (X11; Linux x86_64; rv:6.0a1) Gecko/20110421 Firefox/6.0a1\"",
+              "request": "/kibana/kibana-6.3.2-darwin-x86_64.tar.gz",
+              "geo": {
+                "srcdest": "PL:ID",
+                "src": "PL",
+                "dest": "ID",
+                "coordinates": {
+                  "lat": 40.49291944,
+                  "lon": -123.5997589
+                }
+              },
+              "phpmemory": null,
+              "extension": "gz",
+              "index": "kibana_sample_data_logs",
+              "url": "https://artifacts.elastic.co/downloads/kibana/kibana-6.3.2-darwin-x86_64.tar.gz",
+              "memory": null,
+              "host": "artifacts.elastic.co",
+              "utc_time": "2018-08-03T17:55:30.824Z",
+              "machine": {
+                "ram": 5368709120,
+                "os": "win 7"
+              },
+              "agent": "Mozilla/5.0 (X11; Linux x86_64; rv:6.0a1) Gecko/20110421 Firefox/6.0a1",
+              "ip": "23.172.49.99",
+              "bytes": 0,
+              "timestamp": "2018-11-16T17:55:30.824Z"
+            },
+            "fields": {
+              "utc_time": [
+                "2018-08-03T17:55:30.824Z"
+              ],
+              "hour_of_day": [
+                17
+              ],
+              "timestamp": [
+                "2018-11-16T17:55:30.824Z"
+              ]
+            },
+            "sort": [
+              1542390930824
+            ]
+          },
+          {
+            "_index": "kibana_sample_data_logs",
+            "_type": "_doc",
+            "_id": "mwV1HWcBagVAFNdF48MV",
+            "_version": 1,
+            "_score": null,
+            "_source": {
+              "referer": "http://nytimes.com/success/charles-bolden",
+              "clientip": "192.198.214.108",
+              "response": "200",
+              "tags": [
+                "success",
+                "info"
+              ],
+              "message": "192.198.214.108 - - [2018-08-03T17:49:49.339Z] \"GET /beats/filebeat/filebeat-6.3.2-linux-x86_64.tar.gz HTTP/1.1\" 200 5356 \"-\" \"Mozilla/5.0 (X11; Linux x86_64; rv:6.0a1) Gecko/20110421 Firefox/6.0a1\"",
+              "request": "/beats/filebeat/filebeat-6.3.2-linux-x86_64.tar.gz",
+              "geo": {
+                "srcdest": "IN:KH",
+                "src": "IN",
+                "dest": "KH",
+                "coordinates": {
+                  "lat": 59.87644778,
+                  "lon": -163.1675583
+                }
+              },
+              "phpmemory": null,
+              "extension": "gz",
+              "index": "kibana_sample_data_logs",
+              "url": "https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.3.2-linux-x86_64.tar.gz",
+              "memory": null,
+              "host": "artifacts.elastic.co",
+              "utc_time": "2018-08-03T17:49:49.339Z",
+              "machine": {
+                "ram": 6442450944,
+                "os": "osx"
+              },
+              "agent": "Mozilla/5.0 (X11; Linux x86_64; rv:6.0a1) Gecko/20110421 Firefox/6.0a1",
+              "ip": "192.198.214.108",
+              "bytes": 5356,
+              "timestamp": "2018-11-16T17:49:49.339Z"
+            },
+            "fields": {
+              "utc_time": [
+                "2018-08-03T17:49:49.339Z"
+              ],
+              "hour_of_day": [
+                17
+              ],
+              "timestamp": [
+                "2018-11-16T17:49:49.339Z"
+              ]
+            },
+            "sort": [
+              1542390589339
+            ]
+          }
+        ]
+      },
+      "aggregations": {
+        "2": {
+          "buckets": [
+            {
+              "key_as_string": "2018-11-16T11:49:30.000-06:00",
+              "key": 1542390570000,
+              "doc_count": 1
+            },
+            {
+              "key_as_string": "2018-11-16T11:55:30.000-06:00",
+              "key": 1542390930000,
+              "doc_count": 1
+            }
+          ]
+        }
+      },
+      "status": 200
+    }
+  ]
+}
