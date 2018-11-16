@@ -9,6 +9,7 @@ import { PioneerRevealLogTableComponent } from './pioneer-reveal-log-table/pione
 import { PioneerRevealLogIndexesComponent } from './pioneer-reveal-log-indexes/pioneer-reveal-log-indexes.component';
 import { PioneerRevealLogCanvasComponent } from './pioneer-reveal-log-canvas/pioneer-reveal-log-canvas.component';
 import { PioneerRevealLogCanvasSidebarComponent } from './pioneer-reveal-log-canvas-sidebar/pioneer-reveal-log-canvas-sidebar.component';
+import { PioneerRevealLogRowExpandedComponent } from './pioneer-reveal-log-row-expanded/pioneer-reveal-log-row-expanded.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PioneerRevealLogCanvasSidebarComponent } from './pioneer-reveal-log-can
     PioneerRevealLogTableComponent,
     PioneerRevealLogIndexesComponent,
     PioneerRevealLogCanvasComponent,
-    PioneerRevealLogCanvasSidebarComponent
+    PioneerRevealLogCanvasSidebarComponent,
+    PioneerRevealLogRowExpandedComponent
   ],
   imports: [
     BrowserModule,

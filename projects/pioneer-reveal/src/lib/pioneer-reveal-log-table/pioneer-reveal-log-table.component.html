@@ -7,7 +7,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr pioneer-reveal-log-row *ngFor="let log of logs" [log]="log"></tr>
+    <ng-container *ngFor="let log of logs">
+      <tr pioneer-reveal-log-row [(log)]="log" (expandRowSelected)="onExpandRowSelected()"></tr>
+      <tr pioneer-reveal-log-row-expanded *ngIf="log.pioneerRevelTracking?.selected" [(log)]="log"></tr>
+    </ng-container>
   </tbody>
 </table>
-<pre>{{logs|json}}</pre>

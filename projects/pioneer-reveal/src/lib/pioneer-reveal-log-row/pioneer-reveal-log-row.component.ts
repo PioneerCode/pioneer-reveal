@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Hit } from '../models/search';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Hit,  } from '../models/search';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -9,9 +9,14 @@ import { Hit } from '../models/search';
 })
 export class PioneerRevealLogRowComponent implements OnInit {
   @Input() log: Hit;
+  @Output() expandRowSelected: EventEmitter<Hit> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onExpandRowSelected() {
+    this.log.pioneerRevelTracking.selected = !this.log.pioneerRevelTracking.selected;
   }
 }

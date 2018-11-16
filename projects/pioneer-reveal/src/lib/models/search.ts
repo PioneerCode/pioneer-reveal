@@ -18,10 +18,38 @@ export class HitsParent {
   hits: Hit[];
 }
 
+
 export class Hit {
-  _index: string;
-  _type: string;
   _id: string;
+  _index: string;
   _score: number;
   _source: object;
+  _type: string;
+
+
+  /**
+   * Internal tracking
+   */
+  pioneerRevelTracking: PioneerRevealTracking;
+
+  constructor(hit: Hit) {
+    this._id = hit._id;
+    this._index = hit._index;
+    this._score = hit._score;
+    this._source = hit._source;
+    this._type = hit._type;
+    this.pioneerRevelTracking = new PioneerRevealTracking();
+  }
+}
+
+export class PioneerRevealTracking {
+  /**
+   * User selects this hit on the logs UI with the
+   * intent of expanding for more details.
+   */
+  selected: boolean;
+
+  constructor() {
+    this.selected = false;
+  }
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { PioneerRevealRepository } from '../repository/pioneer-reveal.repository';
+import { Hit } from '../models/search';
 
 @Component({
   selector: 'pioneer-reveal-log-table',
@@ -7,7 +9,7 @@ import { PioneerRevealRepository } from '../repository/pioneer-reveal.repository
   styleUrls: ['./pioneer-reveal-log-table.component.scss']
 })
 export class PioneerRevealLogTableComponent implements OnInit {
-  logs: any;
+  logs: Hit[];
 
   constructor(private pioneerRevealRepository: PioneerRevealRepository) { }
 
@@ -17,8 +19,8 @@ export class PioneerRevealLogTableComponent implements OnInit {
   getLogs(indexName: string) {
     return this.pioneerRevealRepository.getLogs(indexName)
       .subscribe((logs) => {
-        this.logs = logs.hits.hits;
-        console.log(logs.hits.hits);
+        this.logs = logs.hits.hits.map(x => new Hit(x));
       });
   }
+
 }
