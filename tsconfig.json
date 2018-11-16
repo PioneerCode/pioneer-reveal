@@ -16,6 +16,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "pioneer-reveal": [
+        "dist/pioneer-reveal"
+      ],
+      "pioneer-reveal/*": [
+        "dist/pioneer-reveal/*"
+      ]
+    }
   }
 }
