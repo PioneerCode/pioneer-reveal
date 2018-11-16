@@ -1,3 +1,25 @@
 <td colspan="3">
-  hi
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" href="#" [ngClass]="{'active': selectedTab === 'formatted'}" (click)="selectedTab = 'formatted'">Formated</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#" [ngClass]="{'active': selectedTab === 'raw'}" (click)="selectedTab = 'raw'">Raw</a>
+    </li>
+  </ul>
+  <div *ngIf="selectedTab === 'formatted'" class="formatted">
+    <table>
+      <tbody>
+        <tr *ngFor="let prop of log.pioneerRevelTracking.sourceMap">
+          <td><i class="fas fa-plus" (click)="onAddFilter(prop)"></i></td>
+          <td><i class="fas fa-minus" (click)="onRemoveFilter(prop)"></i></td>
+          <td>{{prop.key}}</td>
+          <td>{{prop.value|json}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="selectedTab === 'raw'" class="raw">
+    <pre><code>{{log._source|json}}</code></pre>
+  </div>
 </td>

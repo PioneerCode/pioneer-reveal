@@ -38,7 +38,7 @@ export class Hit {
     this._score = hit._score;
     this._source = hit._source;
     this._type = hit._type;
-    this.pioneerRevelTracking = new PioneerRevealTracking();
+    this.pioneerRevelTracking = new PioneerRevealTracking(this._source);
   }
 }
 
@@ -49,7 +49,18 @@ export class PioneerRevealTracking {
    */
   selected: boolean;
 
-  constructor() {
+  /**
+   * Map source object to key value collection
+   */
+  sourceMap = [];
+
+  constructor(source: any) {
     this.selected = false;
+    Object.keys(source).map((key) => {
+      this.sourceMap.push({
+        key: key,
+        value: source[key]
+      });
+    });
   }
 }

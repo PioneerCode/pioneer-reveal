@@ -1,3 +1,15 @@
+@import "../../../../../src/variables.scss";
+
 i {
   cursor: pointer;
 }
+
+.source {
+  font-size: 14px;
+  span {
+    padding: 0 4px 1px;
+    font-size: 13px;
+    background: $gray-300;
+  }
+}
+

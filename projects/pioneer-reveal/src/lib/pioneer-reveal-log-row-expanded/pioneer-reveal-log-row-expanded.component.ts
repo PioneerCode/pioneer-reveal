@@ -11,9 +11,18 @@ import { Hit } from '../models/search';
 export class PioneerRevealLogRowExpandedComponent implements OnInit {
   @Input() log: Hit;
 
+  selectedTab = 'formatted';
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  onAddFilter() {
+
+  }
+
+  onDeleteFilter() {
+
+  }
 }

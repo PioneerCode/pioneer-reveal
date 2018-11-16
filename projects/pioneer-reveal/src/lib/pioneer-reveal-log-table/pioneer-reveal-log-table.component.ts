@@ -22,5 +22,4 @@ export class PioneerRevealLogTableComponent implements OnInit {
         this.logs = logs.hits.hits.map(x => new Hit(x));
       });
   }
-
 }

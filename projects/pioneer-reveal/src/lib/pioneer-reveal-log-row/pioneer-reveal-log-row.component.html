@@ -1,3 +1,9 @@
-<td><i class="fas fa-caret-right" (click)="onExpandRowSelected()"></i></td>
+<td><i class="fas" [ngClass]="{'fa-caret-right': !log.pioneerRevelTracking?.selected, 'fa-caret-down': log.pioneerRevelTracking?.selected}"
+    (click)="onExpandRowSelected()"></i></td>
 <td>{{log._index}}</td>
-<td>{{log|json}}</td>
+<td class="source">
+  <code *ngFor="let prop of log.pioneerRevelTracking.sourceMap">
+    <span>{{prop.key}}</span>
+    {{prop.value|json}}
+  </code>
+</td>
