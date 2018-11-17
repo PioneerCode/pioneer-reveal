@@ -1,0 +1,9 @@
+@import "../../../../../src/variables.scss";
+
+.active-line, .active-expanded {
+  background: $gray-100;
+}
+
+.active-expanded {
+  border-top: none;
+}

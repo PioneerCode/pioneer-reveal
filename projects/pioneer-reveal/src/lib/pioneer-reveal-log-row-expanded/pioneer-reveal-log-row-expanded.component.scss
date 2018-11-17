@@ -1,7 +1,40 @@
+@import "../../../../../src/variables.scss";
+
 .raw {
   padding: 0.5rem;
 }
 
 pre {
   white-space: pre-wrap;
+}
+
+i {
+  cursor: pointer;
+}
+
+.fa-plus {
+  color: color("green");
+  &:hover {
+    transition: all 0.25s;
+    color: darken(color("green"), 10%);
+  }
+}
+
+.fa-minus {
+  color: color("red");
+  &:hover {
+    transition: all 0.25s;
+    color: darken(color("red"), 10%);
+  }
+}
+
+.table {
+  margin: 0;
+  font-size: 12px;
+  .key {
+    font-weight: bold;
+  }
+  td{
+    padding: 0.5rem;
+  }
 }
