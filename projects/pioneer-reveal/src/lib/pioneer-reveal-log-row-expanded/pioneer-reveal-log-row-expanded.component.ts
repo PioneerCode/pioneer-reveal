@@ -19,8 +19,9 @@ export class PioneerRevealLogRowExpandedComponent implements OnInit {
   ngOnInit() {
   }
 
-  onAddFilter() {
-
+  onAddFilter(prop) {
+    console.log(prop);
+    this.searchService.addFilter(prop.key, prop.value);
   }
 
   onDeleteFilter() {

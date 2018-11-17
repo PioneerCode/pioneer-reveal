@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Query, BoolMustObjectOrderEnum } from './models/query';
+import { Query, BoolMustObjectOrderEnum, BoolMustMatchPhrase } from './models/query';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +10,17 @@ export class PioneerRevealSearchService {
   constructor() { }
 
   addFilter(key: string, value: string | number): void {
-    this.query.bool.must[BoolMustObjectOrderEnum.BoolMustMatchPhrase][key] = value;
+    // Dynamically create match phrase if does not exist.
+    if (this.query.bool.must[BoolMustObjectOrderEnum.BoolMustMatchPhrase] === undefined) {
+      this.query.bool.must.push({
+        match_phrase: {}
+      } as BoolMustMatchPhrase);
+    }
+    this.query.bool.must[BoolMustObjectOrderEnum.BoolMustMatchPhrase]['match_phrase'][key] = {};
+    this.query.bool.must[BoolMustObjectOrderEnum.BoolMustMatchPhrase]['match_phrase'][key]['query'] = value;
   }
 
   removeFilter(key: string): void {
-    delete this.query.bool.must[BoolMustObjectOrderEnum.BoolMustMatchPhrase][key];
+    delete this.query.bool.must[BoolMustObjectOrderEnum.BoolMustMatchPhrase]['match_all'][key];
   }
 }
