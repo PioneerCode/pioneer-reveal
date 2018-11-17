@@ -3,10 +3,27 @@ export class Query {
   filter: Filter[];
   should: Should[];
   must_not: MustNot[];
+
+  constructor() {
+    this.bool = new Bool();
+  }
+}
+
+export enum BoolMustObjectOrderEnum {
+  BoolMustMatchAll = 0,
+  BoolMustMatchPhrase = 1,
+  BoolMustRange = 2
 }
 
 export class Bool {
-  must: (BoolMustMatchAll | BoolMustPhrase | BoolRange)[];
+  must: (BoolMustMatchAll | BoolMustMatchPhrase | BoolMustRange)[];
+
+  constructor() {
+    this.must = [];
+    this.must.push({
+      match_all: {}
+    } as BoolMustMatchAll);
+  }
 }
 
 export class BoolMustMatchAll {
@@ -17,23 +34,23 @@ export class BoolMustMatchObject {
   match_all: object;
 }
 
-export class BoolMustPhrase {
-  match_phrase: BoolMustPhraseObject;
+export class BoolMustMatchPhrase {
+  match_phrase: BoolMustMatchPhraseObject;
 }
 
-export class BoolMustPhraseObject {
+export class BoolMustMatchPhraseObject {
   [val: string]: any;
 }
 
-export class BoolRange {
-  range: BoolRangeObject;
+export class BoolMustRange {
+  range: BoolMustRangeObject;
 }
 
-export class BoolRangeObject {
-  timestamp: BoolRangeObjectTimestamp;
+export class BoolMustRangeObject {
+  timestamp: BoolMustRangeObjectTimestamp;
 }
 
-export class BoolRangeObjectTimestamp {
+export class BoolMustRangeObjectTimestamp {
   gte: number;
   lte: number;
   format: string;

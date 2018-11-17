@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PioneerRevealRepository } from '../repository/pioneer-reveal.repository';
+import { PioneerRevealRepository } from '../pioneer-reveal.repository';
 import { Hit } from '../models/search';
 
 @Component({

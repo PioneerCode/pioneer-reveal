@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Hit } from '../models/search';
+import { PioneerRevealSearchService } from '../pioneer-reveal-search.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -13,7 +14,7 @@ export class PioneerRevealLogRowExpandedComponent implements OnInit {
 
   selectedTab = 'formatted';
 
-  constructor() { }
+  constructor(private searchService: PioneerRevealSearchService) { }
 
   ngOnInit() {
   }

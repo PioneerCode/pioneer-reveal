@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Index } from '../models';
-import { Search } from '../models/search';
+import { Index } from './models';
+import { Search } from './models/search';
+import { PioneerRevealSearchService } from './pioneer-reveal-search.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class PioneerRevealRepository {
   url = 'http://localhost:9200';
 
   constructor(
+    private searchService: PioneerRevealSearchService,
     private http: HttpClient) { }
 
   getIndices(): Observable<Index[]> {
@@ -19,6 +21,6 @@ export class PioneerRevealRepository {
   }
 
   getLogs(index: string): Observable<Search> {
-    return this.http.post<Search>(`${this.url}/${index}/_search?format=json`, {});
+    return this.http.post<Search>(`${this.url}/${index}/_search?format=json`, {query: this.searchService.query});
   }
 }

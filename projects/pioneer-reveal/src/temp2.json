@@ -5,10 +5,10 @@
         {
           "match_all": {}
         }
-      ],
-      "filter": [],
-      "should": [],
-      "must_not": []
-    }
+      ]
+    },
+    "filter": [],
+    "should": [],
+    "must_not": []
   }
 }

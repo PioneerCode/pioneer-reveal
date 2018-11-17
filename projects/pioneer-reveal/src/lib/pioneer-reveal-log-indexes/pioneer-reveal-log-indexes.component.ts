@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { PioneerRevealRepository } from '../repository/pioneer-reveal.repository';
+import { PioneerRevealRepository } from '../pioneer-reveal.repository';
 import { Index } from '../models';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
