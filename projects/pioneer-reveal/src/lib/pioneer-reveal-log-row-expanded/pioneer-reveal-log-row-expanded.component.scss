@@ -40,4 +40,8 @@ i {
   td{
     padding: 0.5rem;
   }
+
+  td:first-child {
+    width: 3rem;
+  }
 }

@@ -60,12 +60,19 @@ export class PioneerRevealTracking {
    */
   sourceMap = [] as KeyValue[];
 
+  /**
+   * Flag if object. Used to drive UI.
+   */
+  isObject = false;
+
   constructor(source: any) {
     this.selected = false;
+
     Object.keys(source).map((key) => {
       this.sourceMap.push({
         key: key,
-        value: source[key]
+        value: source[key],
+        isObject: typeof source[key] === 'object' && source[key] !== null
       } as KeyValue);
     });
   }

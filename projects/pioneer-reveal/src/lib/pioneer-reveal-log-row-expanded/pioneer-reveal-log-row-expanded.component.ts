@@ -35,8 +35,4 @@ export class PioneerRevealLogRowExpandedComponent implements OnInit {
     this.queryBuilder.removeFilter(prop.key);
     this.removeFilterClicked.emit();
   }
-
-  isObject(prop: any): boolean {
-    return typeof prop === 'object' && prop !== null;
-  }
 }
