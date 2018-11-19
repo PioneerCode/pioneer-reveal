@@ -10,7 +10,7 @@
   <div *ngIf="selectedTab === 'formatted'" class="formatted">
     <table class="table">
       <tbody>
-        <tr *ngFor="let prop of log.pioneerRevelTracking.sourceMap">
+        <tr *ngFor="let prop of log.pioneerRevelTracking.sourceMap" [ngClass]="{'selected': prop.isFilter}">
           <td>
             <ul class="list-inline mb-0">
               <li class="list-inline-item">
@@ -24,7 +24,7 @@
             </ul>
           </td>
           <td class="key">{{prop.key}}</td>
-          <td>
+          <td class="value">
             <span *ngIf="!prop.isObject">{{prop.value|json}}</span>
             <pre *ngIf="prop.isObject">{{prop.value|json}}</pre>
           </td>

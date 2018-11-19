@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Injector } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,6 +11,7 @@ import { PioneerRevealLogCanvasComponent } from './pioneer-reveal-log-canvas/pio
 import { PioneerRevealLogCanvasSidebarComponent } from './pioneer-reveal-log-canvas-sidebar/pioneer-reveal-log-canvas-sidebar.component';
 import { PioneerRevealLogRowExpandedComponent } from './pioneer-reveal-log-row-expanded/pioneer-reveal-log-row-expanded.component';
 import { PioneerRevealLogFiltersComponent } from './pioneer-reveal-log-filters/pioneer-reveal-log-filters.component';
+import { ServiceLocator } from './service-locator.service';
 
 @NgModule({
   declarations: [
@@ -30,4 +31,8 @@ import { PioneerRevealLogFiltersComponent } from './pioneer-reveal-log-filters/p
   ],
   exports: [PioneerRevealComponent]
 })
-export class PioneerRevealModule { }
+export class PioneerRevealModule {
+  constructor(private injector: Injector) {
+    ServiceLocator.injector = this.injector;
+  }
+}

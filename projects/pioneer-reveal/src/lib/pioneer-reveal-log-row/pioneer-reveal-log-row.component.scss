@@ -6,10 +6,22 @@ i {
 
 .source {
   font-size: 14px;
-  span {
-    padding: 0 4px 1px;
-    font-size: 13px;
-    background: $gray-300;
+
+  .property {
+    margin: 0 0.25rem;
+    .key {
+      padding: 0 4px 1px;
+      font-size: 13px;
+      background: $gray-300;
+      margin: 0 0.25rem 0 0;
+    }
+    code {
+      display: line;
+    }
+    code.selected {
+      background: color("yellow");
+    }
   }
 }
+
 

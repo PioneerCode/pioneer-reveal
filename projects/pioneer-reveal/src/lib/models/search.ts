@@ -1,4 +1,6 @@
-import { KeyValue } from './key-value';
+import { KeyValue, Property } from './key-value';
+import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-log-query-builder';
+import { ServiceLocator } from '../service-locator.service';
 
 /**
  * Search result contract returned by Elastic
@@ -58,22 +60,29 @@ export class PioneerRevealTracking {
   /**
    * Map source object to key value collection
    */
-  sourceMap = [] as KeyValue[];
+  sourceMap = [] as Property[];
 
   /**
    * Flag if object. Used to drive UI.
    */
   isObject = false;
 
+  private queryBuilder: PioneerRevealLogQueryBuilder;
+
   constructor(source: any) {
     this.selected = false;
+    this.queryBuilder = ServiceLocator.injector.get(PioneerRevealLogQueryBuilder);
 
     Object.keys(source).map((key) => {
       this.sourceMap.push({
         key: key,
         value: source[key],
-        isObject: typeof source[key] === 'object' && source[key] !== null
-      } as KeyValue);
+        isObject: typeof source[key] === 'object' && source[key] !== null,
+        isFilter: this.queryBuilder.isCurrentFilter({
+          key: key, value: source[key]
+        } as KeyValue)
+      } as Property);
     });
+    console.log(this.sourceMap);
   }
 }

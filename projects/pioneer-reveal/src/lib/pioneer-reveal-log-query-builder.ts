@@ -61,6 +61,16 @@ export class PioneerRevealLogQueryBuilder {
     }
   }
 
+  isCurrentFilter(prop: KeyValue): boolean {
+    for (let i = 0; i < this.currentSearchFilters.length; i++) {
+      const element = this.currentSearchFilters[i];
+      if (prop.value === element.value && prop.key === element.key) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   setIndex(index: string) {
     this._currentSearchIndices.push(index);
   }

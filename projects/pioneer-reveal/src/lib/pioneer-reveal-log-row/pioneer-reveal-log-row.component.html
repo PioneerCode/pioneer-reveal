@@ -2,8 +2,8 @@
     (click)="onExpandRowSelected()"></i></td>
 <td>{{log._index}}</td>
 <td class="source">
-  <code *ngFor="let prop of log.pioneerRevelTracking.sourceMap">
-    <span>{{prop.key}}</span>
-    {{prop.value|json}}
-  </code>
+  <span class="property "*ngFor="let prop of log.pioneerRevelTracking.sourceMap">
+    <span class="key" [ngClass]="{'selected': prop.isFilter}">{{prop.key}}: </span>
+    <code [ngClass]="{'selected': prop.isFilter}">{{prop.value|json}}</code>
+  </span>
 </td>
