@@ -8,8 +8,11 @@
   </thead>
   <tbody>
     <ng-container *ngFor="let log of logs">
-      <tr pioneer-reveal-log-row [(log)]="log" [ngClass]="{'active-line':log.pioneerRevelTracking?.selected}" (expandRowSelected)="onExpandRowSelected()"></tr>
-      <tr pioneer-reveal-log-row-expanded [ngClass]="{'active-expanded':log.pioneerRevelTracking?.selected}" *ngIf="log.pioneerRevelTracking?.selected" [(log)]="log"></tr>
+      <tr pioneer-reveal-log-row [ngClass]="{'active-line':log.pioneerRevelTracking?.selected}" (expandRowSelected)="onExpandRowSelected()"
+        [(log)]="log"></tr>
+      <tr pioneer-reveal-log-row-expanded (addFilterClicked)="onAddFilterClicked()" (removeFilterClicked)="onRemoveFilterClicked()"
+        [ngClass]="{'active-expanded':log.pioneerRevelTracking?.selected}" *ngIf="log.pioneerRevelTracking?.selected"
+        [(log)]="log"></tr>
     </ng-container>
   </tbody>
 </table>

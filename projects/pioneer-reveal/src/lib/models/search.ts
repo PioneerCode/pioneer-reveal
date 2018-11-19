@@ -1,11 +1,17 @@
+import { KeyValue } from "./key-value";
+
+/**
+ * Search result contract returned by Elastic
+ * url/index/_search
+ */
 export class Search {
   took: number;
   timed_out: false;
-  _shards: Shared;
+  _shards: Shard;
   hits: HitsParent;
 }
 
-export class Shared {
+export class Shard {
   total: number;
   successful: boolean;
   skipped: number;
@@ -52,7 +58,7 @@ export class PioneerRevealTracking {
   /**
    * Map source object to key value collection
    */
-  sourceMap = [];
+  sourceMap = [] as KeyValue[];
 
   constructor(source: any) {
     this.selected = false;
@@ -60,7 +66,7 @@ export class PioneerRevealTracking {
       this.sourceMap.push({
         key: key,
         value: source[key]
-      });
+      } as KeyValue);
     });
   }
 }

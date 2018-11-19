@@ -4,7 +4,7 @@
       <pioneer-reveal-log-canvas-sidebar (indexSelected)="onIndexSelected($event)"></pioneer-reveal-log-canvas-sidebar>
     </div>
     <div class="col-sm-10">
-      <pioneer-reveal-log-table></pioneer-reveal-log-table>
+      <pioneer-reveal-log-table (addFilterClicked)="onAddFilterClicked()" (removeFilterClicked)="onRemoveFilterClicked()"></pioneer-reveal-log-table>
     </div>
   </div>
 </div>

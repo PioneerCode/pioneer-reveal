@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Hit,  } from '../models/search';
 
+/**
+ * Individual row in log table
+ */
 @Component({
   // tslint:disable-next-line:component-selector
   selector: '[pioneer-reveal-log-row]',
