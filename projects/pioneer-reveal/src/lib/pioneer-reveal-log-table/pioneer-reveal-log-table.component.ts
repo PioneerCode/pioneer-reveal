@@ -31,11 +31,11 @@ export class PioneerRevealLogTableComponent {
       });
   }
 
-  onRemoveFilterClicked() {
+  onAddFilterClicked() {
     this.addFilterClicked.emit();
   }
 
-  onAddFilterClicked() {
+  onRemoveFilterClicked() {
     this.removeFilterClicked.emit();
   }
 }

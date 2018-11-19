@@ -55,6 +55,10 @@ export class PioneerRevealLogQueryBuilder {
         break;
       }
     }
+
+    if (!this.isEmptyObject(this.query.bool.must[BoolMustObjectOrderEnum.BoolMustMatchPhrase])) {
+      this.query.bool.must.splice(BoolMustObjectOrderEnum.BoolMustMatchPhrase, 1);
+    }
   }
 
   setIndex(index: string) {
@@ -71,5 +75,18 @@ export class PioneerRevealLogQueryBuilder {
 
   isIndexSet(index: string): boolean {
     return this._currentSearchIndices.includes(index);
+  }
+
+  /**
+   * Determine if object has any properties associated with it.
+   * @param obj Object to test
+   */
+  private isEmptyObject(obj: any) {
+    for (const prop in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+        return false;
+      }
+    }
+    return true;
   }
 }

@@ -19,10 +19,10 @@ export class PioneerRevealLogCanvasComponent {
   }
 
   onRemoveFilterClicked() {
-    console.log('a');
+    this.pioneerRevealLogTableComponent.getLogs();
   }
 
   onAddFilterClicked() {
-    console.log('b');
+    this.pioneerRevealLogTableComponent.getLogs();
   }
 }
