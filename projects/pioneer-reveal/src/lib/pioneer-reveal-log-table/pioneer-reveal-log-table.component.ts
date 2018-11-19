@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 
 import { PioneerRevealRepository } from '../pioneer-reveal.repository';
 import { Hit } from '../models/search';
-import { PioneerRevealSearchService } from '../pioneer-reveal-search.service';
+import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-log-query-builder';
 
 /**
  * Log Table
@@ -16,16 +16,17 @@ export class PioneerRevealLogTableComponent {
   @Output() addFilterClicked: EventEmitter<void> = new EventEmitter();
   @Output() removeFilterClicked: EventEmitter<void> = new EventEmitter();
 
-  logs: Hit[];
+  logs = [] as Hit[];
 
   constructor(
-    private searchSearchService: PioneerRevealSearchService,
+    private queryBuilder: PioneerRevealLogQueryBuilder,
     private pioneerRevealRepository: PioneerRevealRepository
   ) { }
 
   getLogs() {
-    return this.pioneerRevealRepository.getLogs(this.searchSearchService.currentSearchIndices)
+    return this.pioneerRevealRepository.getLogs(this.queryBuilder.currentSearchIndices)
       .subscribe((logs) => {
+        this.logs = [] as Hit[];
         this.logs = logs.hits.hits.map(x => new Hit(x));
       });
   }

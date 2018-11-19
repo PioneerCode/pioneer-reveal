@@ -1,5 +1,11 @@
-<form [formGroup]="form">
-  <select name="contactMethod" id="contactMethod" class="form-control" formControlName="index">
-    <option *ngFor="let index of indices" [value]="index.index">{{ index.index }}</option>
-  </select>
-</form>
+<h6>Indices</h6>
+<ul>
+  <li *ngFor="let index of indices">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="test" id="defaultCheck1" (click)="onCheckboxChanged(index)">
+      <label class="form-check-label" for="defaultCheck1">
+        {{ index.index }}
+      </label>
+    </div>
+  </li>
+</ul>

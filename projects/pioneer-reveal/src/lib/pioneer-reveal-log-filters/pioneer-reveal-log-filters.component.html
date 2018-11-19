@@ -1,3 +1,5 @@
-<p>
-  pioneer-reveal-log-filters works!
-</p>
+<ul class="list-inline">
+  <li class="list-inline-item badge badge-secondary" *ngFor="let filter of queryBuilder.currentSearchFilters">
+    {{filter.key}}: <span>{{filter.value}}</span>
+  </li>
+</ul>

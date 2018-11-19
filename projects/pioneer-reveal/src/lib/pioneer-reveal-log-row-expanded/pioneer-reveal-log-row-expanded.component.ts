@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 import { Hit } from '../models/search';
-import { PioneerRevealSearchService } from '../pioneer-reveal-search.service';
+import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-log-query-builder';
 import { KeyValue } from '../models/key-value';
 
 /**
@@ -21,18 +21,22 @@ export class PioneerRevealLogRowExpandedComponent implements OnInit {
 
   selectedTab = 'formatted';
 
-  constructor(private searchService: PioneerRevealSearchService) { }
+  constructor(private queryBuilder: PioneerRevealLogQueryBuilder) { }
 
   ngOnInit() {
   }
 
   onAddFilter(prop: KeyValue) {
-    this.searchService.addFilter(prop.key, prop.value);
+    this.queryBuilder.addFilter(prop.key, prop.value);
     this.addFilterClicked.emit();
   }
 
   onRemoveFilter(prop: KeyValue) {
-    this.searchService.removeFilter(prop.key);
+    this.queryBuilder.removeFilter(prop.key);
     this.removeFilterClicked.emit();
+  }
+
+  isObject(prop: any): boolean {
+    return typeof prop === 'object' && prop !== null;
   }
 }

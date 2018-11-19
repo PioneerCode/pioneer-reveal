@@ -1,7 +1,7 @@
 import { Component,  ViewChild } from '@angular/core';
 
 import { PioneerRevealLogTableComponent } from '../pioneer-reveal-log-table/pioneer-reveal-log-table.component';
-import { PioneerRevealSearchService } from '../pioneer-reveal-search.service';
+import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-log-query-builder';
 
 @Component({
   selector: 'pioneer-reveal-log-canvas',
@@ -11,7 +11,7 @@ import { PioneerRevealSearchService } from '../pioneer-reveal-search.service';
 export class PioneerRevealLogCanvasComponent {
   @ViewChild(PioneerRevealLogTableComponent) pioneerRevealLogTableComponent: PioneerRevealLogTableComponent;
 
-  constructor(private searchService: PioneerRevealSearchService) {
+  constructor(private queryBuilder: PioneerRevealLogQueryBuilder) {
   }
 
   onIndexSelected() {

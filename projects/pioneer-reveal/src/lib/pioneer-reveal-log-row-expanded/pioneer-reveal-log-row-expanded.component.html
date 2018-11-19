@@ -13,8 +13,14 @@
         <tr *ngFor="let prop of log.pioneerRevelTracking.sourceMap">
           <td>
             <ul class="list-inline mb-0">
-              <li class="list-inline-item"><i class="fas fa-minus fa-sm" (click)="onRemoveFilter(prop)"></i> </li>
-              <li class="list-inline-item"> <i class="fas fa-plus fa-sm" (click)="onAddFilter(prop)"></i></li>
+              <li class="list-inline-item">
+                <i class="fas fa-minus fa-sm" *ngIf="isObject(prop.value)"></i>
+                <i class="fas fa-minus fa-sm active" *ngIf="!isObject(prop.value)" (click)="onRemoveFilter(prop)"></i>
+              </li>
+              <li class="list-inline-item">
+                <i class="fas fa-plus fa-sm" *ngIf="isObject(prop.value)"></i>
+                <i class="fas fa-plus fa-sm active" *ngIf="!isObject(prop.value)" (click)="onAddFilter(prop)"></i>
+              </li>
             </ul>
           </td>
           <td class="key">{{prop.key}}</td>
