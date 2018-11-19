@@ -18,3 +18,11 @@ li.badge {
     font-weight: normal;
   }
 }
+
+.fa-times {
+  cursor: pointer;
+  &:hover {
+    transition: all 0.25s;
+    color: lighten(color("red"), 20%);
+  }
+}
