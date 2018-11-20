@@ -1,0 +1,15 @@
+<section class="main-content clearfix">
+  <span class="float-left">
+    <b>Total Hits: </b>{{logService.searchResponse?.hits?.total}}
+  </span>
+  <div class="btn-group float-right btn-group-sm" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-secondary" (click)="showExpanded = 'time'"><i class="far fa-clock"></i> Time</button>
+    <button type="button" class="btn btn-secondary" (click)="showExpanded = 'rate'"><i class="fas fa-sync"></i> Rate</button>
+  </div>
+</section>
+<section class="sub-content" *ngIf="showExpanded === 'time'">
+  a
+</section>
+<section class="sub-content" *ngIf="showExpanded === 'rate'">
+  b
+</section>

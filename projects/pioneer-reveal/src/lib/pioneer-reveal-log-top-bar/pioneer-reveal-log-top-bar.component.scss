@@ -1,0 +1,11 @@
+@import "../../../../../src/variables.scss";
+.main-content {
+  padding: 0.5rem 1rem;
+  .btn-group {
+    margin: 0;
+  }
+}
+.sub-content {
+  padding: 1rem;
+  background-color: theme-color("light");
+}

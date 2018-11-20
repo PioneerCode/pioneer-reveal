@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 import { Index } from './models';
-import { Search } from './models/search';
-import { PioneerRevealLogQueryBuilder } from './pioneer-reveal-log-query-builder';
+import { SearchResponse } from './models/search-response';
+import { SearchRequest } from './models/search-request';
 
 @Injectable({
   providedIn: 'root'
@@ -12,18 +12,16 @@ import { PioneerRevealLogQueryBuilder } from './pioneer-reveal-log-query-builder
 export class PioneerRevealRepository {
   url = 'http://localhost:9200';
 
-  constructor(
-    private queryBuilder: PioneerRevealLogQueryBuilder,
-    private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getIndices(): Observable<Index[]> {
     return this.http.get<Index[]>(`${this.url}/_cat/indices?format=json`);
   }
 
-  getLogs(index: string): Observable<Search> {
+  getLogs(index: string, request: SearchRequest): Observable<SearchResponse> {
     if (index.length < 1) {
-      return of({ hits: { hits: [] } } as Search);
+      return of({ hits: { hits: [] } } as SearchResponse);
     }
-    return this.http.post<Search>(`${this.url}/${index}/_search?format=json`, { query: this.queryBuilder.query });
+    return this.http.post<SearchResponse>(`${this.url}/${index}/_search?format=json`, request);
   }
 }

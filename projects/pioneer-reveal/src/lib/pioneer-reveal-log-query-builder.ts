@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Query, BoolMustObjectOrderEnum, BoolMustMatchPhrase } from './models/query';
 import { KeyValue } from './models/key-value';
+import { SearchRequest } from './models/search-request';
 
 /**
  * Handles all query building for search operation
@@ -9,7 +10,11 @@ import { KeyValue } from './models/key-value';
   providedIn: 'root'
 })
 export class PioneerRevealLogQueryBuilder {
-  query = new Query();
+  public searchRequest = new SearchRequest();
+
+  get query(): Query {
+    return this.searchRequest.query;
+  }
 
   /**
    * Collection of user selected indices

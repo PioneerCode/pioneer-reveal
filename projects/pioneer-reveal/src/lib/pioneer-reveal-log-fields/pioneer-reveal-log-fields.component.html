@@ -1,14 +1,8 @@
 <h5>Fields</h5>
-<h6>Selected</h6>
-
-<h6>Available</h6>
+<p>Selected</p>
+<p>Available</p>
 <ul>
-  <li *ngFor="let index of indices">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="test" id="defaultCheck1" (click)="onCheckboxChanged(index)">
-      <label class="form-check-label" for="defaultCheck1">
-        {{ index.index }}
-      </label>
-    </div>
+  <li *ngFor="let property of logsService.logs[0]?.pioneerRevelTracking.sourceMap">
+    {{ property.key }}
   </li>
 </ul>

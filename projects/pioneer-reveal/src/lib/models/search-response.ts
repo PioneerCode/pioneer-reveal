@@ -6,7 +6,7 @@ import { ServiceLocator } from '../service-locator.service';
  * Search result contract returned by Elastic
  * url/index/_search
  */
-export class Search {
+export class SearchResponse {
   took: number;
   timed_out: false;
   _shards: Shard;
@@ -67,18 +67,22 @@ export class PioneerRevealTracking {
    */
   isObject = false;
 
-  private queryBuilder: PioneerRevealLogQueryBuilder;
+  /**
+   * Reference to query builder that is set using the injector
+   * manually. This is needed to adding tracking to isFilter prop in sourceMap
+   */
+  private _queryBuilder: PioneerRevealLogQueryBuilder;
 
   constructor(source: any) {
     this.selected = false;
-    this.queryBuilder = ServiceLocator.injector.get(PioneerRevealLogQueryBuilder);
+    this._queryBuilder = ServiceLocator.injector.get(PioneerRevealLogQueryBuilder);
 
     Object.keys(source).map((key) => {
       this.sourceMap.push({
         key: key,
         value: source[key],
         isObject: typeof source[key] === 'object' && source[key] !== null,
-        isFilter: this.queryBuilder.isCurrentFilter({
+        isFilter: this._queryBuilder.isCurrentFilter({
           key: key, value: source[key]
         } as KeyValue)
       } as Property);

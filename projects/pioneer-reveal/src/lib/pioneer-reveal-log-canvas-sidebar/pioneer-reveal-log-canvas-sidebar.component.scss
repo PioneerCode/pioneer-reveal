@@ -3,6 +3,16 @@
 :host {
   background: theme-color("light");
   display: block;
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
+.container-fluid {
+  margin: 0 0 1rem;
+  border-bottom: 1px solid $gray-300;
+  padding-bottom: 1rem;
+}
+.container-fluid:last-child {
+  margin: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}

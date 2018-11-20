@@ -1,8 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { PioneerRevealRepository } from '../pioneer-reveal.repository';
-import { Hit } from '../models/search';
-import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-log-query-builder';
 import { PioneerRevealLogService } from '../pioneer-reveal-log.service';
 
 /**

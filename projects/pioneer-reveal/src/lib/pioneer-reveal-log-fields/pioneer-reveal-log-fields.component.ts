@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-log-query-builder';
+import { PioneerRevealLogService } from '../pioneer-reveal-log.service';
 
 /**
  * Allow user to filter table row view by current options
@@ -11,7 +12,9 @@ import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-log-query-builde
 })
 export class PioneerRevealLogFieldsComponent implements OnInit {
 
-  constructor(public queryBuilder: PioneerRevealLogQueryBuilder) { }
+  constructor(
+    public logsService: PioneerRevealLogService,
+    public queryBuilder: PioneerRevealLogQueryBuilder) { }
 
   ngOnInit() {
   }

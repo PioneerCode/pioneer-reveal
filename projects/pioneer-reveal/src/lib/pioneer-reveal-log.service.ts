@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { PioneerRevealRepository } from './pioneer-reveal.repository';
 import { PioneerRevealLogQueryBuilder } from './pioneer-reveal-log-query-builder';
-import { Hit, Search } from './models/search';
+import { Hit, SearchResponse } from './models/search-response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PioneerRevealLogService {
-  searchResponse: Search;
+  searchResponse: SearchResponse;
   logs = [] as Hit[];
 
   constructor(
@@ -15,10 +15,11 @@ export class PioneerRevealLogService {
     private pioneerRevealRepository: PioneerRevealRepository) { }
 
   getLogs() {
-    return this.pioneerRevealRepository.getLogs(this.queryBuilder.currentSearchIndices)
-      .subscribe((logs) => {
+    return this.pioneerRevealRepository.getLogs(this.queryBuilder.currentSearchIndices, this.queryBuilder.searchRequest)
+      .subscribe((searchResponse) => {
+        this.searchResponse = searchResponse;
         this.logs = [] as Hit[];
-        this.logs = logs.hits.hits.map(x => new Hit(x));
+        this.logs = searchResponse.hits.hits.map(x => new Hit(x));
       });
   }
 }

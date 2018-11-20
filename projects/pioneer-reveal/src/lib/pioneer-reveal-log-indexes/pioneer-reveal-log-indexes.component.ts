@@ -25,8 +25,9 @@ export class PioneerRevealLogIndexesComponent implements OnInit {
     this.form = this.formBuilder.group({
       index: [{}]
     });
+
     this.pioneerRevealRepository.getIndices()
-      .subscribe(indices => this.indices = indices);
+      .subscribe(indices => this.indices = indices.filter(x => x.index !== '.kibana_1'));
 
     this.form.valueChanges.subscribe(val => {
       this.queryBuilder.setIndex(val.index);
