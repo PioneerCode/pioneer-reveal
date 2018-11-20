@@ -83,6 +83,5 @@ export class PioneerRevealTracking {
         } as KeyValue)
       } as Property);
     });
-    console.log(this.sourceMap);
   }
 }

@@ -1,5 +1,5 @@
 <ul class="list-inline">
   <li class="list-inline-item badge badge-secondary" *ngFor="let filter of queryBuilder.currentSearchFilters">
-    {{filter.key}}: <span>{{filter.value}}</span>&nbsp;&nbsp;<i class="fas fa-times"></i>
+    {{filter.key}}: <span>{{filter.value}}</span>&nbsp;&nbsp;<i class="fas fa-times" (click)="onRemoveClick(filter)"></i>
   </li>
 </ul>

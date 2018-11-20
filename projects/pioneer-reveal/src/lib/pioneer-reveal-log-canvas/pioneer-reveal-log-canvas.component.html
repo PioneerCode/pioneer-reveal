@@ -1,4 +1,4 @@
-<pioneer-reveal-pioneer-reveal-log-filters></pioneer-reveal-pioneer-reveal-log-filters>
+<pioneer-reveal-pioneer-reveal-log-filters *ngIf="queryBuilder.currentSearchIndices.length > 0" (removeFilterClicked)="onRemoveFilterClicked()"></pioneer-reveal-pioneer-reveal-log-filters>
 <div class="container-fluid">
   <div class="row no-gutters">
     <div class="col-sm-2">
