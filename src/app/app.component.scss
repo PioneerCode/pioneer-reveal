@@ -8,4 +8,12 @@ header {
     color: color("white");
     font-size: 2rem;
   }
+  .icon {
+    width: 34px;
+    display: table-cell;
+  }
+
+  ul {
+    margin: 0;
+  }
 }
