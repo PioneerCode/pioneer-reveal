@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PioneerRevealLogService } from '../pioneer-reveal-log.service';
 import { KeyValue } from '../models/key-value';
+import * as moment from 'moment';
 
 @Component({
   selector: 'pioneer-reveal-log-top-bar',
@@ -24,47 +25,47 @@ export class PioneerRevealLogTopBarComponent {
     }
   }
 
-  onRateClick(rate: KeyValue) {
-    this.selectedRate = rate.key;
-  }
-
   onRangeClick(range: KeyValue) {
     this.selectedRange = range.key;
+  }
+
+  onRateClick(rate: KeyValue) {
+    this.selectedRate = rate.key;
   }
 
   private getTimeRanges(): KeyValue[] {
     return [
       {
         key: 'Today',
-        value: 0
+        value: moment().startOf('day')
       },
       {
         key: 'This week',
-        value: 1
+        value: moment().startOf('week')
       },
       {
         key: 'This month',
-        value: 2
+        value: moment().startOf('month')
       },
       {
         key: 'Past 15 minutes',
-        value: 3
+        value: moment().subtract(15, 'minutes')
       },
       {
         key: 'Past 30 minutes',
-        value: 4
+        value: moment().subtract(30, 'minutes')
       },
       {
         key: 'Past 1 hour',
-        value: 5
+        value: moment().subtract(1, 'hour')
       },
       {
         key: 'Past 12 hours',
-        value: 6
+        value: moment().subtract(12, 'hour')
       },
       {
         key: 'Past 30 days',
-        value: 7
+        value: moment().subtract(30, 'day')
       },
     ] as KeyValue[];
   }
@@ -73,31 +74,31 @@ export class PioneerRevealLogTopBarComponent {
     return [
       {
         key: '5 seconds',
-        value: 0
-      },
-      {
-        key: '15 seconds',
-        value: 1
-      },
-      {
-        key: '30 seconds',
-        value: 2
-      },
-      {
-        key: '1 minute',
-        value: 3
-      },
-      {
-        key: '15 minutes',
-        value: 4
-      },
-      {
-        key: '30 minutes',
         value: 5
       },
       {
+        key: '15 seconds',
+        value: 15
+      },
+      {
+        key: '30 seconds',
+        value: 30
+      },
+      {
+        key: '1 minute',
+        value: 60
+      },
+      {
+        key: '15 minutes',
+        value: 900
+      },
+      {
+        key: '30 minutes',
+        value: 1800
+      },
+      {
         key: '1 hour',
-        value: 6
+        value: 3600
       }
     ] as KeyValue[];
   }

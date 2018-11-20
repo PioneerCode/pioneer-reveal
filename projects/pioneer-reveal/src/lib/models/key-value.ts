@@ -1,6 +1,6 @@
 export class KeyValue {
   key: string;
-  value: string | number;
+  value: string | number | any;
 }
 
 export class Property extends KeyValue {

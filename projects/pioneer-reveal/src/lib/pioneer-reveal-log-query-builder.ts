@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Query, BoolMustObjectOrderEnum, BoolMustMatchPhrase } from './models/query';
+import { Query, BoolMustObjectOrderEnum, BoolMustMatchPhrase, BoolMustRange } from './models/query';
 import { KeyValue } from './models/key-value';
 import { SearchRequest } from './models/search-request';
+import * as moment from 'moment';
 
 /**
  * Handles all query building for search operation
@@ -90,6 +91,24 @@ export class PioneerRevealLogQueryBuilder {
 
   isIndexSet(index: string): boolean {
     return this._currentSearchIndices.includes(index);
+  }
+
+  addTimeRange(gte: number) {
+    // Dynamically create range if does not exist.
+    if (this.query.bool.must[BoolMustObjectOrderEnum.BoolMustRange] === undefined) {
+      this.query.bool.must.push({
+        range: {}
+      } as BoolMustRange);
+    }
+    this.query.bool.must[BoolMustObjectOrderEnum.BoolMustRange]['range']['creationTimestamp'] = {
+      'lte': moment().utc().unix(),
+      'gte': gte,
+      'format': 'epoch_millis'
+    };
+  }
+
+  removeTimeRange() {
+    delete this.query.bool.must[BoolMustObjectOrderEnum.BoolMustRange];
   }
 
   /**

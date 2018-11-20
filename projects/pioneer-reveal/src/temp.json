@@ -2,7 +2,7 @@
   "index": "kibana_sample_data_ecommerce",
   "ignore_unavailable": true,
   "timeout": 30000,
-  "preference": 1542736588092
+  "preference": 1542745852876
 }
 {
   "version": true,
