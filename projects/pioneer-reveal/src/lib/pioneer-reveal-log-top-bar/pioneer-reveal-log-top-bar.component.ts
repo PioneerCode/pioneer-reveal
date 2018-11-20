@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PioneerRevealLogService } from '../pioneer-reveal-log.service';
 
 @Component({
@@ -6,13 +6,17 @@ import { PioneerRevealLogService } from '../pioneer-reveal-log.service';
   templateUrl: './pioneer-reveal-log-top-bar.component.html',
   styleUrls: ['./pioneer-reveal-log-top-bar.component.scss']
 })
-export class PioneerRevealLogTopBarComponent implements OnInit {
+export class PioneerRevealLogTopBarComponent {
 
-  public showExpanded: string;
+  public selectedOption: string;
 
   constructor(public logService: PioneerRevealLogService) { }
 
-  ngOnInit() {
+  optionClick(option: string) {
+    if (this.selectedOption === option) {
+      this.selectedOption = null;
+    } else {
+      this.selectedOption = option;
+    }
   }
-
 }
