@@ -1,15 +1,32 @@
 <section class="main-content clearfix">
-  <span class="float-left">
-    <b>Total Hits: </b>{{logService.searchResponse?.hits?.total}}
-  </span>
-  <div class="btn-group float-right btn-group-sm" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-secondary" (click)="optionClick('time')"><i class="far fa-clock"></i> Time</button>
-    <button type="button" class="btn btn-secondary" (click)="optionClick('rate')"><i class="fas fa-sync"></i> Rate</button>
+  <div class="float-left info">
+    <b *ngIf="logService.searchResponse?.hits?.total">Total Hits: </b>{{logService.searchResponse?.hits?.total}}
+    <b *ngIf="selectedRange">Range: </b>{{selectedRange}}
+    <b *ngIf="selectedRate">Refresh: </b>{{selectedRate}}
+  </div>
+  <div class="btn-group float-right btn-group-sm">
+    <button type="button" class="btn btn-secondary" (click)="onOptionClick('filters')"><i class="fas fa-filter fa-xs"></i></button>
   </div>
 </section>
-<section class="sub-content" *ngIf="selectedOption === 'time'">
-  a
-</section>
-<section class="sub-content" *ngIf="selectedOption === 'rate'">
-  b
+<section class="sub-content" *ngIf="selectedOption === 'filters'">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6">
+        <h5>Time Range <i class="far fa-clock fa-sm"></i></h5>
+        <ul>
+          <li *ngFor="let range of timeRanges">
+            <span [ngClass]="{'active': range.key === selectedRange}" (click)="onRangeClick(range)">{{range.key}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-6">
+        <h5>Refresh Rate <i class="fas fa-sync fa-sm"></i></h5>
+        <ul>
+          <li *ngFor="let rate of refreshRates">
+            <span [ngClass]="{'active': rate.key === selectedRate}" (click)="onRateClick(rate)">{{rate.key}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
