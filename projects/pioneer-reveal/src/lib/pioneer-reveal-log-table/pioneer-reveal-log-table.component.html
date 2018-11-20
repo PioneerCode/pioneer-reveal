@@ -7,7 +7,7 @@
     </tr>
   </thead>
   <tbody>
-    <ng-container *ngFor="let log of logs">
+    <ng-container *ngFor="let log of logService.logs">
       <tr pioneer-reveal-log-row [ngClass]="{'active-line':log.pioneerRevelTracking?.selected}" (expandRowSelected)="onExpandRowSelected()"
         [(log)]="log"></tr>
       <tr pioneer-reveal-log-row-expanded (addFilterClicked)="onAddFilterClicked()" (removeFilterClicked)="onRemoveFilterClicked()"

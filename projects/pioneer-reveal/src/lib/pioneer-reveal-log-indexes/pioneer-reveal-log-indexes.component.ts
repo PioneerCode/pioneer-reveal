@@ -1,8 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PioneerRevealRepository } from '../pioneer-reveal.repository';
 import { Index } from '../models';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-log-query-builder';
+import { PioneerRevealLogService } from '../pioneer-reveal-log.service';
 
 @Component({
   selector: 'pioneer-reveal-log-indexes',
@@ -10,12 +11,11 @@ import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-log-query-builde
   styleUrls: ['./pioneer-reveal-log-indexes.component.scss']
 })
 export class PioneerRevealLogIndexesComponent implements OnInit {
-  @Output() indexSelected: EventEmitter<void> = new EventEmitter();
-
   form: FormGroup;
   indices = [] as Index[];
 
   constructor(
+    private logService: PioneerRevealLogService,
     private pioneerRevealRepository: PioneerRevealRepository,
     private queryBuilder: PioneerRevealLogQueryBuilder,
     private formBuilder: FormBuilder
@@ -30,7 +30,7 @@ export class PioneerRevealLogIndexesComponent implements OnInit {
 
     this.form.valueChanges.subscribe(val => {
       this.queryBuilder.setIndex(val.index);
-      this.indexSelected.emit();
+      this.logService.getLogs();
     });
   }
 
@@ -40,6 +40,6 @@ export class PioneerRevealLogIndexesComponent implements OnInit {
     } else {
       this.queryBuilder.setIndex(val.index);
     }
-    this.indexSelected.emit();
+    this.logService.getLogs();
   }
 }

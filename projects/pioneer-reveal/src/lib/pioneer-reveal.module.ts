@@ -12,6 +12,7 @@ import { PioneerRevealLogCanvasSidebarComponent } from './pioneer-reveal-log-can
 import { PioneerRevealLogRowExpandedComponent } from './pioneer-reveal-log-row-expanded/pioneer-reveal-log-row-expanded.component';
 import { PioneerRevealLogFiltersComponent } from './pioneer-reveal-log-filters/pioneer-reveal-log-filters.component';
 import { ServiceLocator } from './service-locator.service';
+import { PioneerRevealLogFieldsComponent } from './pioneer-reveal-log-fields/pioneer-reveal-log-fields.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ServiceLocator } from './service-locator.service';
     PioneerRevealLogCanvasComponent,
     PioneerRevealLogCanvasSidebarComponent,
     PioneerRevealLogRowExpandedComponent,
-    PioneerRevealLogFiltersComponent
+    PioneerRevealLogFiltersComponent,
+    PioneerRevealLogFieldsComponent
   ],
   imports: [
     BrowserModule,

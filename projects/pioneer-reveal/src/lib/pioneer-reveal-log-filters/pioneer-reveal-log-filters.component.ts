@@ -1,22 +1,20 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-log-query-builder';
 import { Property } from '../models/key-value';
+import { PioneerRevealLogService } from '../pioneer-reveal-log.service';
 
 @Component({
   selector: 'pioneer-reveal-pioneer-reveal-log-filters',
   templateUrl: './pioneer-reveal-log-filters.component.html',
   styleUrls: ['./pioneer-reveal-log-filters.component.scss']
 })
-export class PioneerRevealLogFiltersComponent implements OnInit {
-  @Output() removeFilterClicked: EventEmitter<void> = new EventEmitter();
+export class PioneerRevealLogFiltersComponent {
 
-  constructor(private queryBuilder: PioneerRevealLogQueryBuilder) { }
-
-  ngOnInit() {
-  }
+  constructor(public logService: PioneerRevealLogService,
+    private queryBuilder: PioneerRevealLogQueryBuilder) { }
 
   onRemoveClick(filter: Property): void {
     this.queryBuilder.removeFilter(filter.key);
-    this.removeFilterClicked.emit();
+    this.logService.getLogs();
   }
 }

@@ -1,7 +1,7 @@
-import { Component,  ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { PioneerRevealLogTableComponent } from '../pioneer-reveal-log-table/pioneer-reveal-log-table.component';
 import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-log-query-builder';
+import { PioneerRevealLogService } from '../pioneer-reveal-log.service';
 
 @Component({
   selector: 'pioneer-reveal-log-canvas',
@@ -9,20 +9,8 @@ import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-log-query-builde
   styleUrls: ['./pioneer-reveal-log-canvas.component.scss']
 })
 export class PioneerRevealLogCanvasComponent {
-  @ViewChild(PioneerRevealLogTableComponent) pioneerRevealLogTableComponent: PioneerRevealLogTableComponent;
-
-  constructor(private queryBuilder: PioneerRevealLogQueryBuilder) {
-  }
-
-  onIndexSelected() {
-    this.pioneerRevealLogTableComponent.getLogs();
-  }
-
-  onRemoveFilterClicked() {
-    this.pioneerRevealLogTableComponent.getLogs();
-  }
-
-  onAddFilterClicked() {
-    this.pioneerRevealLogTableComponent.getLogs();
+  constructor(
+    public logService: PioneerRevealLogService,
+    public queryBuilder: PioneerRevealLogQueryBuilder) {
   }
 }
