@@ -1,50 +1,4 @@
 {
-  "index": "kibana_sample_data_flights",
-  "ignore_unavailable": true,
-  "timeout": 30000,
-  "preference": 1542489840042
-}
-{
-  "version": true,
-  "size": 500,
-  "sort": [
-    {
-      "timestamp": {
-        "order": "desc",
-        "unmapped_type": "boolean"
-      }
-    }
-  ],
-  "_source": {
-    "excludes": []
-  },
-  "aggs": {
-    "2": {
-      "date_histogram": {
-        "field": "timestamp",
-        "interval": "30s",
-        "time_zone": "America/Chicago",
-        "min_doc_count": 1
-      }
-    }
-  },
-  "stored_fields": [
-    "*"
-  ],
-  "script_fields": {
-    "hour_of_day": {
-      "script": {
-        "inline": "doc['timestamp'].value.hourOfDay",
-        "lang": "painless"
-      }
-    }
-  },
-  "docvalue_fields": [
-    {
-      "field": "timestamp",
-      "format": "date_time"
-    }
-  ],
   "query": {
     "bool": {
       "must": [
@@ -52,37 +6,15 @@
           "match_all": {}
         },
         {
-          "match_phrase": {
-            "AvgTicketPrice": {
-              "query": 937.580234448686
-            }
-          }
-        },
-        {
           "range": {
-            "timestamp": {
-              "gte": 1542496491650,
-              "lte": 1542497391650,
+            "creationTimestamp": {
+              "lte": 1542760329,
+              "gte": "2018-11-01T05:00:00.000Z",
               "format": "epoch_millis"
             }
           }
         }
-      ],
-      "filter": [],
-      "should": [],
-      "must_not": []
+      ]
     }
-  },
-  "highlight": {
-    "pre_tags": [
-      "@kibana-highlighted-field@"
-    ],
-    "post_tags": [
-      "@/kibana-highlighted-field@"
-    ],
-    "fields": {
-      "*": {}
-    },
-    "fragment_size": 2147483647
   }
 }

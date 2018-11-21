@@ -38,14 +38,18 @@ export class PioneerRevealLogQueryBuilder {
   constructor() { }
 
   addFilter(key: string, value: string | number): void {
+    let index = this.getMustIndexBasedOnPropertyName('match_phrase');
+
     // Dynamically create match phrase if does not exist.
-    if (this.query.bool.must[BoolMustObjectOrderEnum.BoolMustMatchPhrase] === undefined) {
+    if (index === undefined) {
       this.query.bool.must.push({
         match_phrase: {}
       } as BoolMustMatchPhrase);
+      index = this.query.bool.must.length - 1;
     }
-    this.query.bool.must[BoolMustObjectOrderEnum.BoolMustMatchPhrase]['match_phrase'][key] = {};
-    this.query.bool.must[BoolMustObjectOrderEnum.BoolMustMatchPhrase]['match_phrase'][key]['query'] = value;
+
+    this.query.bool.must[index]['match_phrase'][key] = {};
+    this.query.bool.must[index]['match_phrase'][key]['query'] = value;
     this.currentSearchFilters.push({
       key: key,
       value: value
@@ -53,7 +57,9 @@ export class PioneerRevealLogQueryBuilder {
   }
 
   removeFilter(key: string): void {
-    delete this.query.bool.must[BoolMustObjectOrderEnum.BoolMustMatchPhrase]['match_phrase'][key];
+    const index = this.getMustIndexBasedOnPropertyName('match_phrase');
+
+    delete this.query.bool.must[index]['match_phrase'][key];
     for (let i = 0; i < this.currentSearchFilters.length; i++) {
       const filter = this.currentSearchFilters[i];
       if (filter.key === key) {
@@ -62,8 +68,8 @@ export class PioneerRevealLogQueryBuilder {
       }
     }
 
-    if (!this.isEmptyObject(this.query.bool.must[BoolMustObjectOrderEnum.BoolMustMatchPhrase])) {
-      this.query.bool.must.splice(BoolMustObjectOrderEnum.BoolMustMatchPhrase, 1);
+    if (!this.isEmptyObject(this.query.bool.must[index])) {
+      this.query.bool.must.splice(index, 1);
     }
   }
 
@@ -94,21 +100,35 @@ export class PioneerRevealLogQueryBuilder {
   }
 
   addTimeRange(gte: number) {
-    // Dynamically create range if does not exist.
-    if (this.query.bool.must[BoolMustObjectOrderEnum.BoolMustRange] === undefined) {
+    let index = this.getMustIndexBasedOnPropertyName('range');
+
+    if (index === undefined) {
       this.query.bool.must.push({
         range: {}
       } as BoolMustRange);
+      index = this.query.bool.must.length - 1;
     }
-    this.query.bool.must[BoolMustObjectOrderEnum.BoolMustRange]['range']['creationTimestamp'] = {
+
+    this.query.bool.must[index]['range']['creationTimestamp'] = {
       'lte': moment().utc().unix(),
       'gte': gte,
       'format': 'epoch_millis'
     };
   }
 
-  removeTimeRange() {
-    delete this.query.bool.must[BoolMustObjectOrderEnum.BoolMustRange];
+  /**
+   * Look through every index in this.query.bool to see if it has
+   * the supplied property name.  If it does, return the index.
+   * @param propName Property Name
+   */
+  private getMustIndexBasedOnPropertyName(propName: string): number {
+    for (let i = 0; i < this.query.bool.must.length; i++) {
+      const element = this.query.bool.must[i];
+      if (element.hasOwnProperty(propName)) {
+        return i;
+      }
+    }
+    return undefined;
   }
 
   /**

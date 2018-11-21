@@ -49,7 +49,7 @@ export class PioneerRevealLogService {
     }
     if (this.refreshRate.key !== 'Pause') {
       this._refreshInterval = setInterval(() => {
-        console.log(this._refreshRate);
+        this.getLogs();
       }, this._refreshRate.value * 1000);
     }
   }

@@ -2,7 +2,7 @@
   "index": "kibana_sample_data_ecommerce",
   "ignore_unavailable": true,
   "timeout": 30000,
-  "preference": 1542745852876
+  "preference": 1542756319117
 }
 {
   "version": true,
@@ -22,7 +22,7 @@
     "2": {
       "date_histogram": {
         "field": "order_date",
-        "interval": "12h",
+        "interval": "30s",
         "time_zone": "America/Chicago",
         "min_doc_count": 1
       }
@@ -53,10 +53,17 @@
           "match_all": {}
         },
         {
+          "match_phrase": {
+            "_id": {
+              "query": "PJaDI2cBuD53XAExhJdg"
+            }
+          }
+        },
+        {
           "range": {
             "order_date": {
-              "gte": 1541048400000,
-              "lte": 1543643999999,
+              "gte": 1542759153415,
+              "lte": 1542760053415,
               "format": "epoch_millis"
             }
           }
