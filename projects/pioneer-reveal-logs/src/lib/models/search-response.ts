@@ -1,5 +1,5 @@
 import { KeyValue, Property } from './key-value';
-import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-log-query-builder';
+import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
 import { ServiceLocator } from '../service-locator.service';
 
 /**

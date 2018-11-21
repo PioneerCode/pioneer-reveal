@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PioneerRevealRepository } from '../pioneer-reveal.repository';
 import { Index } from '../models';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-log-query-builder';
-import { PioneerRevealLogService } from '../pioneer-reveal-log.service';
+import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
+import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
 
 @Component({
   selector: 'pioneer-reveal-log-indexes',

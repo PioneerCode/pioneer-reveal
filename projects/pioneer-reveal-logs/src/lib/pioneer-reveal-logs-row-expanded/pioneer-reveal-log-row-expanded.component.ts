@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 import { Hit } from '../models/search-response';
-import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-log-query-builder';
+import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
 import { KeyValue } from '../models/key-value';
 
 /**

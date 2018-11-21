@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PioneerRevealLogComponent } from './pioneer-reveal-log.component';
+import { PioneerRevealLogComponent } from './pioneer-reveal-logs.component';
 
 describe('PioneerRevealLogComponent', () => {
   let component: PioneerRevealLogComponent;

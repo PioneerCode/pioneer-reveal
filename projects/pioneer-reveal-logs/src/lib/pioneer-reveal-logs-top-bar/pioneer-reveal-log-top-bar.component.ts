@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import * as moment from 'moment';
 
-import { PioneerRevealLogService } from '../pioneer-reveal-log.service';
+import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
 import { KeyValue } from '../models/key-value';
-import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-log-query-builder';
+import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
 
 @Component({
   selector: 'pioneer-reveal-log-top-bar',

@@ -1,6 +1,6 @@
 <td><i class="fas" [ngClass]="{'fa-caret-right': !log.pioneerRevelTracking?.selected, 'fa-caret-down': log.pioneerRevelTracking?.selected}"
     (click)="onExpandRowSelected()"></i></td>
-<td>{{log._index}}</td>
+<td>{{log._source.CreationTimestamp}}</td>
 <td class="source">
   <span class="property "*ngFor="let prop of log.pioneerRevelTracking.sourceMap">
     <span class="key" [ngClass]="{'selected': prop.isFilter}">{{prop.key}}: </span>

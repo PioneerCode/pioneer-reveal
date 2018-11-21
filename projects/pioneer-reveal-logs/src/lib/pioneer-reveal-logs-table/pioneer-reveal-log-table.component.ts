@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { PioneerRevealLogService } from '../pioneer-reveal-log.service';
+import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
 
 /**
  * Log Table

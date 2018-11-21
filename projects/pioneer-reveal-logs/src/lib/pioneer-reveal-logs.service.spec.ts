@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PioneerRevealLogService } from './pioneer-reveal-log.service';
+import { PioneerRevealLogService } from './pioneer-reveal-logs.service';
 
 describe('PioneerRevealLogService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

@@ -2,6 +2,6 @@
  * Public API Surface of pioneer-reveal-log
  */
 
-export * from './lib/pioneer-reveal-log.service';
-export * from './lib/pioneer-reveal-log.component';
-export * from './lib/pioneer-reveal-log.module';
+export * from './lib/pioneer-reveal-logs.service';
+export * from './lib/pioneer-reveal-logs.component';
+export * from './lib/pioneer-reveal-logs.module';

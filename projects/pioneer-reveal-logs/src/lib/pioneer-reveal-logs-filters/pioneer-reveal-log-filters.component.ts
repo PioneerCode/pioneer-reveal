@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-log-query-builder';
+import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
 import { Property } from '../models/key-value';
-import { PioneerRevealLogService } from '../pioneer-reveal-log.service';
+import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
 
 @Component({
   selector: 'pioneer-reveal-pioneer-reveal-log-filters',

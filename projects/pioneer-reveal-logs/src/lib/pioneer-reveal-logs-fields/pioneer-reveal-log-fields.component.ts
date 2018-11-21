@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-log-query-builder';
-import { PioneerRevealLogService } from '../pioneer-reveal-log.service';
+import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
+import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
 
 /**
  * Allow user to filter table row view by current options
