@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import * as moment from 'moment';
+
 import { PioneerRevealLogService } from '../pioneer-reveal-log.service';
 import { KeyValue } from '../models/key-value';
-import * as moment from 'moment';
+import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-log-query-builder';
 
 @Component({
   selector: 'pioneer-reveal-log-top-bar',
@@ -12,10 +14,13 @@ export class PioneerRevealLogTopBarComponent {
   public timeRanges = this.getTimeRanges();
   public refreshRates = this.getRefreshRates();
   public selectedOption: string;
-  public selectedRange: string;
-  public selectedRate: string;
+  public selectedTimeRange: string;
 
-  constructor(public logService: PioneerRevealLogService) { }
+  constructor(private queryBuilder: PioneerRevealLogQueryBuilder,
+    public logService: PioneerRevealLogService) {
+    this.selectedTimeRange = this.timeRanges[0].key;
+    this.logService.refreshRate = this.refreshRates[2];
+  }
 
   onOptionClick(option: string) {
     if (this.selectedOption === option) {
@@ -26,11 +31,12 @@ export class PioneerRevealLogTopBarComponent {
   }
 
   onRangeClick(range: KeyValue) {
-    this.selectedRange = range.key;
+    this.selectedTimeRange = range.key;
+    this.queryBuilder.addTimeRange(range.value);
   }
 
   onRateClick(rate: KeyValue) {
-    this.selectedRate = rate.key;
+    this.logService.refreshRate = rate;
   }
 
   private getTimeRanges(): KeyValue[] {
@@ -99,6 +105,10 @@ export class PioneerRevealLogTopBarComponent {
       {
         key: '1 hour',
         value: 3600
+      },
+      {
+        key: 'Pause',
+        value: 'Paused'
       }
     ] as KeyValue[];
   }
