@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/pioneer-reveal",
+  "dest": "../../dist/pioneer-reveal-log",
   "lib": {
     "entryFile": "src/public_api.ts"
   }

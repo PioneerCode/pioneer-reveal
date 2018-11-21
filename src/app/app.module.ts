@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PioneerRevealModule } from 'projects/pioneer-reveal/src/lib/pioneer-reveal.module';
+import { PioneerRevealLogModule } from 'projects/pioneer-reveal-log/src/lib/pioneer-reveal-log.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,7 @@ import { PioneerRevealModule } from 'projects/pioneer-reveal/src/lib/pioneer-rev
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PioneerRevealModule
+    PioneerRevealLogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

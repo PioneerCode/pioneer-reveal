@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PioneerRevealComponent } from './pioneer-reveal.component';
+import { PioneerRevealLogComponent } from './pioneer-reveal-log.component';
 
-describe('PioneerRevealComponent', () => {
-  let component: PioneerRevealComponent;
-  let fixture: ComponentFixture<PioneerRevealComponent>;
+describe('PioneerRevealLogComponent', () => {
+  let component: PioneerRevealLogComponent;
+  let fixture: ComponentFixture<PioneerRevealLogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PioneerRevealComponent ]
+      declarations: [ PioneerRevealLogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PioneerRevealComponent);
+    fixture = TestBed.createComponent(PioneerRevealLogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

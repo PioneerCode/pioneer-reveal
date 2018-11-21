@@ -3,12 +3,16 @@
         "Elmah",
         "Injectable",
         "Truthy",
+        "devkit",
         "ecommerce",
         "fontawesome",
         "fortawesome",
         "kibana",
         "millis",
         "msearch",
+        "packagr",
+        "polyfills",
+        "styleext",
         "webfonts",
         "xlink"
     ]

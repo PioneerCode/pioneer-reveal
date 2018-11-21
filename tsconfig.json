@@ -23,6 +23,12 @@
       ],
       "pioneer-reveal/*": [
         "dist/pioneer-reveal/*"
+      ],
+      "pioneer-reveal-log": [
+        "dist/pioneer-reveal-log"
+      ],
+      "pioneer-reveal-log/*": [
+        "dist/pioneer-reveal-log/*"
       ]
     }
   }
