@@ -12,8 +12,9 @@ import { PioneerRevealLogRowComponent } from './pioneer-reveal-logs-row/pioneer-
 import { PioneerRevealLogRowExpandedComponent } from './pioneer-reveal-logs-row-expanded/pioneer-reveal-log-row-expanded.component';
 import { PioneerRevealLogIndexesComponent } from './pioneer-reveal-logs-indexes/pioneer-reveal-log-indexes.component';
 import { PioneerRevealLogFiltersComponent } from './pioneer-reveal-logs-filters/pioneer-reveal-log-filters.component';
-import { ServiceLocator } from './service-locator.service';
+// tslint:disable-next-line:max-line-length
 import { PioneerRevealLogsApplicationAggregationComponent } from './pioneer-reveal-logs-application-aggregation/pioneer-reveal-logs-application-aggregation.component';
+import { ServiceLocator } from './service-locator.service';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,9 @@ import { PioneerRevealLogsApplicationAggregationComponent } from './pioneer-reve
     PioneerRevealLogCanvasComponent,
     PioneerRevealLogCanvasSidebarComponent,
     PioneerRevealLogRowExpandedComponent,
-    PioneerRevealLogFiltersComponent,
     PioneerRevealLogTopBarComponent,
-    PioneerRevealLogsApplicationAggregationComponent
+    PioneerRevealLogsApplicationAggregationComponent,
+    PioneerRevealLogFiltersComponent
   ],
   imports: [
     BrowserModule,
