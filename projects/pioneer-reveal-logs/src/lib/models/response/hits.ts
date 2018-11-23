@@ -1,6 +1,6 @@
-import { Property, KeyValue } from './key-value';
-import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
-import { ServiceLocator } from '../service-locator.service';
+import { Property, KeyValue } from '../key-value';
+import { PioneerRevealLogQueryBuilder } from '../../pioneer-reveal-logs-query-builder';
+import { ServiceLocator } from '../../service-locator.service';
 
 export class HitsParent {
   total: number;

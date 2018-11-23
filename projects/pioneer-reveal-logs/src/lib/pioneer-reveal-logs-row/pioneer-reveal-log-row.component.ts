@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Hit } from '../models/hits';
+import { Hit } from '../models/response/hits';
 
 /**
  * Individual row in log table

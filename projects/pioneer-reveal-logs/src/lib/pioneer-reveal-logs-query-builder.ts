@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { Query, BoolMustMatchPhrase, BoolMustRange } from './models/query';
+import { Query, BoolMustMatchPhrase, BoolMustRange } from './models/request/query';
 import { KeyValue } from './models/key-value';
-import { SearchRequest } from './models/search-request';
+import { SearchRequest } from './models/request/search-request';
 import * as moment from 'moment';
 
 /**

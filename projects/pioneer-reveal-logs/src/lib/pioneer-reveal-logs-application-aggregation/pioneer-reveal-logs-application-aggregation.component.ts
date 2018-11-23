@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PioneerRevealRepository } from '../pioneer-reveal.repository';
-import { SearchResponse } from '../models/search-response';
+import { SearchResponse } from '../models/response/search-response';
 import { pioneerLogsIndices } from '../models';
-import { SearchRequest } from '../models/search-request';
+import { SearchRequest } from '../models/request/search-request';
 
 /**
  * Filters logs by ApplicationName and ApplicationLayer
@@ -44,7 +44,6 @@ export class PioneerRevealLogsApplicationAggregationComponent implements OnInit 
     this.pioneerRevealRepository.getLogs(indices.slice(0, -1), this.request)
       .subscribe((response) => {
         this.aggregations = response;
-        console.log(this.aggregations);
       });
   }
 }

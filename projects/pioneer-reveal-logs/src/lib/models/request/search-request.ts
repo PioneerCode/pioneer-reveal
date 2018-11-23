@@ -1,5 +1,5 @@
 import { Query } from './query';
-import { Aggs } from './aggregation';
+import { Aggs } from './aggs';
 
 /**
  * Search request contract returned for Elastic

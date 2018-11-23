@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 import { Index } from './models';
-import { SearchResponse } from './models/search-response';
-import { SearchRequest } from './models/search-request';
+import { SearchResponse } from './models/response/search-response';
+import { SearchRequest } from './models/request/search-request';
 
 @Injectable({
   providedIn: 'root'
