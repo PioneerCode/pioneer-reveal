@@ -36,7 +36,12 @@ export class PioneerRevealLogQueryBuilder {
    */
   public currentSearchFilters = [] as KeyValue[];
 
-  constructor() { }
+  constructor(
+  ) {
+    this.searchRequest.size = 500;
+    this.searchRequest.from = 0;
+    this.searchRequest.query = new Query();
+  }
 
   addFilter(key: string, value: string | number): void {
     let index = this.getMustIndexBasedOnPropertyName('match_phrase');

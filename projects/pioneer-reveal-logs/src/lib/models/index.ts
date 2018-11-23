@@ -1,3 +1,10 @@
+export const pioneerLogsIndices = [
+  'pioneer-logs-error',
+  'pioneer-logs-usage',
+  'pioneer-logs-performance',
+  'pioneer-logs-diagnostic'
+];
+
 export class Index {
   health: string;
   status: string;

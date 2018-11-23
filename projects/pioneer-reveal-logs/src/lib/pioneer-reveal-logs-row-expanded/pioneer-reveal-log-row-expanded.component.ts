@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
-import { Hit } from '../models/search-response';
 import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
 import { KeyValue } from '../models/key-value';
+import { Hit } from '../models/hits';
 
 /**
  * Individual expanded row in log table.
