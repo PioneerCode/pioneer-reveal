@@ -3,7 +3,7 @@ import { PioneerRevealRepository } from '../pioneer-reveal.repository';
 import { SearchResponse } from '../models/response/search-response';
 import { pioneerLogsIndices } from '../models';
 import { SearchRequest } from '../models/request/search-request';
-import { Aggregations } from '../models/response/aggregations';
+import { Aggregations, Bucket, Aggregation } from '../models/response/aggregations';
 
 /**
  * Filters logs by ApplicationName and ApplicationLayer
@@ -15,8 +15,18 @@ import { Aggregations } from '../models/response/aggregations';
 })
 export class PioneerRevealLogsApplicationAggregationComponent implements OnInit {
 
-  get aggregations(): Aggregations {
-    return this.searchResponse.aggregations;
+  get applications(): Bucket[] {
+    return this.searchResponse.aggregations.group_by_ApplicationName.buckets;
+  }
+
+  get layers(): string[] {
+    const layers = [] as string[];
+    this.applications.forEach(application => {
+      application.group_by_ApplicationLayer.buckets.forEach(element => {
+        layers.push(element.key);
+      });
+    });
+    return layers;
   }
 
   private searchResponse: SearchResponse;
@@ -43,6 +53,7 @@ export class PioneerRevealLogsApplicationAggregationComponent implements OnInit 
   ) {
     this.searchResponse = new SearchResponse();
     this.searchResponse.aggregations = new Aggregations();
+    this.searchResponse.aggregations.group_by_ApplicationName = new Aggregation();
   }
 
   ngOnInit() {
