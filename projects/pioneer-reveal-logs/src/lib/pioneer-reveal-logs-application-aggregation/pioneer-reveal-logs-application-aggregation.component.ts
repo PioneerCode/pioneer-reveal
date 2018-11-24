@@ -54,6 +54,7 @@ export class PioneerRevealLogsApplicationAggregationComponent implements OnInit 
     this.searchResponse = new SearchResponse();
     this.searchResponse.aggregations = new Aggregations();
     this.searchResponse.aggregations.group_by_ApplicationName = new Aggregation();
+    this.searchResponse.aggregations.group_by_ApplicationName.buckets = [] as Bucket[];
   }
 
   ngOnInit() {
