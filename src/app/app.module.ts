@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MatProgressBarModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PioneerRevealLogsModule } from 'projects/pioneer-reveal-logs/src/lib/pioneer-reveal-logs.module';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     PioneerRevealLogsModule,
-    NoopAnimationsModule
+    BrowserAnimationsModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

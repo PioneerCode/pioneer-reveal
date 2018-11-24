@@ -2,9 +2,7 @@ import { NgModule, Injector } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { MatCheckboxModule } from '@angular/material';
-
 
 import { PioneerRevealLogComponent } from './pioneer-reveal-logs.component';
 import { PioneerRevealLogCanvasComponent } from './pioneer-reveal-logs-canvas/pioneer-reveal-log-canvas.component';
