@@ -1,38 +1,32 @@
 <td colspan="3">
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link" href="#" [ngClass]="{'active': selectedTab === 'formatted'}" (click)="selectedTab = 'formatted'">Formated</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#" [ngClass]="{'active': selectedTab === 'raw'}" (click)="selectedTab = 'raw'">Raw</a>
-    </li>
-  </ul>
-  <div *ngIf="selectedTab === 'formatted'" class="formatted">
-    <table class="table">
-      <tbody>
-        <tr *ngFor="let prop of log.pioneerRevelTracking.sourceMap" [ngClass]="{'selected': prop.isFilter}">
-          <td>
-            <ul class="list-inline mb-0">
-              <li class="list-inline-item">
-                <i class="fas fa-minus fa-sm" *ngIf="prop.isObject"></i>
-                <i class="fas fa-minus fa-sm active" *ngIf="!prop.isObject" (click)="onRemoveFilter(prop)"></i>
-              </li>
-              <li class="list-inline-item">
-                <i class="fas fa-plus fa-sm" *ngIf="prop.isObject"></i>
-                <i class="fas fa-plus fa-sm active" *ngIf="!prop.isObject" (click)="onAddFilter(prop)"></i>
-              </li>
-            </ul>
-          </td>
-          <td class="key">{{prop.key}}</td>
-          <td class="value">
-            <span *ngIf="!prop.isObject">{{prop.value|json}}</span>
-            <pre *ngIf="prop.isObject">{{prop.value|json}}</pre>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div *ngIf="selectedTab === 'raw'" class="raw">
-    <pre><code>{{log._source|json}}</code></pre>
-  </div>
+  <mat-tab-group>
+    <mat-tab label="Properties">
+      <table class="table">
+        <tbody>
+          <tr *ngFor="let prop of log.pioneerRevelTracking.sourceMap" [ngClass]="{'selected': prop.isFilter}">
+            <td>
+              <ul class="list-inline mb-0">
+                <li class="list-inline-item">
+                  <i class="fas fa-minus fa-sm" *ngIf="prop.isObject"></i>
+                  <i class="fas fa-minus fa-sm active" *ngIf="!prop.isObject" (click)="onRemoveFilter(prop)"></i>
+                </li>
+                <li class="list-inline-item">
+                  <i class="fas fa-plus fa-sm" *ngIf="prop.isObject"></i>
+                  <i class="fas fa-plus fa-sm active" *ngIf="!prop.isObject" (click)="onAddFilter(prop)"></i>
+                </li>
+              </ul>
+            </td>
+            <td class="key">{{prop.key}}</td>
+            <td class="value">
+              <span *ngIf="!prop.isObject">{{prop.value|json}}</span>
+              <pre *ngIf="prop.isObject">{{prop.value|json}}</pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-tab>
+    <mat-tab label="Raw">
+      <pre><code>{{log._source|json}}</code></pre>
+    </mat-tab>
+  </mat-tab-group>
 </td>
