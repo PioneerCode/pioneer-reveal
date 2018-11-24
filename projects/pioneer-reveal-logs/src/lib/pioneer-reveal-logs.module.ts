@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { MatCheckboxModule } from '@angular/material';
+
+
 import { PioneerRevealLogComponent } from './pioneer-reveal-logs.component';
 import { PioneerRevealLogCanvasComponent } from './pioneer-reveal-logs-canvas/pioneer-reveal-log-canvas.component';
 import { PioneerRevealLogTopBarComponent } from './pioneer-reveal-logs-top-bar/pioneer-reveal-log-top-bar.component';
@@ -32,7 +35,8 @@ import { ServiceLocator } from './service-locator.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCheckboxModule
   ],
   exports: [PioneerRevealLogComponent]
 })

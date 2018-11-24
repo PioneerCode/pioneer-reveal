@@ -10,10 +10,12 @@
         "fortawesome",
         "kibana",
         "millis",
+        "mixins",
         "msearch",
         "packagr",
         "polyfills",
         "styleext",
+        "theming",
         "webfonts",
         "xlink"
     ]
