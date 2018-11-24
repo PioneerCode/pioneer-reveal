@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StateService } from 'projects/pioneer-reveal-logs/src/lib/state.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'pioneer-reveal-app';
+  title = 'reVeal: Pioneer Logs';
+
+  constructor(private stateService: StateService) {
+  }
 }

@@ -1,5 +1,11 @@
 @import "../bootstrap";
 
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 header {
   padding: 0.25rem 1rem;
   background: theme-color("dark");

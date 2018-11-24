@@ -5,6 +5,7 @@ import { PioneerRevealLogQueryBuilder } from './pioneer-reveal-logs-query-builde
 import { SearchResponse } from './models/response/search-response';
 import { KeyValue } from './models/key-value';
 import { Hit } from './models/response/hits';
+import { StateService } from './state.service';
 
 @Injectable({
   providedIn: 'root'
@@ -31,16 +32,19 @@ export class PioneerRevealLogService {
   }
 
   constructor(
+    private stateService: StateService,
     private queryBuilder: PioneerRevealLogQueryBuilder,
     private pioneerRevealRepository: PioneerRevealRepository) {
   }
 
   getLogs() {
+    this.stateService.isLoading = true;
     return this.pioneerRevealRepository.getLogs(this.queryBuilder.currentSearchIndices, this.queryBuilder.searchRequest)
       .subscribe((searchResponse) => {
         this.searchResponse = searchResponse;
         this.logs = [] as Hit[];
         this.logs = searchResponse.hits.hits.map(x => new Hit(x));
+        this.stateService.isLoading = false;
       });
   }
 
