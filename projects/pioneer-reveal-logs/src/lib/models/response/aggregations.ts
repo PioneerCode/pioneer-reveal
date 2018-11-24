@@ -11,5 +11,5 @@ export class Aggregation {
 export class Bucket {
   key: string;
   doc_count: number;
-  [string: string]: Aggregation;
+  [string: string]: any;
 }
