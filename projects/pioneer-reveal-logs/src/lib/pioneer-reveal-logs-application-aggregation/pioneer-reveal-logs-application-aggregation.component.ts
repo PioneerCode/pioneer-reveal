@@ -4,6 +4,7 @@ import { SearchResponse } from '../models/response/search-response';
 import { pioneerLogsIndices } from '../models';
 import { SearchRequest } from '../models/request/search-request';
 import { Aggregations, Bucket, Aggregation } from '../models/response/aggregations';
+import { StateService } from '../state.service';
 
 /**
  * Filters logs by ApplicationName and ApplicationLayer
@@ -14,20 +15,11 @@ import { Aggregations, Bucket, Aggregation } from '../models/response/aggregatio
   styleUrls: ['./pioneer-reveal-logs-application-aggregation.component.scss']
 })
 export class PioneerRevealLogsApplicationAggregationComponent implements OnInit {
-
   get applications(): Bucket[] {
     return this.searchResponse.aggregations.group_by_ApplicationName.buckets;
   }
 
-  get layers(): string[] {
-    const layers = [] as string[];
-    this.applications.forEach(application => {
-      application.group_by_ApplicationLayer.buckets.forEach(element => {
-        layers.push(element.key);
-      });
-    });
-    return layers;
-  }
+  private layers = [] as string[];
 
   private searchResponse: SearchResponse;
   private request = {
@@ -47,8 +39,8 @@ export class PioneerRevealLogsApplicationAggregationComponent implements OnInit 
       }
     }
   } as SearchRequest;
-
   constructor(
+    private stateService: StateService,
     private pioneerRevealRepository: PioneerRevealRepository,
   ) {
     this.searchResponse = new SearchResponse();
@@ -58,6 +50,7 @@ export class PioneerRevealLogsApplicationAggregationComponent implements OnInit 
   }
 
   ngOnInit() {
+    this.stateService.isLoading = true;
     let indices = '';
     pioneerLogsIndices.forEach(index => {
       indices = `${indices}${index},`;
@@ -65,6 +58,13 @@ export class PioneerRevealLogsApplicationAggregationComponent implements OnInit 
     this.pioneerRevealRepository.getLogs(indices.slice(0, -1), this.request)
       .subscribe((response) => {
         this.searchResponse = response;
+        this.layers = [];
+        this.applications.forEach(application => {
+          application.group_by_ApplicationLayer.buckets.forEach(element => {
+            this.layers.push(element.key);
+          });
+        });
+        this.stateService.isLoading = false;
       });
   }
 }
