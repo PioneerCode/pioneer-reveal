@@ -15,5 +15,10 @@ export class Property extends KeyValue {
    * Used to drive UI
    */
   isFilter: boolean;
+
+  /**
+   * Font awesome icon classes
+   */
+  iconClasses: string;
 }
 

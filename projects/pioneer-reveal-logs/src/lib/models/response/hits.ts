@@ -15,6 +15,14 @@ export class Hit {
   _source: object;
   _type: string;
 
+  get iconClasses(): string {
+    switch (this._index) {
+      case 'pioneer-logs-error': return 'fas fa-bug';
+      case 'pioneer-logs-usage': return 'fas fa-user-ninja';
+      case 'pioneer-logs-performance': return 'fas fa-thermometer-half';
+      case 'pioneer-logs-diagnostic': return 'fas fa-question-circle';
+    }
+  }
 
   /**
    * Internal tracking
@@ -54,19 +62,26 @@ export class PioneerRevealTracking {
    */
   private _queryBuilder: PioneerRevealLogQueryBuilder;
 
+  /**
+   * @param source Log file
+   * @param index Index log belongs to
+   */
   constructor(source: any) {
     this.selected = false;
     this._queryBuilder = ServiceLocator.injector.get(PioneerRevealLogQueryBuilder);
+    this.buildTrackingData(source);
+  }
 
+  private buildTrackingData(source: any) {
     Object.keys(source).map((key) => {
       this.sourceMap.push({
         key: key,
         value: source[key],
         isObject: typeof source[key] === 'object' && source[key] !== null,
-        isFilter: this._queryBuilder.isCurrentFilter({
-          key: key, value: source[key]
-        } as KeyValue)
+        isFilter: this._queryBuilder.isCurrentFilter({ key: key, value: source[key] } as KeyValue)
       } as Property);
     });
   }
+
+
 }
