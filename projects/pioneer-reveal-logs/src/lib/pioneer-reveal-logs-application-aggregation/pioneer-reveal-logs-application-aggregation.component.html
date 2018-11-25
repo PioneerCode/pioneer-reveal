@@ -1,12 +1,12 @@
 <h5>Applications</h5>
 <ul>
   <li *ngFor="let application of applications">
-    <mat-checkbox>{{application.key}}</mat-checkbox>
+    <mat-checkbox (click)="onApplicationClick(application.key)">{{application.key}}</mat-checkbox>
   </li>
 </ul>
 <h6>Layers</h6>
 <ul>
   <li *ngFor="let layer of layers">
-    <mat-checkbox>{{layer}}</mat-checkbox>
+    <mat-checkbox (click)="onLayerClick(layer)">{{layer}}</mat-checkbox>
   </li>
 </ul>

@@ -5,6 +5,8 @@ import { pioneerLogsIndices } from '../models';
 import { SearchRequest } from '../models/request/search-request';
 import { Aggregations, Bucket, Aggregation } from '../models/response/aggregations';
 import { StateService } from '../state.service';
+import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
+import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
 
 /**
  * Filters logs by ApplicationName and ApplicationLayer
@@ -20,7 +22,6 @@ export class PioneerRevealLogsApplicationAggregationComponent implements OnInit 
   }
 
   private layers = [] as string[];
-
   private searchResponse: SearchResponse;
   private request = {
     size: 0,
@@ -39,7 +40,10 @@ export class PioneerRevealLogsApplicationAggregationComponent implements OnInit 
       }
     }
   } as SearchRequest;
+
   constructor(
+    private logsService: PioneerRevealLogService,
+    private queryBuilder: PioneerRevealLogQueryBuilder,
     private stateService: StateService,
     private pioneerRevealRepository: PioneerRevealRepository,
   ) {
@@ -66,5 +70,15 @@ export class PioneerRevealLogsApplicationAggregationComponent implements OnInit 
         });
         this.stateService.isLoading = false;
       });
+  }
+
+  onApplicationClick(application: string): void {
+    this.queryBuilder.addFilter('ApplicationName', application);
+    this.logsService.getLogs();
+  }
+
+  onLayerClick(layer: string): void {
+    this.queryBuilder.addFilter('ApplicationLayer', layer);
+    this.logsService.getLogs();
   }
 }
