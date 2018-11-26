@@ -9,6 +9,11 @@
 header {
   padding: 0.25rem 1rem;
   background: theme-color("dark");
+  box-shadow: 0 0 11px rgba(0,0,0,0.13);
+  position: fixed;
+  z-index: 1028;
+  height: 46px;
+  width: 100%;
   h1{
     margin: 0;
     color: color("white");
@@ -22,4 +27,7 @@ header {
   ul {
     margin: 0;
   }
+}
+main {
+  padding: 46px 0 0;
 }

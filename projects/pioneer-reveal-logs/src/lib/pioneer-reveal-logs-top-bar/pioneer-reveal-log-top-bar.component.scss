@@ -2,11 +2,10 @@
 .main-content {
   padding: 0.5rem 1rem;
   .info {
-    padding: 4px 0 0;
     font-size: 14px;
   }
-  .btn-group {
-    margin: 0;
+  i {
+    cursor: pointer;
   }
   ul{
     margin: 0;

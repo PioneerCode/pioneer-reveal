@@ -20,5 +20,7 @@ export class Property extends KeyValue {
    * Font awesome icon classes
    */
   iconClasses: string;
+
+  isPioneerProperty: boolean;
 }
 

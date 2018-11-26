@@ -3,25 +3,27 @@
     <mat-tab label="Properties">
       <table class="table">
         <tbody>
-          <tr *ngFor="let prop of log.pioneerRevelTracking.sourceMap" [ngClass]="{'selected': prop.isFilter}">
-            <td>
-              <ul class="list-inline mb-0">
-                <li class="list-inline-item">
-                  <i class="fas fa-minus fa-sm" *ngIf="prop.isObject"></i>
-                  <i class="fas fa-minus fa-sm active" *ngIf="!prop.isObject" (click)="onRemoveFilter(prop)"></i>
-                </li>
-                <li class="list-inline-item">
-                  <i class="fas fa-plus fa-sm" *ngIf="prop.isObject"></i>
-                  <i class="fas fa-plus fa-sm active" *ngIf="!prop.isObject" (click)="onAddFilter(prop)"></i>
-                </li>
-              </ul>
-            </td>
-            <td class="key">{{prop.key}}</td>
-            <td class="value">
-              <span *ngIf="!prop.isObject">{{prop.value|json}}</span>
-              <pre *ngIf="prop.isObject">{{prop.value|json}}</pre>
-            </td>
-          </tr>
+          <ng-container *ngFor="let prop of log.pioneerRevelTracking.sourceMap">
+            <tr *ngIf="prop.isPioneerProperty" [ngClass]="{'selected': prop.isFilter}">
+              <td>
+                <ul class="list-inline mb-0">
+                  <li class="list-inline-item">
+                    <i class="fas fa-minus fa-sm" *ngIf="prop.isObject"></i>
+                    <i class="fas fa-minus fa-sm active" *ngIf="!prop.isObject" (click)="onRemoveFilter(prop)"></i>
+                  </li>
+                  <li class="list-inline-item">
+                    <i class="fas fa-plus fa-sm" *ngIf="prop.isObject"></i>
+                    <i class="fas fa-plus fa-sm active" *ngIf="!prop.isObject" (click)="onAddFilter(prop)"></i>
+                  </li>
+                </ul>
+              </td>
+              <td class="key">{{prop.key}}</td>
+              <td class="value">
+                <span *ngIf="!prop.isObject">{{prop.value|json}}</span>
+                <pre *ngIf="prop.isObject">{{prop.value|json}}</pre>
+              </td>
+            </tr>
+          </ng-container>
         </tbody>
       </table>
     </mat-tab>
