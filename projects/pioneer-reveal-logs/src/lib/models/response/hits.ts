@@ -86,7 +86,7 @@ export class PioneerRevealTracking {
         value: source[key],
         isObject: typeof source[key] === 'object' && source[key] !== null,
         isFilter: this._queryBuilder.isCurrentFilter({ key: key, value: source[key] } as KeyValue),
-        isPioneerProperty: key.charAt(0) === key.charAt(0).toUpperCase() && key.charAt(0) !== '@'
+        isPioneerProperty: key.charAt(0) === key.charAt(0).toUpperCase() && key.charAt(0) !== '@' && key.charAt(0) !== '$'
       } as Property);
     });
   }
