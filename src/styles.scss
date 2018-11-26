@@ -26,7 +26,6 @@ $pioneer-reveal-app-theme: mat-light-theme($pioneer-reveal-app-primary, $pioneer
 @include angular-material-theme($pioneer-reveal-app-theme);
 
 /* You can add global styles to this file, and also import other style files */
-
 @import "bootstrap";
 
 $fa-font-path:        "assets/webfonts";
@@ -36,4 +35,7 @@ $fa-font-path:        "assets/webfonts";
 
 
 html, body { height: 100%; }
+// body {
+//   background: theme-color("light");
+// }
 // body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

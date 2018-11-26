@@ -1,5 +1,6 @@
 import { Query } from './query';
 import { Aggs } from './aggs';
+import { Sort, SortOrder } from './sort';
 
 /**
  * Search request contract returned for Elastic
@@ -25,4 +26,11 @@ export class SearchRequest {
    *
    */
   aggs?: Aggs;
+
+  /**
+   * Order results
+   */
+  sort = {
+    CreationTimestamp: SortOrder.descending
+  } as Sort;
 }

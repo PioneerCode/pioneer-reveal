@@ -1,7 +1,11 @@
 // Your variable overrides
 $theme-colors: (
-  "dark": #404e67,
-  "primary": #2dcee3,
-  "danger": #fe5d70,
-  "warning": #fe9365
+  "primary":  #2dcee3,
+  "secondary":  $secondary,
+  "success":    $success,
+  "danger":   #fe5d70,
+  "info":       $info,
+  "warning":  #fe9365,
+  "light":      #f6f7fb,
+  "dark":     #404e67,
 );

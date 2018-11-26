@@ -2,11 +2,27 @@
   <i class="fas" [ngClass]="{'fa-caret-right': !log.pioneerRevelTracking?.selected, 'fa-caret-down': log.pioneerRevelTracking?.selected}"
     (click)="onExpandRowSelected()"></i>
 </td>
-<td>{{log._source.CreationTimestamp | date:'short'}}
-  <i [ngClass]="log.iconClasses"></i>
+<td>
+  {{log._source.CreationTimestamp | date:'M/d/yy, h:mm:ss a'}}
 </td>
 <td class="source">
-  <span class="property " *ngFor="let prop of log.pioneerRevelTracking.sourceMap">
+  <ul class="list-inline">
+    <li class="list-inline-item"><i [ngClass]="log.iconClasses"></i></li>
+    <li class="list-inline-item"><b>Location </b>: {{log._source['ApplicationLocation']}}</li>
+    <li class="list-inline-item"><b>Correlation Id</b>: {{log._source['CorrelationId']}}</li>
+  </ul>
+  <ng-container *ngIf="log._index === IndexTypeEnum.Error">
+    <span class="error-message"><b>Error Message</b>: {{log._source['InnerMostExceptionMessage']}}</span>
+  </ng-container>
+  <ng-container *ngIf="log._index === IndexTypeEnum.Usage">
+  </ng-container>
+  <ng-container *ngIf="log._index === IndexTypeEnum.Performance">
+      <!-- <span class="performance-message"><b>Message</b>: {{log._source['Message']}}</span> -->
+  </ng-container>
+  <ng-container *ngIf="log._index === IndexTypeEnum.Diagnostic">
+    <span class="diagnostic-message"><b>Message</b>: {{log._source['Message']}}</span>
+  </ng-container>
+  <span class="property" *ngFor="let prop of log.pioneerRevelTracking.sourceMap">
     <span class="key" [ngClass]="{'selected': prop.isFilter}">{{prop.key}}: </span>
     <code [ngClass]="{'selected': prop.isFilter}">{{prop.value|json}}</code>
   </span>

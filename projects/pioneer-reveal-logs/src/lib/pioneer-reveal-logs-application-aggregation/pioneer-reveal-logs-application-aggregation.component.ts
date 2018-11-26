@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+
 import { PioneerRevealRepository } from '../pioneer-reveal.repository';
 import { SearchResponse } from '../models/response/search-response';
 import { pioneerLogsIndices } from '../models';
 import { SearchRequest } from '../models/request/search-request';
 import { Aggregations, Bucket, Aggregation } from '../models/response/aggregations';
-import { StateService } from '../state.service';
 import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
 import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
 
@@ -44,7 +44,6 @@ export class PioneerRevealLogsApplicationAggregationComponent implements OnInit 
   constructor(
     private logsService: PioneerRevealLogService,
     private queryBuilder: PioneerRevealLogQueryBuilder,
-    private stateService: StateService,
     private pioneerRevealRepository: PioneerRevealRepository,
   ) {
     this.searchResponse = new SearchResponse();
@@ -54,7 +53,6 @@ export class PioneerRevealLogsApplicationAggregationComponent implements OnInit 
   }
 
   ngOnInit() {
-    this.stateService.isLoading = true;
     let indices = '';
     pioneerLogsIndices.forEach(index => {
       indices = `${indices}${index},`;
@@ -68,7 +66,6 @@ export class PioneerRevealLogsApplicationAggregationComponent implements OnInit 
             this.layers.push(element.key);
           });
         });
-        this.stateService.isLoading = false;
       });
   }
 

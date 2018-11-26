@@ -27,4 +27,14 @@ td:nth-child(2){
   font-size: 14px;
 }
 
+ul {
+  margin: 0 0 0.25rem;
+}
+
+.error-message {
+  padding: 0.12rem 0.5rem;
+  background: theme-color('danger');
+  color: color('white');
+}
+
 

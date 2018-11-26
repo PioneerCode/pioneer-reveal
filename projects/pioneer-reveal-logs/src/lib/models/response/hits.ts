@@ -2,6 +2,13 @@ import { Property, KeyValue } from '../key-value';
 import { PioneerRevealLogQueryBuilder } from '../../pioneer-reveal-logs-query-builder';
 import { ServiceLocator } from '../../service-locator.service';
 
+export enum IndexTypeEnum {
+  Error = 'pioneer-logs-error',
+  Usage = 'pioneer-logs-usage',
+  Performance = 'pioneer-logs-performance',
+  Diagnostic = 'pioneer-logs-diagnostic'
+}
+
 export class HitsParent {
   total: number;
   max_score: number;
@@ -17,10 +24,10 @@ export class Hit {
 
   get iconClasses(): string {
     switch (this._index) {
-      case 'pioneer-logs-error': return 'fas fa-bug';
-      case 'pioneer-logs-usage': return 'fas fa-user-ninja';
-      case 'pioneer-logs-performance': return 'fas fa-thermometer-half';
-      case 'pioneer-logs-diagnostic': return 'fas fa-question-circle';
+      case IndexTypeEnum.Error: return 'fas fa-bug';
+      case IndexTypeEnum.Usage: return 'fas fa-user-ninja';
+      case IndexTypeEnum.Performance: return 'fas fa-thermometer-half';
+      case IndexTypeEnum.Diagnostic: return 'fas fa-question-circle';
     }
   }
 

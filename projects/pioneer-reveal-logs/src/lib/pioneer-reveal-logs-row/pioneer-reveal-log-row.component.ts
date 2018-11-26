@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Hit } from '../models/response/hits';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Hit, IndexTypeEnum } from '../models/response/hits';
 
 /**
  * Individual row in log table
@@ -10,14 +10,11 @@ import { Hit } from '../models/response/hits';
   templateUrl: './pioneer-reveal-log-row.component.html',
   styleUrls: ['./pioneer-reveal-log-row.component.scss']
 })
-export class PioneerRevealLogRowComponent implements OnInit {
+export class PioneerRevealLogRowComponent {
   @Input() log: Hit;
   @Output() expandRowSelected: EventEmitter<Hit> = new EventEmitter();
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  public IndexTypeEnum = IndexTypeEnum;
 
   onExpandRowSelected() {
     this.log.pioneerRevelTracking.selected = !this.log.pioneerRevelTracking.selected;
