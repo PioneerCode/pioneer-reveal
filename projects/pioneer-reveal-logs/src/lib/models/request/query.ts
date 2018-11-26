@@ -1,16 +1,4 @@
-export class Query {
-  /**
-   *
-   */
-  bool: Bool;
-  filter: Filter[];
-  should: Should[];
-  must_not: MustNot[];
 
-  constructor() {
-    this.bool = new Bool();
-  }
-}
 
 export enum BoolMustObjectOrderEnum {
   BoolMustMatchAll = 0,
@@ -66,4 +54,18 @@ export class Should {
 }
 
 export class MustNot {
+}
+
+export class Query {
+  /**
+   *
+   */
+  bool: Bool;
+  filter: Filter[];
+  should: Should[];
+  must_not: MustNot[];
+
+  constructor() {
+    this.bool = new Bool();
+  }
 }

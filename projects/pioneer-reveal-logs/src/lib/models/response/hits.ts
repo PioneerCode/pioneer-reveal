@@ -9,43 +9,6 @@ export enum IndexTypeEnum {
   Diagnostic = 'pioneer-logs-diagnostic'
 }
 
-export class HitsParent {
-  total: number;
-  max_score: number;
-  hits: Hit[];
-}
-
-export class Hit {
-  _id: string;
-  _index: string;
-  _score: number;
-  _source: object;
-  _type: string;
-
-  get iconClasses(): string {
-    switch (this._index) {
-      case IndexTypeEnum.Error: return 'fas fa-bug';
-      case IndexTypeEnum.Usage: return 'fas fa-user-ninja';
-      case IndexTypeEnum.Performance: return 'fas fa-thermometer-half';
-      case IndexTypeEnum.Diagnostic: return 'fas fa-question-circle';
-    }
-  }
-
-  /**
-   * Internal tracking
-   */
-  pioneerRevelTracking: PioneerRevealTracking;
-
-  constructor(hit: Hit) {
-    this._id = hit._id;
-    this._index = hit._index;
-    this._score = hit._score;
-    this._source = hit._source;
-    this._type = hit._type;
-    this.pioneerRevelTracking = new PioneerRevealTracking(this._source);
-  }
-}
-
 export class PioneerRevealTracking {
   /**
    * User selects this hit on the logs UI with the
@@ -90,6 +53,41 @@ export class PioneerRevealTracking {
       } as Property);
     });
   }
+}
 
+export class HitsParent {
+  total: number;
+  max_score: number;
+  hits: Hit[];
+}
 
+export class Hit {
+  _id: string;
+  _index: string;
+  _score: number;
+  _source: object;
+  _type: string;
+
+  get iconClasses(): string {
+    switch (this._index) {
+      case IndexTypeEnum.Error: return 'fas fa-bug';
+      case IndexTypeEnum.Usage: return 'fas fa-user-ninja';
+      case IndexTypeEnum.Performance: return 'fas fa-thermometer-half';
+      case IndexTypeEnum.Diagnostic: return 'fas fa-question-circle';
+    }
+  }
+
+  /**
+   * Internal tracking
+   */
+  pioneerRevelTracking: PioneerRevealTracking;
+
+  constructor(hit: Hit) {
+    this._id = hit._id;
+    this._index = hit._index;
+    this._score = hit._score;
+    this._source = hit._source;
+    this._type = hit._type;
+    this.pioneerRevelTracking = new PioneerRevealTracking(this._source);
+  }
 }

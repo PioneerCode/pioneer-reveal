@@ -135,8 +135,8 @@
       }
     },
     "pioneer-reveal-log": {
-      "root": "projects/pioneer-reveal-log",
-      "sourceRoot": "projects/pioneer-reveal-log/src",
+      "root": "projects/pioneer-reveal-logs",
+      "sourceRoot": "projects/pioneer-reveal-logs/src",
       "projectType": "library",
       "prefix": "lib",
       "schematics": {
@@ -148,24 +148,24 @@
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/pioneer-reveal-log/tsconfig.lib.json",
-            "project": "projects/pioneer-reveal-log/ng-package.json"
+            "tsConfig": "projects/pioneer-reveal-logs/tsconfig.lib.json",
+            "project": "projects/pioneer-reveal-logs/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/pioneer-reveal-log/src/test.ts",
-            "tsConfig": "projects/pioneer-reveal-log/tsconfig.spec.json",
-            "karmaConfig": "projects/pioneer-reveal-log/karma.conf.js"
+            "main": "projects/pioneer-reveal-logs/src/test.ts",
+            "tsConfig": "projects/pioneer-reveal-logs/tsconfig.spec.json",
+            "karmaConfig": "projects/pioneer-reveal-logs/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/pioneer-reveal-log/tsconfig.lib.json",
-              "projects/pioneer-reveal-log/tsconfig.spec.json"
+              "projects/pioneer-reveal-logs/tsconfig.lib.json",
+              "projects/pioneer-reveal-logs/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
