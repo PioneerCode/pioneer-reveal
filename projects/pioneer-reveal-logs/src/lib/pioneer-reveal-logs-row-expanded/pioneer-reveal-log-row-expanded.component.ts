@@ -16,6 +16,12 @@ import { Hit } from '../models/response/hits';
 })
 export class PioneerRevealLogRowExpandedComponent implements OnInit {
   @Input() log: Hit;
+
+  /**
+   * Parent will mark this true when user expands this row.
+   */
+  @Input() active = false;
+
   @Output() addFilterClicked: EventEmitter<void> = new EventEmitter();
   @Output() removeFilterClicked: EventEmitter<void> = new EventEmitter();
 

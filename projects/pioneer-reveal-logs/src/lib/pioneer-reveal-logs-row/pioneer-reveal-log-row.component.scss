@@ -4,6 +4,10 @@ i {
   cursor: pointer;
 }
 
+.active {
+  border-left: 4px solid theme-color('primary');
+}
+
 .source {
   font-size: 14px;
 

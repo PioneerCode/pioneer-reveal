@@ -4,6 +4,14 @@
   padding: 0.5rem;
 }
 
+td {
+  padding-top: 0;
+}
+
+td.active {
+  border-left: 4px solid theme-color('primary');
+}
+
 pre {
   white-space: pre-wrap;
   margin: 0;
