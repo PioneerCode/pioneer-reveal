@@ -22,7 +22,7 @@ export class PioneerRevealLogsApplicationAggregationComponent implements OnInit 
     return this.searchResponse.aggregations.group_by_ApplicationName.buckets;
   }
 
-  private layers = [] as string[];
+  public layers = [] as string[];
   private searchResponse: SearchResponse;
   private request = new SearchRequest();
 

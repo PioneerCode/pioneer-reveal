@@ -9,6 +9,6 @@ import { StateService } from 'projects/pioneer-reveal-logs/src/lib/state.service
 export class AppComponent {
   title = 'reVeal: Pioneer Logs';
 
-  constructor(private stateService: StateService) {
+  constructor(public stateService: StateService) {
   }
 }

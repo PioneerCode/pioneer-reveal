@@ -9,6 +9,22 @@ export enum IndexTypeEnum {
   Diagnostic = 'pioneer-logs-diagnostic'
 }
 
+/**
+ * Pioneer Logs extension fields for Elastic Hit objects
+ */
+export class PioneerLogHit {
+  CreationTimestamp: string;
+
+  /**
+   * Internal tracking
+   */
+  pioneerRevelTracking: PioneerRevealTracking;
+
+  constructor(source: any) {
+    this.pioneerRevelTracking = new PioneerRevealTracking(source);
+  }
+}
+
 export class PioneerRevealTracking {
   /**
    * User selects this hit on the logs UI with the
@@ -61,7 +77,10 @@ export class HitsParent {
   hits: Hit[];
 }
 
-export class Hit {
+/**
+ * Elastic tracking fields
+ */
+export class Hit extends PioneerLogHit {
   _id: string;
   _index: string;
   _score: number;
@@ -77,17 +96,12 @@ export class Hit {
     }
   }
 
-  /**
-   * Internal tracking
-   */
-  pioneerRevelTracking: PioneerRevealTracking;
-
   constructor(hit: Hit) {
+    super(hit._source);
     this._id = hit._id;
     this._index = hit._index;
     this._score = hit._score;
     this._source = hit._source;
     this._type = hit._type;
-    this.pioneerRevelTracking = new PioneerRevealTracking(this._source);
   }
 }

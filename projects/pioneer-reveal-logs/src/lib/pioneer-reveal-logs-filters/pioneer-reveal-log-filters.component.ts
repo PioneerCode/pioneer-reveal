@@ -11,7 +11,7 @@ import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
 export class PioneerRevealLogFiltersComponent {
 
   constructor(public logService: PioneerRevealLogService,
-    private queryBuilder: PioneerRevealLogQueryBuilder) { }
+    public queryBuilder: PioneerRevealLogQueryBuilder) { }
 
   onRemoveClick(filter: Property): void {
     this.queryBuilder.removeFilter(filter.key);
