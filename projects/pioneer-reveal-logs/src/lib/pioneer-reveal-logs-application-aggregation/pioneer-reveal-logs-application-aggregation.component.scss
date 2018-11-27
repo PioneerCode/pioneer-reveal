@@ -1,3 +1,5 @@
+@import "../../../../../src/bootstrap.scss";
+
 ul {
   margin: 0;
   list-style: none;
@@ -5,4 +7,12 @@ ul {
   li {
     font-size: 14px;
   }
+}
+
+h5 {
+  color: $gray-500;
+}
+
+h4 {
+  color: $gray-400;
 }

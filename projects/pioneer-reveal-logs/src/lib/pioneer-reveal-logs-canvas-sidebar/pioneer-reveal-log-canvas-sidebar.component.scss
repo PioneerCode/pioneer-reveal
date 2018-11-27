@@ -1,15 +1,18 @@
 @import "../../../../../src/bootstrap.scss";
 
 :host {
-  background: theme-color("light");
+  background: theme-color("dark");
   display: block;
   padding: 1rem 0;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: $gray-200;
+  height: 100%;
 }
 
 .container-fluid {
   margin: 0 0 1rem;
-  border-bottom: 1px solid $gray-300;
+  border-bottom: 1px solid $gray-800;
   padding-bottom: 1rem;
 }
 .container-fluid:last-child {
