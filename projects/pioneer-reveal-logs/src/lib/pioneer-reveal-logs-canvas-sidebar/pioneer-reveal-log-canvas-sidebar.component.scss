@@ -1,7 +1,7 @@
 @import "../../../../../src/bootstrap.scss";
 
 :host {
-  background: theme-color("dark");
+  background: $sidebar-color;
   display: block;
   padding: 1rem 0;
   overflow-x: hidden;

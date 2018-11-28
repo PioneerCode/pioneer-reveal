@@ -1,11 +1,13 @@
 // Your variable overrides
 $theme-colors: (
-  "primary":  #2dcee3,
-  "secondary":  $secondary,
-  "success":    $success,
-  "danger":   #fe5d70,
-  "info":       $info,
-  "warning":  #fe9365,
-  "light":      #f6f7fb,
-  "dark":     #404e67,
+  "primary":  #2196f3,
+  "secondary":  #777777,
+  "success":    #4caf50,
+  "danger":   #f44336,
+  "info":       #00bcd4,
+  "warning":  #ff7043,
+  "light":      #f5f5f5,
+  "dark":     #324148,
 );
+
+$sidebar-color: #263238;
