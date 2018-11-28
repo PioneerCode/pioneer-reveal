@@ -1,5 +1,17 @@
 @import "../../../../../src/bootstrap.scss";
 
+.table {
+  margin: 0;
+  th {
+    border-top: none;
+  }
+}
+
+.table.empty thead th {
+    border-bottom: none;
+}
+
+
 .active-line, .active-expanded {
   background: lighten(theme-color('primary'), 45%);
 }

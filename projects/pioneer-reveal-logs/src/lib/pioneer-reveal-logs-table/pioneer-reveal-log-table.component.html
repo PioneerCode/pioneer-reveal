@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table" [ngClass]="{'empty' : logService.logs.length < 1}">
   <thead>
     <tr>
       <th></th>

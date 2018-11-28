@@ -5,11 +5,11 @@
     </div>
     <div class="col-lg-10 col-md-9 p-0">
       <pioneer-reveal-log-top-bar></pioneer-reveal-log-top-bar>
+      <pioneer-reveal-pioneer-reveal-log-filters *ngIf="queryBuilder.currentSearchFilters.length > 0"></pioneer-reveal-pioneer-reveal-log-filters>
       <div class="reveal-card">
         <div class="row">
           <div class="col-sm">
-            <div class="container-fluid">
-              <pioneer-reveal-pioneer-reveal-log-filters *ngIf="queryBuilder.currentSearchFilters.length > 0"></pioneer-reveal-pioneer-reveal-log-filters>
+            <div class="container-fluid p-0">
               <pioneer-reveal-log-table></pioneer-reveal-log-table>
             </div>
           </div>
