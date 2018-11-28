@@ -1,10 +1,20 @@
-<div class="row no-gutters h-100">
-  <div class="col-2">
-    <pioneer-reveal-log-canvas-sidebar></pioneer-reveal-log-canvas-sidebar>
-  </div>
-  <div class="col-10">
-    <pioneer-reveal-log-top-bar></pioneer-reveal-log-top-bar>
-    <pioneer-reveal-pioneer-reveal-log-filters *ngIf="queryBuilder.currentSearchFilters.length > 0"></pioneer-reveal-pioneer-reveal-log-filters>
-    <pioneer-reveal-log-table></pioneer-reveal-log-table>
+<div class="container-fluid h-100">
+  <div class="row h-100">
+    <div class="col-lg-2 col-md-3 p-0">
+      <pioneer-reveal-log-canvas-sidebar></pioneer-reveal-log-canvas-sidebar>
+    </div>
+    <div class="col-lg-10 col-md-9">
+      <div class="reveal-card">
+        <div class="row">
+          <div class="col-sm">
+            <div class="container-fluid">
+              <pioneer-reveal-log-top-bar></pioneer-reveal-log-top-bar>
+              <pioneer-reveal-pioneer-reveal-log-filters *ngIf="queryBuilder.currentSearchFilters.length > 0"></pioneer-reveal-pioneer-reveal-log-filters>
+              <pioneer-reveal-log-table></pioneer-reveal-log-table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
