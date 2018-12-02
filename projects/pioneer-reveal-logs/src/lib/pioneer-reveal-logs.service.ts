@@ -39,6 +39,7 @@ export class PioneerRevealLogService {
 
   getLogs() {
     this.stateService.isLoading = true;
+    this.setGreaterThenTimestamp();
     return this.pioneerRevealRepository.getLogs(this.queryBuilder.currentSearchIndices, this.queryBuilder.searchRequest)
       .subscribe((searchResponse) => {
         this.searchResponse = searchResponse;
@@ -48,7 +49,13 @@ export class PioneerRevealLogService {
       });
   }
 
-  private setInterval() {
+  private setGreaterThenTimestamp(): void {
+    if (!this.logs) {
+      return;
+    }
+  }
+
+  private setInterval(): void {
     if (this._refreshInterval) {
       clearInterval(this._refreshInterval);
     }
