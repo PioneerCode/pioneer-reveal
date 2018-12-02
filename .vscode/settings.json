@@ -4,10 +4,13 @@
         "Injectable",
         "Truthy",
         "aggs",
+        "codelyzer",
         "devkit",
         "ecommerce",
         "fontawesome",
         "fortawesome",
+        "hammerjs",
+        "jasminewd",
         "kibana",
         "millis",
         "mixins",
@@ -16,6 +19,8 @@
         "polyfills",
         "styleext",
         "theming",
+        "tsickle",
+        "tslib",
         "webfonts",
         "xlink"
     ]
