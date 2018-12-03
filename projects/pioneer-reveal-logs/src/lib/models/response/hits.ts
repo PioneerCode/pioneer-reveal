@@ -94,7 +94,7 @@ export class Hit extends PioneerLogHit {
     switch (this._index) {
       case IndexTypeEnum.Error: return 'fas fa-bug';
       case IndexTypeEnum.Usage: return 'fas fa-user-ninja';
-      case IndexTypeEnum.Performance: return 'fas fa-thermometer-half';
+      case IndexTypeEnum.Performance: return 'fas fa-chart-bar';
       case IndexTypeEnum.Diagnostic: return 'fas fa-question-circle';
     }
   }
