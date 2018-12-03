@@ -60,9 +60,11 @@ export class PioneerRevealLogService {
         this.searchResponse = searchResponse;
         this.logs = [] as Hit[];
         this.logs = searchResponse.hits.hits.map(x => new Hit(x));
+        this.bindOpenedState();
         this.stateService.isLoading = false;
       });
   }
+
 
   addCurrentRowsOpenId(id: string): void {
     this.currentRowsOpen.push(id);
@@ -73,6 +75,23 @@ export class PioneerRevealLogService {
     if (index !== -1) {
       this.currentRowsOpen.splice(index, 1);
     }
+  }
+
+  /**
+   * Bind open state to current set of logs
+   * TODO: Consider per issues.
+   */
+  private bindOpenedState() {
+    this.logs.forEach(log => {
+      for (let i = 0; i < this.currentRowsOpen.length; i++) {
+        const element = this.currentRowsOpen[i];
+        log.pioneerRevelTracking.selected = false;
+        if (log._source.Id === element) {
+          log.pioneerRevelTracking.selected = true;
+          break;
+        }
+      }
+    });
   }
 
   private setInterval(): void {
