@@ -13,8 +13,6 @@ export enum IndexTypeEnum {
  * Pioneer Logs extension fields for Elastic Hit objects
  */
 export class PioneerLogHit {
-
-
   /**
    * Internal tracking
    */

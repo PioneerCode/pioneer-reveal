@@ -1,0 +1,13 @@
+@import "../../../../../src/bootstrap.scss";
+ul {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  li {
+    font-size: 14px;
+  }
+}
+
+h5 {
+  color: $gray-500;
+}

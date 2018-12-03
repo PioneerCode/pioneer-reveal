@@ -17,6 +17,7 @@ import { PioneerRevealLogFiltersComponent } from './pioneer-reveal-logs-filters/
 // tslint:disable-next-line:max-line-length
 import { PioneerRevealLogsApplicationAggregationComponent } from './pioneer-reveal-logs-application-aggregation/pioneer-reveal-logs-application-aggregation.component';
 import { ServiceLocator } from './service-locator.service';
+import { PioneerRevealLogsFieldsComponent } from './pioneer-reveal-logs-fields/pioneer-reveal-logs-fields.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ServiceLocator } from './service-locator.service';
     PioneerRevealLogRowExpandedComponent,
     PioneerRevealLogTopBarComponent,
     PioneerRevealLogsApplicationAggregationComponent,
-    PioneerRevealLogFiltersComponent
+    PioneerRevealLogFiltersComponent,
+    PioneerRevealLogsFieldsComponent
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { PioneerRevealRepository } from './pioneer-reveal.repository';
 import { PioneerRevealLogQueryBuilder } from './pioneer-reveal-logs-query-builder';
 import { SearchResponse } from './models/response/search-response';
-import { KeyValue } from './models/key-value';
+import { KeyValue, Property } from './models/key-value';
 import { Hit } from './models/response/hits';
 import { StateService } from './state.service';
 
@@ -41,6 +41,13 @@ export class PioneerRevealLogService {
 
   get isRefreshPaused(): boolean {
     return this.refreshRate.key === 'Pause';
+  }
+
+  get fields(): Property[] {
+    if (this.logs.length > 0) {
+      return this.logs[0].pioneerRevelTracking.sourceMap;
+    }
+    return [];
   }
 
   constructor(

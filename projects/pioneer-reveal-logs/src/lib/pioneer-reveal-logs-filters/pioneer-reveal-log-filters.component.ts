@@ -4,7 +4,7 @@ import { Property } from '../models/key-value';
 import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
 
 @Component({
-  selector: 'pioneer-reveal-pioneer-reveal-log-filters',
+  selector: 'pioneer-reveal-log-filters',
   templateUrl: './pioneer-reveal-log-filters.component.html',
   styleUrls: ['./pioneer-reveal-log-filters.component.scss']
 })
