@@ -1,6 +1,8 @@
 <h5>Fields</h5>
 <ul>
-  <li *ngFor="let field of logService.fields">
-    <mat-checkbox (click)="onApplicationClick(field.key)">{{field.key}}</mat-checkbox>
-  </li>
+  <ng-container *ngFor="let field of logService.fields">
+    <li *ngIf="field.isPioneerProperty && !field.isObject">
+      <mat-checkbox (click)="onApplicationClick(field.key)">{{field.key}}</mat-checkbox>
+    </li>
+  </ng-container>
 </ul>

@@ -1,6 +1,16 @@
 @import "../../../../../src/bootstrap.scss";
 
+.pr-logs-aside {
+  position: sticky;
+  top: 2.875rem;
+  height: calc(100vh - 2.875rem);
+  overflow-y: auto;
+  background: $sidebar-color;
+}
 
+.pr-logs-canvas {
+
+}
 .reveal-card {
   margin: 1rem;
   background: color("white");

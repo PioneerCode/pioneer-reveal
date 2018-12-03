@@ -1,9 +1,9 @@
-<div class="container-fluid">
+<div class="container-fluid flex-xl-nowrap">
   <div class="row">
-    <div class="col-lg-2 col-md-3 p-0">
+    <div class="col-lg-2 col-md-3 p-0 pr-logs-aside">
       <pioneer-reveal-log-canvas-sidebar></pioneer-reveal-log-canvas-sidebar>
     </div>
-    <div class="col-lg-10 col-md-9 p-0">
+    <div class="col-lg-10 col-md-9 p-0 pr-logs-canvas">
       <pioneer-reveal-log-top-bar></pioneer-reveal-log-top-bar>
       <pioneer-reveal-log-filters *ngIf="queryBuilder.currentSearchFilters.length > 0"></pioneer-reveal-log-filters>
       <div class="reveal-card">
