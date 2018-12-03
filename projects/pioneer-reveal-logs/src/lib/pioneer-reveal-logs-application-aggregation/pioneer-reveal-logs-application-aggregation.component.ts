@@ -8,6 +8,7 @@ import { Aggregations, Bucket, Aggregation } from '../models/response/aggregatio
 import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
 import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
 import { Sort } from '../models/request/sort';
+import { StateService } from '../state.service';
 
 /**
  * Filters logs by ApplicationName and ApplicationLayer
@@ -27,6 +28,7 @@ export class PioneerRevealLogsApplicationAggregationComponent implements OnInit 
   private request = new SearchRequest();
 
   constructor(
+    public stateService: StateService,
     private logsService: PioneerRevealLogService,
     private queryBuilder: PioneerRevealLogQueryBuilder,
     private pioneerRevealRepository: PioneerRevealRepository,

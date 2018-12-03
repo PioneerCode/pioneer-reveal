@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
+import { StateService } from '../state.service';
 
 @Component({
   selector: 'pioneer-reveal-logs-fields',
@@ -8,5 +9,7 @@ import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
 })
 export class PioneerRevealLogsFieldsComponent {
 
-  constructor(public logService: PioneerRevealLogService) { }
+  constructor(
+    public stateService: StateService,
+    public logService: PioneerRevealLogService) { }
 }

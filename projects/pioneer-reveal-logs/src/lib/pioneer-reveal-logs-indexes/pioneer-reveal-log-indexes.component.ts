@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
 import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
+import { StateService } from '../state.service';
 
 @Component({
   selector: 'pioneer-reveal-log-indexes',
@@ -13,6 +14,7 @@ export class PioneerRevealLogIndexesComponent implements OnInit {
   form: FormGroup;
 
   constructor(
+    public stateService: StateService,
     private logService: PioneerRevealLogService,
     private queryBuilder: PioneerRevealLogQueryBuilder,
     private formBuilder: FormBuilder
