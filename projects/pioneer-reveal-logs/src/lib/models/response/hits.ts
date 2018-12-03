@@ -13,7 +13,7 @@ export enum IndexTypeEnum {
  * Pioneer Logs extension fields for Elastic Hit objects
  */
 export class PioneerLogHit {
-  CreationTimestamp: string;
+
 
   /**
    * Internal tracking
@@ -23,6 +23,11 @@ export class PioneerLogHit {
   constructor(source: any) {
     this.pioneerRevelTracking = new PioneerRevealTracking(source);
   }
+}
+
+export class PioneerLogSource {
+  Id: string;
+  CreationTimestamp: string;
 }
 
 export class PioneerRevealTracking {
@@ -84,7 +89,7 @@ export class Hit extends PioneerLogHit {
   _id: string;
   _index: string;
   _score: number;
-  _source: object;
+  _source: PioneerLogSource;
   _type: string;
 
   get iconClasses(): string {

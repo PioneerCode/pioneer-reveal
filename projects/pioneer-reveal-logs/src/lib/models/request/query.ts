@@ -57,9 +57,6 @@ export class MustNot {
 }
 
 export class Query {
-  /**
-   *
-   */
   bool: Bool;
   filter: Filter[];
   should: Should[];

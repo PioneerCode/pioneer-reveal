@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
+import * as moment from 'moment';
 
 import { Query, BoolMustMatchPhrase, BoolMustRange } from './models/request/query';
 import { KeyValue } from './models/key-value';
 import { SearchRequest } from './models/request/search-request';
-import * as moment from 'moment';
 
 /**
  * Handles all query building for search operation
@@ -89,22 +89,10 @@ export class PioneerRevealLogQueryBuilder {
     return false;
   }
 
-  setIndex(index: string) {
-    this._currentSearchIndices.push(index);
-  }
-
-  removeIndex(index: string) {
-    for (let i = 0; i < this._currentSearchIndices.length; i++) {
-      if (this._currentSearchIndices[i] === index) {
-        this._currentSearchIndices.splice(i, 1);
-      }
-    }
-  }
-
-  isIndexSet(index: string): boolean {
-    return this._currentSearchIndices.includes(index);
-  }
-
+  /**
+   * When user selects a time range filter on the UI,
+   * we set this as the greater then range.
+   */
   addTimeRange(gte: number) {
     let index = this.getMustIndexBasedOnPropertyName('range');
 
@@ -120,6 +108,34 @@ export class PioneerRevealLogQueryBuilder {
       'gte': gte,
       'format': 'epoch_millis'
     };
+  }
+
+  /**
+   * Add a new index to a collection of indices that will be used to search against.
+   * @param index Name of index to add.
+   */
+  setIndex(index: string) {
+    this._currentSearchIndices.push(index);
+  }
+
+  /**
+   * Remove new index form collection of indices that will be used to search against.
+   * @param index Name of index to remove
+   */
+  removeIndex(index: string) {
+    for (let i = 0; i < this._currentSearchIndices.length; i++) {
+      if (this._currentSearchIndices[i] === index) {
+        this._currentSearchIndices.splice(i, 1);
+      }
+    }
+  }
+
+  /**
+   * Determine if index is current set
+   * @param index Name of index to operate on
+   */
+  isIndexSet(index: string): boolean {
+    return this._currentSearchIndices.includes(index);
   }
 
   /**

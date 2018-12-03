@@ -7,6 +7,9 @@ import { KeyValue } from './models/key-value';
 import { Hit } from './models/response/hits';
 import { StateService } from './state.service';
 
+/**
+ * Shared core functionality used across components
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -14,8 +17,17 @@ export class PioneerRevealLogService {
   public searchResponse: SearchResponse;
   public logs = [] as Hit[];
 
+  /**
+   * Collection of ids that represent all current
+   * rows expanded in the table.
+   */
+  private _currentRowsOpen = [] as string[];
+  get currentRowsOpen(): string[] {
+    return this._currentRowsOpen;
+  }
+
   // TODO: Figure out why NodeJs.Timer throws "Cannot find namespace NodeJS"
-  private _refreshInterval: any;
+  private refreshInterval: any;
 
   private _refreshRate: KeyValue;
   set refreshRate(rate: KeyValue) {
@@ -37,9 +49,12 @@ export class PioneerRevealLogService {
     private pioneerRevealRepository: PioneerRevealRepository) {
   }
 
+  /**
+   * Get Logs based on the state of the query builder vs this.logs
+   */
   getLogs() {
     this.stateService.isLoading = true;
-    this.setGreaterThenTimestamp();
+    // this.setGreaterThenTimestamp();
     return this.pioneerRevealRepository.getLogs(this.queryBuilder.currentSearchIndices, this.queryBuilder.searchRequest)
       .subscribe((searchResponse) => {
         this.searchResponse = searchResponse;
@@ -49,18 +64,23 @@ export class PioneerRevealLogService {
       });
   }
 
-  private setGreaterThenTimestamp(): void {
-    if (!this.logs) {
-      return;
+  addCurrentRowsOpenId(id: string): void {
+    this.currentRowsOpen.push(id);
+  }
+
+  removeCurrentRowsOpenId(id: string): void {
+    const index = this.currentRowsOpen.indexOf(id);
+    if (index !== -1) {
+      this.currentRowsOpen.splice(index, 1);
     }
   }
 
   private setInterval(): void {
-    if (this._refreshInterval) {
-      clearInterval(this._refreshInterval);
+    if (this.refreshInterval) {
+      clearInterval(this.refreshInterval);
     }
     if (this.refreshRate.key !== 'Pause') {
-      this._refreshInterval = setInterval(() => {
+      this.refreshInterval = setInterval(() => {
         this.getLogs();
       }, this._refreshRate.value * 1000);
     }
