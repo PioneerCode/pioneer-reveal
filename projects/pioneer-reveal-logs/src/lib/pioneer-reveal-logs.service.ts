@@ -4,7 +4,7 @@ import { PioneerRevealRepository } from './pioneer-reveal.repository';
 import { PioneerRevealLogQueryBuilder } from './pioneer-reveal-logs-query-builder';
 import { SearchResponse } from './models/response/search-response';
 import { KeyValue, Property } from './models/key-value';
-import { Hit, IndexTypeEnum } from './models/response/hits';
+import { Hit } from './models/response/hits';
 import { StateService } from './state.service';
 
 /**
@@ -16,7 +16,6 @@ import { StateService } from './state.service';
 export class PioneerRevealLogService {
   public searchResponse: SearchResponse;
   public logs = [] as Hit[];
-  public indiesEnum = IndexTypeEnum;
 
   /**
    * Collection of ids that represent all current

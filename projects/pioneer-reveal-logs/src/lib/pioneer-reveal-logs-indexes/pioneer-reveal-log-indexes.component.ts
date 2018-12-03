@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
 import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
 import { StateService } from '../state.service';
+import { IndexTypeEnum } from '../models/response/hits';
 
 @Component({
   selector: 'pioneer-reveal-log-indexes',
@@ -11,7 +12,8 @@ import { StateService } from '../state.service';
   styleUrls: ['./pioneer-reveal-log-indexes.component.scss']
 })
 export class PioneerRevealLogIndexesComponent implements OnInit {
-  form: FormGroup;
+  public form: FormGroup;
+  public indexTypeEnum = IndexTypeEnum;
 
   constructor(
     public stateService: StateService,
