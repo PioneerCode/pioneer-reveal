@@ -10,8 +10,7 @@
     <ng-container *ngFor="let log of logService.logs">
       <tr pioneer-reveal-log-row [ngClass]="{'active-line':log.pioneerRevelTracking?.selected}" (expandRowSelected)="onExpandRowSelected()"
         [(log)]="log" [active]="log.pioneerRevelTracking?.selected"></tr>
-      <tr pioneer-reveal-log-row-expanded (addFilterClicked)="onAddFilterClicked()" (removeFilterClicked)="onRemoveFilterClicked()"
-        [ngClass]="{'active-expanded':log.pioneerRevelTracking?.selected}" *ngIf="log.pioneerRevelTracking?.selected"
+      <tr pioneer-reveal-log-row-expanded [ngClass]="{'active-expanded':log.pioneerRevelTracking?.selected}" *ngIf="log.pioneerRevelTracking?.selected"
         [(log)]="log" [active]="log.pioneerRevelTracking?.selected"></tr>
     </ng-container>
   </tbody>

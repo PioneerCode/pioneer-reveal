@@ -11,10 +11,10 @@
     border-bottom: none;
 }
 
-
-.active-line, .active-expanded {
-  background: lighten(theme-color('primary'), 45%);
+tr.active-line, tr.active-expanded {
+  background: lighten(theme-color('primary'), 35%);
 }
+
 
 .active-expanded {
   border-top: none;

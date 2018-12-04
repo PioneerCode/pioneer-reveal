@@ -14,16 +14,4 @@ export class PioneerRevealLogTableComponent {
   constructor(
     public logService: PioneerRevealLogService,
   ) { }
-
-  getLogs() {
-     this.logService.getLogs();
-  }
-
-  onAddFilterClicked() {
-    this.logService.getLogs();
-  }
-
-  onRemoveFilterClicked() {
-    this.logService.getLogs();
-  }
 }

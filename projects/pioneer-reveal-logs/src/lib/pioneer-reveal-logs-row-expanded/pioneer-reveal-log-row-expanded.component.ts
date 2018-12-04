@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
 import { KeyValue } from '../models/key-value';
 import { Hit } from '../models/response/hits';
+import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
 
 /**
  * Individual expanded row in log table.
@@ -14,7 +15,7 @@ import { Hit } from '../models/response/hits';
   templateUrl: './pioneer-reveal-log-row-expanded.component.html',
   styleUrls: ['./pioneer-reveal-log-row-expanded.component.scss']
 })
-export class PioneerRevealLogRowExpandedComponent implements OnInit {
+export class PioneerRevealLogRowExpandedComponent {
   @Input() log: Hit;
 
   /**
@@ -22,23 +23,19 @@ export class PioneerRevealLogRowExpandedComponent implements OnInit {
    */
   @Input() active = false;
 
-  @Output() addFilterClicked: EventEmitter<void> = new EventEmitter();
-  @Output() removeFilterClicked: EventEmitter<void> = new EventEmitter();
-
   selectedTab = 'formatted';
 
-  constructor(private queryBuilder: PioneerRevealLogQueryBuilder) { }
-
-  ngOnInit() {
-  }
+  constructor(
+    private logsService: PioneerRevealLogService,
+    private queryBuilder: PioneerRevealLogQueryBuilder) { }
 
   onAddFilter(prop: KeyValue) {
     this.queryBuilder.addFilter(prop.key, prop.value);
-    this.addFilterClicked.emit();
+    this.logsService.getLogs();
   }
 
   onRemoveFilter(prop: KeyValue) {
     this.queryBuilder.removeFilter(prop.key);
-    this.removeFilterClicked.emit();
+    this.logsService.getLogs();
   }
 }
