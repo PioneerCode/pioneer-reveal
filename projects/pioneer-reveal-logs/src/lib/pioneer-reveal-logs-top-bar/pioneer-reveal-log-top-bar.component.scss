@@ -7,16 +7,31 @@
 .main-content {
   padding: 0.5rem 1rem;
   border-bottom: 1px solid $gray-300;
-  .info {
+  .info,
+  .actions,
+  .toggle {
     font-size: 14px;
   }
-  i {
-    cursor: pointer;
+  li {
+    padding-top: 5px;
   }
-  ul{
+  .toggle {
+    margin-right: 1rem;
+  }
+  .actions li {
+    cursor: pointer;
+    &:hover {
+      color: $gray-600;
+    }
+  }
+  ul {
     margin: 0;
   }
+  .slide-toggle {
+    margin-top: -1.5px;
+  }
 }
+
 .sub-content {
   padding: 1rem;
   background-color: $gray-100;
@@ -28,9 +43,9 @@
     padding: 0;
     li {
       font-size: 14px;
-      span{
+      span {
         &:hover {
-          cursor:pointer;
+          cursor: pointer;
           text-decoration: underline;
         }
       }

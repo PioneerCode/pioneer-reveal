@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { PioneerRevealLogComponent } from './pioneer-reveal-logs.component';
 import { PioneerRevealLogCanvasComponent } from './pioneer-reveal-logs-canvas/pioneer-reveal-log-canvas.component';
@@ -38,7 +39,8 @@ import { PioneerRevealLogsFieldsComponent } from './pioneer-reveal-logs-fields/p
     HttpClientModule,
     ReactiveFormsModule,
     MatCheckboxModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSlideToggleModule
   ],
   exports: [PioneerRevealLogComponent]
 })

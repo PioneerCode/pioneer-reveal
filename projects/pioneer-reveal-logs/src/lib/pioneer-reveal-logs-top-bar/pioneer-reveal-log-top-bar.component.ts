@@ -5,6 +5,10 @@ import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
 import { KeyValue } from '../models/key-value';
 import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
 
+enum RefreshRateEnum {
+  Paused = 'Paused'
+}
+
 @Component({
   selector: 'pioneer-reveal-log-top-bar',
   templateUrl: './pioneer-reveal-log-top-bar.component.html',
@@ -15,12 +19,28 @@ export class PioneerRevealLogTopBarComponent {
   public refreshRates = this.getRefreshRates();
   public selectedOption: string;
   public selectedTimeRange: string;
+  public selectedRefreshRate: KeyValue;
+
+  private _realtimeChecked = true;
+  get realtimeChecked(): boolean {
+    return this._realtimeChecked;
+  }
+  set realtimeChecked(value: boolean) {
+    this._realtimeChecked = value;
+    if (!this._realtimeChecked) {
+      this.onToggleSwitch();
+    } else {
+      this.logService.refreshRate = this.selectedRefreshRate;
+    }
+  }
 
   constructor(private queryBuilder: PioneerRevealLogQueryBuilder,
     public logService: PioneerRevealLogService) {
     this.selectedTimeRange = this.timeRanges[0].key;
-    this.logService.refreshRate = this.refreshRates[2];
+    this.setDefaultRefreshRate();
   }
+
+
 
   onOptionClick(option: string) {
     if (this.selectedOption === option) {
@@ -30,13 +50,47 @@ export class PioneerRevealLogTopBarComponent {
     }
   }
 
+  /**
+   * Set time range
+   * @param range Time range to set
+   */
   onRangeClick(range: KeyValue) {
     this.selectedTimeRange = range.key;
     this.queryBuilder.addTimeRange(range.value);
   }
 
+  /**
+   * Set refresh rate
+   * @param rate Rate to set
+   */
   onRateClick(rate: KeyValue) {
     this.logService.refreshRate = rate;
+    this.selectedRefreshRate = rate;
+  }
+
+  onRealtimeClicked(): void {
+    this.realtimeChecked = !this.realtimeChecked;
+  }
+
+  /**
+   * User toggles realtime switch
+   */
+  private onToggleSwitch() {
+    if (this.logService.refreshRate.value === RefreshRateEnum.Paused) {
+      this.setDefaultRefreshRate();
+      return;
+    }
+    this.logService.refreshRate = {
+      key: RefreshRateEnum[RefreshRateEnum.Paused],
+      value: RefreshRateEnum.Paused
+    };
+  }
+
+  /**
+   * Set a default refresh rate
+   */
+  private setDefaultRefreshRate() {
+    this.logService.refreshRate = this.selectedRefreshRate = this.refreshRates[2];
   }
 
   private getTimeRanges(): KeyValue[] {
@@ -107,8 +161,8 @@ export class PioneerRevealLogTopBarComponent {
         value: 3600
       },
       {
-        key: 'Pause',
-        value: 'Paused'
+        key: RefreshRateEnum[RefreshRateEnum.Paused],
+        value: RefreshRateEnum.Paused
       }
     ] as KeyValue[];
   }
