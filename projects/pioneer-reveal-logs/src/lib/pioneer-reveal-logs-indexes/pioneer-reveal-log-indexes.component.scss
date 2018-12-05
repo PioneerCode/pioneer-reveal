@@ -1,4 +1,12 @@
 @import "../../../../../src/bootstrap.scss";
+::ng-deep {
+  .mat-checkbox-frame {
+    border-color: #bec2c4;
+  }
+  .mat-checkbox-disabled:not(.mat-checkbox-checked) .mat-checkbox-frame {
+    border-color: #686868;
+  }
+}
 
 ul {
   margin: 0;
@@ -7,7 +15,6 @@ ul {
   li {
     font-size: 14px;
   }
-
   .fas {
     width: 1rem;
   }
