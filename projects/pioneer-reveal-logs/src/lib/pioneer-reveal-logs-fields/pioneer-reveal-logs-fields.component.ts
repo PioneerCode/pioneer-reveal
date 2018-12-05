@@ -15,6 +15,6 @@ export class PioneerRevealLogsFieldsComponent {
     public logService: PioneerRevealLogService) { }
 
   onFieldClicked(field: Property): void {
-    field.isFieldSelected = !field.isFieldSelected;
+    this.logService.currentFieldsSelected[field.key] = !this.logService.currentFieldsSelected[field.key];
   }
 }

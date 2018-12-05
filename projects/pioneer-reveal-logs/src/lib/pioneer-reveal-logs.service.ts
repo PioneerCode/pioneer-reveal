@@ -18,6 +18,16 @@ export class PioneerRevealLogService {
   public logs = [] as Hit[];
 
   /**
+   * Key - Value collection representing what fields are selected in
+   * the pioneer-reveal-logs-fields component
+   * rows expanded in the table.
+   * {
+   *   [id: string]: boolean
+   * }
+   */
+  public currentFieldsSelected = {};
+
+  /**
    * Collection of ids that represent all current
    * rows expanded in the table.
    */
@@ -64,13 +74,12 @@ export class PioneerRevealLogService {
     this.pioneerRevealRepository.getLogs(this.queryBuilder.currentSearchIndices, this.queryBuilder.searchRequest)
       .subscribe((searchResponse) => {
         this.searchResponse = searchResponse;
-        this.logs = [] as Hit[];
         this.logs = searchResponse.hits.hits.map(x => new Hit(x));
         this.bindOpenedState();
+        this.initializeFieldsSelected();
         this.stateService.isLoading = false;
       });
   }
-
 
   addCurrentRowsOpenId(id: string): void {
     this.currentRowsOpen.push(id);
@@ -84,8 +93,25 @@ export class PioneerRevealLogService {
   }
 
   /**
+   * If _currentFieldsSelected has not been set,
+   * initialize it with all properties from Pioneer Logs.
+   */
+  private initializeFieldsSelected() {
+    // Ensure this happens only on the first time logs have been grabbed.
+    if (this.currentFieldsSelected) {
+      return;
+    }
+    this.logs[0].pioneerRevelTracking.sourceMap.forEach(prop => {
+      if (!prop.isPioneerProperty) {
+        return;
+      }
+      this.currentFieldsSelected[prop.key] = false;
+    });
+  }
+
+  /**
    * Bind open state to current set of logs
-   * TODO: Consider per issues.
+   * TODO: Consider perf issues.
    */
   private bindOpenedState() {
     this.logs.forEach(log => {
@@ -100,6 +126,9 @@ export class PioneerRevealLogService {
     });
   }
 
+  /**
+   * Set interval timer for refresh rate
+   */
   private setInterval(): void {
     if (this.refreshInterval) {
       clearInterval(this.refreshInterval);

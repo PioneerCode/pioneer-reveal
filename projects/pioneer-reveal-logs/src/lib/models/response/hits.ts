@@ -71,6 +71,16 @@ export class PioneerRevealTracking {
         isPioneerProperty: key.charAt(0) === key.charAt(0).toUpperCase() && key.charAt(0) !== '@' && key.charAt(0) !== '$'
       } as Property);
     });
+
+    this.sourceMap.sort((a, b) => {
+      if (a.key < b.key) {
+        return -1;
+      }
+      if (a.key > b.key) {
+        return 1;
+      }
+      return 0;
+    });
   }
 }
 

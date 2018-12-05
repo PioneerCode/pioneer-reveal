@@ -1,0 +1,5 @@
+<td colspan="3">
+  <ng-container *ngFor="let property of log.pioneerRevelTracking.sourceMap">
+    <span *ngIf="logService.currentFieldsSelected[property.key]"><b>{{property.key}}</b>: {{property.value}}</span>
+  </ng-container>
+</td>
