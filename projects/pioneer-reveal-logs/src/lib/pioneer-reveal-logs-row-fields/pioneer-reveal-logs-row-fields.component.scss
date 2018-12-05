@@ -1,7 +1,19 @@
+@import "../../../../../src/bootstrap.scss";
+ul {
+  margin: 0;
+  li {
+  }
+}
+
+ul.active {
+  margin: 0 0 0.75rem;
+}
+
 td {
   border-top: none;
   padding: 0 0.75rem;
+  font-size: 13px;
   span {
-    margin: 0 0 0.75rem;
+    color: $gray-600;
   }
 }

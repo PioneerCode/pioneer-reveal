@@ -1,5 +1,9 @@
 <td colspan="3">
-  <ng-container *ngFor="let property of log.pioneerRevelTracking.sourceMap">
-    <span *ngIf="logService.currentFieldsSelected[property.key]"><b>{{property.key}}</b>: {{property.value}}</span>
-  </ng-container>
+  <ul class="list-inline" [ngClass]="{'active': logService.isThereAFieldSelected}">
+    <ng-container *ngFor="let property of log.pioneerRevelTracking.sourceMap">
+      <li class="list-inline-item" *ngIf="logService.currentFieldsSelected[property.key]">
+        <span>{{property.key}}</span>: {{property.value}}
+      </li>
+    </ng-container>
+  </ul>
 </td>

@@ -28,6 +28,19 @@ export class PioneerRevealLogService {
   public currentFieldsSelected = {};
 
   /**
+   * If > 0 fields have been selected in the pioneer-reveal-logs-fields
+   * component, return true;
+   */
+  get isThereAFieldSelected(): boolean {
+    for (const key in this.currentFieldsSelected) {
+      if (this.currentFieldsSelected.hasOwnProperty(key) && this.currentFieldsSelected[key]) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
    * Collection of ids that represent all current
    * rows expanded in the table.
    */
