@@ -6,16 +6,30 @@
     <div class="col-lg-10 col-md-9 p-0 pr-logs-canvas">
       <pioneer-reveal-log-top-bar></pioneer-reveal-log-top-bar>
       <pioneer-reveal-log-filters *ngIf="queryBuilder.currentSearchFilters.length > 0"></pioneer-reveal-log-filters>
-      <div class="reveal-card">
-        <div class="row">
-          <div class="col-sm">
-            <div class="container-fluid p-0">
-              <pioneer-reveal-log-table></pioneer-reveal-log-table>
+      <div class="reveal-card-container">
+        <div class="reveal-card">
+          <div class="row">
+            <div class="col-sm">
+              <div class="container-fluid p-0">
+                <pioneer-reveal-log-table></pioneer-reveal-log-table>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <footer class="clearfix">
+        <p class="float-left">© 2018. By <a alt="Chad Ramos" href="https://twitter.com/chad_ramos">Chad
+            Ramos</a> at <a alt="Pioneer Code" href="https://pioneercode.com">Pioneer Code</a> </p>
+        <div class="float-right">
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <a href="https://github.com/PioneerCode/pioneer-reveal">
+                <i class="fas fa-code-branch"></i> Github
+              </a>
+            </li>
+          </ul>
+        </div>
+      </footer>
     </div>
   </div>
 </div>
-
