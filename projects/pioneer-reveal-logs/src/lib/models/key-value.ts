@@ -21,6 +21,14 @@ export class Property extends KeyValue {
    */
   iconClasses: string;
 
+  /**
+   * Determine if the field has been selected in the pioneer-reveal-logs-fields components
+   */
+  isFieldSelected: boolean;
+
+  /**
+   * Denotes if this is a property of Pioneer Logs
+   */
   isPioneerProperty: boolean;
 }
 

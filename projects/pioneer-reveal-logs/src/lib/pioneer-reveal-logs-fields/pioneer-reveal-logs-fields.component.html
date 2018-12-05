@@ -2,7 +2,7 @@
 <ul>
   <ng-container *ngFor="let field of logService.fields">
     <li *ngIf="field.isPioneerProperty && !field.isObject">
-      <mat-checkbox [disabled]="stateService.isLoading" (change)="onApplicationClick(field.key)">{{field.key}}</mat-checkbox>
+      <mat-checkbox [disabled]="stateService.isLoading" (change)="onFieldClicked(field)">{{field.isFieldSelected}}</mat-checkbox>
     </li>
   </ng-container>
 </ul>
