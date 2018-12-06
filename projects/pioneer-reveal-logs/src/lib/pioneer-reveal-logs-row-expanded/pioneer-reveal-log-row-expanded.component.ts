@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 
 import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
-import { KeyValue } from '../models/key-value';
+import { KeyValue, Property } from '../models/key-value';
 import { Hit } from '../models/response/hits';
 import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
+import { StateService } from '../state.service';
 
 /**
  * Individual expanded row in log table.
@@ -26,15 +27,24 @@ export class PioneerRevealLogRowExpandedComponent {
   selectedTab = 'formatted';
 
   constructor(
+    public stateService: StateService,
     private logsService: PioneerRevealLogService,
     private queryBuilder: PioneerRevealLogQueryBuilder) { }
 
-  onAddFilter(prop: KeyValue) {
+  onAddFilter(prop: Property) {
+    if (this.stateService.isLoading) {
+      return;
+    }
+    prop.isFilter = true;
     this.queryBuilder.addFilter(prop.key, prop.value);
     this.logsService.getLogs();
   }
 
-  onRemoveFilter(prop: KeyValue) {
+  onRemoveFilter(prop: Property) {
+    if (this.stateService.isLoading) {
+      return;
+    }
+    prop.isFilter = false;
     this.queryBuilder.removeFilter(prop.key, prop.value);
     this.logsService.getLogs();
   }

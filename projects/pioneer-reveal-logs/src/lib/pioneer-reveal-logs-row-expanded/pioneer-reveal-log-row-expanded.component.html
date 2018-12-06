@@ -8,12 +8,12 @@
               <td>
                 <ul class="list-inline mb-0">
                   <li class="list-inline-item">
-                    <i class="fas fa-minus fa-sm" *ngIf="prop.isObject"></i>
-                    <i class="fas fa-minus fa-sm active" *ngIf="!prop.isObject" (click)="onRemoveFilter(prop)"></i>
+                    <i class="fas fa-minus fa-sm" *ngIf="prop.isObject || !prop.isFilter || stateService.isLoading"></i>
+                    <i class="fas fa-minus fa-sm active" *ngIf="!prop.isObject && prop.isFilter && !stateService.isLoading" (click)="onRemoveFilter(prop)"></i>
                   </li>
                   <li class="list-inline-item">
-                    <i class="fas fa-plus fa-sm" *ngIf="prop.isObject"></i>
-                    <i class="fas fa-plus fa-sm active" *ngIf="!prop.isObject" (click)="onAddFilter(prop)"></i>
+                    <i class="fas fa-plus fa-sm" *ngIf="prop.isObject || prop.isFilter || stateService.isLoading"></i>
+                    <i class="fas fa-plus fa-sm active" *ngIf="!prop.isObject && !prop.isFilter && !stateService.isLoading" (click)="onAddFilter(prop)"></i>
                   </li>
                 </ul>
               </td>
