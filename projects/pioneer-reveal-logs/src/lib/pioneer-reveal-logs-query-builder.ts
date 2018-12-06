@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 
-import { Query, BoolMustMatchPhrase, BoolMustRange } from './models/request/query';
+import { Query, BoolMustRange, BoolMustMatchPhrase } from './models/request/query';
 import { KeyValue } from './models/key-value';
 import { SearchRequest } from './models/request/search-request';
 
@@ -43,34 +43,47 @@ export class PioneerRevealLogQueryBuilder {
     this.searchRequest.query = new Query();
   }
 
-  addFilter(key: string, value: string | number): void {
-    let index = this.getMustIndexBasedOnPropertyName('match_phrase');
+  /**
+   * Add filter to query and internal tracking if needed
+   * @param propertyName Filter name
+   * @param value Filter value
+   * @param trackInternally If true, we set internal tracking so pioneer-reveal-logs-top-bar can display it
+   */
+  addFilter(key: string, value: string | number | boolean, trackInternally = true): void {
+    const val = {
+      match_phrase: {}
+    } as BoolMustMatchPhrase;
+    val.match_phrase[key] = {};
+    val.match_phrase[key]['query'] = value;
 
-    // Dynamically create match phrase if does not exist.
-    if (index === undefined) {
-      this.query.bool.must.push({
-        match_phrase: {}
-      } as BoolMustMatchPhrase);
-      index = this.query.bool.must.length - 1;
+    this.query.bool.must.push(val);
+
+    if (trackInternally) {
+      this.currentSearchFilters.push({
+        key: key,
+        value: value
+      } as KeyValue);
     }
-
-    this.query.bool.must[index]['match_phrase'][key] = {};
-    this.query.bool.must[index]['match_phrase'][key]['query'] = value;
-    this.currentSearchFilters.push({
-      key: key,
-      value: value
-    } as KeyValue);
   }
 
-  removeFilter(key: string): void {
-    const index = this.getMustIndexBasedOnPropertyName('match_phrase');
+  /**
+   * Remove filter from query and remove from internal tracking if needed
+   * @param propertyName Filter name
+   * @param value Filter value
+   * @param trackInternally If true, we remove internal tracking so pioneer-reveal-logs-top-bar can remove it from ui
+   */
+  removeFilter(propertyName: string, value: string | number | boolean, trackInternally = true): void {
+    const index = this.getMustMatchIndexBasedOnPropertyName(propertyName, value);
 
-    delete this.query.bool.must[index]['match_phrase'][key];
-    for (let i = 0; i < this.currentSearchFilters.length; i++) {
-      const filter = this.currentSearchFilters[i];
-      if (filter.key === key) {
-        this.currentSearchFilters.splice(i, 1);
-        break;
+    delete this.query.bool.must[index]['match_phrase'][propertyName];
+
+    if (trackInternally) {
+      for (let i = 0; i < this.currentSearchFilters.length; i++) {
+        const filter = this.currentSearchFilters[i];
+        if (filter.key === propertyName) {
+          this.currentSearchFilters.splice(i, 1);
+          break;
+        }
       }
     }
 
@@ -79,6 +92,10 @@ export class PioneerRevealLogQueryBuilder {
     }
   }
 
+  /**
+   * Determine if a filter is current set
+   * @param prop Filter to search for
+   */
   isCurrentFilter(prop: KeyValue): boolean {
     for (let i = 0; i < this.currentSearchFilters.length; i++) {
       const element = this.currentSearchFilters[i];
@@ -141,13 +158,34 @@ export class PioneerRevealLogQueryBuilder {
   /**
    * Look through every index in this.query.bool to see if it has
    * the supplied property name.  If it does, return the index.
+   *
+   * We need to check both name and value because we could be
+   * searching across multiple Applications and Layers
+   *
    * @param propName Property Name
+   * @param value Value of property
    */
   private getMustIndexBasedOnPropertyName(propName: string): number {
     for (let i = 0; i < this.query.bool.must.length; i++) {
       const element = this.query.bool.must[i];
       if (element.hasOwnProperty(propName)) {
         return i;
+      }
+    }
+    return undefined;
+  }
+
+  /**
+   * Determine if any "match_phrase" must clause exist with the property name of
+   * @param propertyName Name of property to search for
+   */
+  private getMustMatchIndexBasedOnPropertyName(propertyName: string, value: string | number | boolean): number {
+    for (let i = 0; i < this.query.bool.must.length; i++) {
+      const element = this.query.bool.must[i];
+      if (element.hasOwnProperty('match_phrase')) {
+        if (element['match_phrase'].hasOwnProperty(propertyName) && element['match_phrase'][propertyName].query === value) {
+          return i;
+        }
       }
     }
     return undefined;

@@ -73,12 +73,22 @@ export class PioneerRevealLogsApplicationAggregationComponent implements OnInit 
   }
 
   onApplicationClick(application: string): void {
-    this.queryBuilder.addFilter('ApplicationName', application);
+    const keyValue = 'ApplicationName';
+    if (this.queryBuilder.isCurrentFilter({ key: keyValue, value: application })) {
+      this.queryBuilder.removeFilter(keyValue, application, false);
+    } else {
+      this.queryBuilder.addFilter(keyValue, application, false);
+    }
     this.logsService.getLogs();
   }
 
   onLayerClick(layer: string): void {
-    this.queryBuilder.addFilter('ApplicationLayer', layer);
+    const keyValue = 'ApplicationLayer';
+    if (this.queryBuilder.isCurrentFilter({ key: keyValue, value: layer })) {
+      this.queryBuilder.removeFilter(keyValue, layer, false);
+    } else {
+      this.queryBuilder.addFilter(keyValue, layer, false);
+    }
     this.logsService.getLogs();
   }
 }

@@ -14,7 +14,7 @@ export class PioneerRevealLogFiltersComponent {
     public queryBuilder: PioneerRevealLogQueryBuilder) { }
 
   onRemoveClick(filter: Property): void {
-    this.queryBuilder.removeFilter(filter.key);
+    this.queryBuilder.removeFilter(filter.key, filter.value);
     this.logService.getLogs();
   }
 }

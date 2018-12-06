@@ -35,7 +35,7 @@ export class PioneerRevealLogRowExpandedComponent {
   }
 
   onRemoveFilter(prop: KeyValue) {
-    this.queryBuilder.removeFilter(prop.key);
+    this.queryBuilder.removeFilter(prop.key, prop.value);
     this.logsService.getLogs();
   }
 }

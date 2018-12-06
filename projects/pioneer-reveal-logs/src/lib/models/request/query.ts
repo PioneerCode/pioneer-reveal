@@ -7,7 +7,7 @@ export enum BoolMustObjectOrderEnum {
 }
 
 export class Bool {
-  must: (BoolMustMatchAll | BoolMustMatchPhrase | BoolMustRange)[];
+  must: (BoolMustMatchAll | BoolMustMatchPhrase | BoolMustRange )[];
 
   constructor() {
     this.must = [];
@@ -18,10 +18,10 @@ export class Bool {
 }
 
 export class BoolMustMatchAll {
-  match_all: BoolMustMatchObject;
+  match_all: BoolMustMatchAllObject;
 }
 
-export class BoolMustMatchObject {
+export class BoolMustMatchAllObject {
   match_all: object;
 }
 
@@ -32,6 +32,8 @@ export class BoolMustMatchPhrase {
 export class BoolMustMatchPhraseObject {
   [val: string]: any;
 }
+
+
 
 export class BoolMustRange {
   range: BoolMustRangeObject;
