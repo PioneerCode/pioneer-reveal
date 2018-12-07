@@ -4,7 +4,7 @@ import { PioneerRevealRepository } from './pioneer-reveal.repository';
 import { PioneerRevealLogQueryBuilder } from './pioneer-reveal-logs-query-builder';
 import { SearchResponse } from './models/response/search-response';
 import { KeyValue, Property } from './models/key-value';
-import { Hit } from './models/response/hits';
+import { Hit, IndexTypeEnum } from './models/response/hits';
 import { StateService } from './state.service';
 
 /**
@@ -77,6 +77,8 @@ export class PioneerRevealLogService {
     private stateService: StateService,
     private queryBuilder: PioneerRevealLogQueryBuilder,
     private pioneerRevealRepository: PioneerRevealRepository) {
+    this.queryBuilder.setIndex(IndexTypeEnum.Error);
+    this.getLogs();
   }
 
   /**
