@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { PioneerLogsErrorHandler } from './pioneer-logs-error.handler';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PioneerRevealLogsModule } from 'projects/pioneer-reveal-logs/src/lib/pioneer-reveal-logs.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     MatProgressBarModule
   ],
-  providers: [],
+  providers: [
+    { provide: ErrorHandler, useClass: PioneerLogsErrorHandler }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
