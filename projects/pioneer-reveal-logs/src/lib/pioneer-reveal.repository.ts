@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { Index } from './models';
 import { SearchResponse } from './models/response/search-response';
@@ -19,9 +19,6 @@ export class PioneerRevealRepository {
   }
 
   getLogs(index: string, request: SearchRequest): Observable<SearchResponse> {
-    if (index.length < 1) {
-      return of({ hits: { hits: [] } } as SearchResponse);
-    }
     return this.http.post<SearchResponse>(`${this.url}/${index}/_search?format=json`, request);
   }
 }

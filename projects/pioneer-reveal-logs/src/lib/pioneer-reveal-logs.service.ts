@@ -18,6 +18,12 @@ export class PioneerRevealLogService {
   public logs = [] as Hit[];
 
   /**
+   * Realtime toggle.
+   * Needs to stay in sync with pioneer-reveal-log-to-bar.component
+   */
+  public realtimeChecked = true;
+
+  /**
    * Key - Value collection representing what fields are selected in
    * the pioneer-reveal-logs-fields component
    * rows expanded in the table.
@@ -96,10 +102,17 @@ export class PioneerRevealLogService {
       });
   }
 
+  /**
+   * Cache id for row that has been expanded
+   */
   addCurrentRowsOpenId(id: string): void {
     this.currentRowsOpen.push(id);
   }
 
+  /**
+   * Remove ached because row that was expanded, got shrunk.
+   * @param id Log Id
+   */
   removeCurrentRowsOpenId(id: string): void {
     const index = this.currentRowsOpen.indexOf(id);
     if (index !== -1) {
@@ -148,7 +161,7 @@ export class PioneerRevealLogService {
     if (this.refreshInterval) {
       clearInterval(this.refreshInterval);
     }
-    if (this.refreshRate.key !== 'Pause') {
+    if (this.refreshRate.key !== 'Paused' || !this.realtimeChecked) {
       this.refreshInterval = setInterval(() => {
         this.getLogs();
       }, this._refreshRate.value * 1000);

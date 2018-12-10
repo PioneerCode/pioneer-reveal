@@ -6,7 +6,8 @@ import { KeyValue } from '../models/key-value';
 import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
 
 enum RefreshRateEnum {
-  Paused = 'Paused'
+  Paused = 'Paused',
+  PausedRealtime = 'Paused'
 }
 
 @Component({
@@ -21,13 +22,16 @@ export class PioneerRevealLogTopBarComponent {
   public selectedTimeRange: string;
   public selectedRefreshRate: KeyValue;
 
-  private _realtimeChecked = true;
+  /**
+   * Hoisted to shared log service to insure we have a means
+   * of shutting off polling when this is un-checked.
+   */
   get realtimeChecked(): boolean {
-    return this._realtimeChecked;
+    return this.logService.realtimeChecked;
   }
   set realtimeChecked(value: boolean) {
-    this._realtimeChecked = value;
-    if (!this._realtimeChecked) {
+    this.logService.realtimeChecked = value;
+    if (!this.logService.realtimeChecked) {
       this.onToggleSwitch();
     } else {
       this.logService.refreshRate = this.selectedRefreshRate;
@@ -39,8 +43,6 @@ export class PioneerRevealLogTopBarComponent {
     this.selectedTimeRange = this.timeRanges[0].key;
     this.setDefaultRefreshRate();
   }
-
-
 
   onOptionClick(option: string) {
     if (this.selectedOption === option) {
