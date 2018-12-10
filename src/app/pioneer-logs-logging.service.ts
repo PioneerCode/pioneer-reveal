@@ -41,6 +41,16 @@ export class PioneerLogsLoggingService {
     this.logMessage(logEntry, 'Error');
   }
 
+  /**
+   *
+   * @param message Client defined message
+   * @param error Error from API
+   */
+  public handleApiError(message: string, error: any): any {
+    this.logError(message, error);
+    throw new Error(error._body ? error._body : message);
+  }
+
   private logMessage(logEntry: LogEntry, endpoint: string) {
     // if (!this.securityService.isAuthorized) {
     //     let headers = new Headers();
