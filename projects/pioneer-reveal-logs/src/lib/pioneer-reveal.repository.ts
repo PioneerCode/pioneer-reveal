@@ -9,12 +9,13 @@ import { SearchResponse } from './models/response/search-response';
 import { SearchRequest } from './models/request/search-request';
 import { PioneerLogsLoggingService } from 'src/app/pioneer-logs-logging.service';
 import { MessageService } from 'src/app/message.service';
+import { environment } from '../../../../src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PioneerRevealRepository {
-  url = 'http://localhost:9200';
+  url = environment.elasticsearchUrl;
 
   constructor(
     private loggingService: PioneerLogsLoggingService,
@@ -41,11 +42,11 @@ export class PioneerRevealRepository {
   }
 
   /**
- * Handle Http operation that failed.
- * Let the app continue.
- * @param operation - name of the operation that failed
- * @param result - optional value to return as the observable result
- */
+   * Handle Http operation that failed.
+   * Let the app continue.
+   * @param operation - name of the operation that failed
+   * @param result - optional value to return as the observable result
+   */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       // Send the error to remote logging infrastructure
