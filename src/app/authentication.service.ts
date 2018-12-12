@@ -3,28 +3,32 @@ import { Router } from '@angular/router';
 
 import { IUser, IToken, ILoginRequest } from './user';
 import { PioneerRevealRepository } from './core/pioneer-reveal.repository';
+import { StateService } from './logs/state.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  isBusy = false;
 
   constructor(
     private revealRepository: PioneerRevealRepository,
-    private router: Router
+    private router: Router,
+    private stateService: StateService
   ) { }
 
   login(model: ILoginRequest, returnUrl: string) {
-    this.isBusy = true;
-    return this.revealRepository.login(model)
-      .subscribe((resp: IUser) => {
-        this.setCurrentToken({
-          session_id: resp.token
-        } as IToken);
-        this.isBusy = false;
-        this.router.navigateByUrl(returnUrl);
-      });
+    this.stateService.isLoading = true;
+    this.revealRepository.login(model)
+      .subscribe(
+        (resp: IUser) => {
+          this.setCurrentToken({
+            session_id: resp.token
+          } as IToken);
+          this.stateService.isLoading = false;
+          this.router.navigateByUrl(returnUrl);
+        },
+        () => this.stateService.isLoading = false
+      );
   }
 
   private setCurrentToken(token: IToken): void {

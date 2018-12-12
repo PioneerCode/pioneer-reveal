@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthenticationService } from 'src/app/authentication.service';
+import { StateService } from 'src/app/logs/state.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'login-canvas',
-  templateUrl: './canvas.component.html',
-  styleUrls: ['./canvas.component.scss']
+  selector: 'login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class CanvasComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
     username: new FormControl(),
@@ -16,7 +17,8 @@ export class CanvasComponent implements OnInit {
   });
 
   constructor(
-    public authService: AuthenticationService,
+    public stateService: StateService,
+    private authService: AuthenticationService,
   ) { }
 
   ngOnInit() {

@@ -28,7 +28,10 @@ export class PioneerRevealRepository {
       headers: new HttpHeaders(),
       withCredentials: true
     };
-    return this.http.post<IUser>(`${environment.elasticsearchUrl}/authenticate`, model, options);
+    return this.http.post<IUser>(`${environment.elasticsearchUrl}/authenticate`, model, options)
+      .pipe(
+        catchError(this.handleError('login', {} as IUser))
+      );
   }
 
   getIndices(): Observable<Index[]> {
