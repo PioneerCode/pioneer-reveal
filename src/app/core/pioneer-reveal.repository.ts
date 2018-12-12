@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs/index';
 import { catchError } from 'rxjs/operators';
@@ -10,6 +10,7 @@ import { Index } from './models';
 import { SearchRequest } from './models/request/search-request';
 import { SearchResponse } from './models/response/search-response';
 import { MessageService } from '../shared/message.service';
+import { ILoginRequest, IUser } from '../user';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,14 @@ export class PioneerRevealRepository {
     private loggingService: PioneerLogsLoggingService,
     private messageService: MessageService,
     private http: HttpClient) { }
+
+  login(model: ILoginRequest): Observable<IUser> {
+    const options = {
+      headers: new HttpHeaders(),
+      withCredentials: true
+    };
+    return this.http.post<IUser>(`${environment.elasticsearchUrl}/authenticate`, model, options);
+  }
 
   getIndices(): Observable<Index[]> {
     return this.http.get<Index[]>(`${this.url}/_cat/indices?format=json`)

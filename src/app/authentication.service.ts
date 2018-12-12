@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { IUser, IToken, ILoginRequest } from './user';
-import { AuthenticationRepository } from './authentication.repository';
+import { PioneerRevealRepository } from './core/pioneer-reveal.repository';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +11,13 @@ export class AuthenticationService {
   isBusy = false;
 
   constructor(
-    private authRepository: AuthenticationRepository,
+    private revealRepository: PioneerRevealRepository,
     private router: Router
   ) { }
 
   login(model: ILoginRequest, returnUrl: string) {
     this.isBusy = true;
-    return this.authRepository.login(model)
+    return this.revealRepository.login(model)
       .subscribe((resp: IUser) => {
         this.setCurrentToken({
           session_id: resp.token

@@ -1,3 +1,24 @@
-<p>
-  canvas works!
-</p>
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-4">
+      <form class="login-form text-center" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="fa-stack fa-2x">
+          <i class="fas fa-circle fa-stack-2x"></i>
+          <i class="fas fa-user-lock fa-stack-1x fa-inverse"></i>
+        </div>
+        <mat-form-field class="w-100">
+          <input matInput placeholder="Username" [disabled]="authService.isBusy">
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <input matInput placeholder="Password" [disabled]="authService.isBusy">
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="primary" [disabled]="authService.isBusy">Login</button>
+        <p>© 2018. Developed by <a alt="Chad Ramos" href="https://twitter.com/chad_ramos">Chad
+            Ramos</a> at <a alt="Pioneer Code" href="https://pioneercode.com">Pioneer Code</a> : <a href="https://github.com/PioneerCode/pioneer-reveal">
+            <i class="fas fa-code-branch"></i> Github
+          </a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
