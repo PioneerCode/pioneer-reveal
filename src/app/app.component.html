@@ -17,4 +17,9 @@
     </li>
   </ul>
 </header>
-<logs-canvas></logs-canvas>
+<ng-container *ngIf="true">
+  <login-canvas></login-canvas>
+</ng-container>
+<ng-container *ngIf="false">
+  <logs-canvas></logs-canvas>
+</ng-container>

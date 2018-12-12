@@ -5,11 +5,11 @@ import { of } from 'rxjs/index';
 import { catchError } from 'rxjs/operators';
 
 import { PioneerLogsLoggingService } from 'src/app/pioneer-logs-logging.service';
-import { MessageService } from 'src/app/message.service';
 import { environment } from '../../environments/environment';
 import { Index } from './models';
 import { SearchRequest } from './models/request/search-request';
 import { SearchResponse } from './models/response/search-response';
+import { MessageService } from '../shared/message.service';
 
 @Injectable({
   providedIn: 'root'
