@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Hit, IndexTypeEnum } from '../models/response/hits';
 import { LogsService } from '../logs.service';
+import { IndexTypeEnum, Hit } from 'src/app/core/models/response/hits';
 
 /**
  * Individual row in log table

@@ -4,12 +4,12 @@ import { Observable } from 'rxjs';
 import { of } from 'rxjs/index';
 import { catchError } from 'rxjs/operators';
 
-import { Index } from './models';
-import { SearchResponse } from './models/response/search-response';
-import { SearchRequest } from './models/request/search-request';
 import { PioneerLogsLoggingService } from 'src/app/pioneer-logs-logging.service';
 import { MessageService } from 'src/app/message.service';
 import { environment } from '../../environments/environment';
+import { Index } from './models';
+import { SearchRequest } from './models/request/search-request';
+import { SearchResponse } from './models/response/search-response';
 
 @Injectable({
   providedIn: 'root'

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 
-import { Query, BoolMustRange, BoolMustMatchPhrase } from './models/request/query';
 import { KeyValue } from './models/key-value';
-import { SearchRequest } from './models/request/search-request';
+import { SearchRequest } from '../core/models/request/search-request';
+import { Query, BoolMustRange, BoolMustMatchPhrase } from '../core/models/request/query';
 
 /**
  * Handles all query building for search operation

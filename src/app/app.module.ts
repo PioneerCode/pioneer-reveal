@@ -7,6 +7,7 @@ import { PioneerLogsErrorHandler } from './pioneer-logs-error.handler';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LogsModule } from './logs/logs.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { LogsModule } from './logs/logs.module';
     BrowserModule,
     AppRoutingModule,
     LogsModule,
+    CoreModule,
     BrowserAnimationsModule,
     MatProgressBarModule
   ],

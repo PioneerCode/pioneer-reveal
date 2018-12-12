@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Hit } from '../models/response/hits';
 import { LogsService } from '../logs.service';
+import { Hit } from 'src/app/core/models/response/hits';
 
 @Component({
   // tslint:disable-next-line:component-selector

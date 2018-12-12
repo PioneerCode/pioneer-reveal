@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 
-import { PioneerRevealRepository } from './pioneer-reveal.repository';
 import { PioneerRevealLogQueryBuilder } from './query-builder';
-import { SearchResponse } from './models/response/search-response';
 import { KeyValue, Property } from './models/key-value';
-import { Hit, IndexTypeEnum } from './models/response/hits';
 import { StateService } from './state.service';
+import { PioneerRevealRepository } from '../core/pioneer-reveal.repository';
+import { Hit, IndexTypeEnum } from '../core/models/response/hits';
+import { SearchResponse } from '../core/models/response/search-response';
 
 /**
  * Shared core functionality used across components

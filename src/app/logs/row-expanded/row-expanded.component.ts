@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 
 import { PioneerRevealLogQueryBuilder } from '../query-builder';
 import { Property } from '../models/key-value';
-import { Hit } from '../models/response/hits';
 import { LogsService } from '../logs.service';
 import { StateService } from '../state.service';
+import { Hit } from 'src/app/core/models/response/hits';
 
 /**
  * Individual expanded row in log table.

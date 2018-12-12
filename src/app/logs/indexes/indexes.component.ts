@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { PioneerRevealLogQueryBuilder } from '../query-builder';
 import { LogsService } from '../logs.service';
 import { StateService } from '../state.service';
-import { IndexTypeEnum } from '../models/response/hits';
+import { IndexTypeEnum } from 'src/app/core/models/response/hits';
 
 @Component({
   // tslint:disable-next-line:component-selector

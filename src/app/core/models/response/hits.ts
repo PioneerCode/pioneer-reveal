@@ -1,6 +1,6 @@
-import { Property, KeyValue } from '../key-value';
-import { PioneerRevealLogQueryBuilder } from '../../query-builder';
-import { ServiceLocator } from '../../service-locator.service';
+import { Property, KeyValue } from 'src/app/logs/models/key-value';
+import { PioneerRevealLogQueryBuilder } from 'src/app/logs/query-builder';
+import { ServiceLocator } from 'src/app/logs/service-locator.service';
 
 export enum IndexTypeEnum {
   Error = 'pioneer-logs-error',

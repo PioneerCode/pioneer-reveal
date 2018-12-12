@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PioneerRevealRepository } from '../pioneer-reveal.repository';
-import { SearchResponse } from '../models/response/search-response';
-import { pioneerLogsIndices } from '../models';
-import { SearchRequest } from '../models/request/search-request';
-import { Aggregations, Bucket, Aggregation } from '../models/response/aggregations';
-import { PioneerRevealLogQueryBuilder } from '../query-builder';
 import { LogsService } from '../logs.service';
-import { Sort } from '../models/request/sort';
 import { StateService } from '../state.service';
+import { PioneerRevealRepository } from 'src/app/core/pioneer-reveal.repository';
+import { Bucket, Aggregations, Aggregation } from 'src/app/core/models/response/aggregations';
+import { SearchResponse } from 'src/app/core/models/response/search-response';
+import { SearchRequest } from 'src/app/core/models/request/search-request';
+import { PioneerRevealLogQueryBuilder } from '../query-builder';
+import { Sort } from 'src/app/core/models/request/sort';
+import { pioneerLogsIndices } from 'src/app/core/models';
 
 /**
  * Filters logs by ApplicationName and ApplicationLayer
