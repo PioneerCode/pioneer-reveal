@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { PioneerRevealLogQueryBuilder } from '../query-builder';
 import { KeyValue, Property } from '../models/key-value';
 import { Hit } from '../models/response/hits';
-import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
+import { PioneerRevealLogService } from '../logs.service';
 import { StateService } from '../state.service';
 
 /**

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
+import { PioneerRevealLogService } from '../logs.service';
 import { StateService } from '../state.service';
 import { Property } from '../models/key-value';
 

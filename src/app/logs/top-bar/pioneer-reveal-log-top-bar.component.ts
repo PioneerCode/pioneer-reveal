@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import * as moment from 'moment';
 
-import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
+import { PioneerRevealLogService } from '../logs.service';
 import { KeyValue } from '../models/key-value';
 import { PioneerRevealLogQueryBuilder } from '../query-builder';
 

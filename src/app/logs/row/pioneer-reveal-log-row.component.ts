@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Hit, IndexTypeEnum } from '../models/response/hits';
-import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
+import { PioneerRevealLogService } from '../logs.service';
 
 /**
  * Individual row in log table

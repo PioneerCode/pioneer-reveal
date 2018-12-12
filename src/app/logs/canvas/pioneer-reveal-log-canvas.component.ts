@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { PioneerRevealLogQueryBuilder } from '../query-builder';
-import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
+import { PioneerRevealLogService } from '../logs.service';
 
 @Component({
   // tslint:disable-next-line:component-selector

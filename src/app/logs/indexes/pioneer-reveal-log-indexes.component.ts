@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { PioneerRevealLogQueryBuilder } from '../query-builder';
-import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
+import { PioneerRevealLogService } from '../logs.service';
 import { StateService } from '../state.service';
 import { IndexTypeEnum } from '../models/response/hits';
 

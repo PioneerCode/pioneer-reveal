@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Hit } from '../models/response/hits';
-import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
+import { PioneerRevealLogService } from '../logs.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
