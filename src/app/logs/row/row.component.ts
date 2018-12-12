@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Hit, IndexTypeEnum } from '../models/response/hits';
-import { PioneerRevealLogService } from '../logs.service';
+import { LogsService } from '../logs.service';
 
 /**
  * Individual row in log table
@@ -25,7 +25,7 @@ export class RowComponent {
    */
   public IndexTypeEnum = IndexTypeEnum;
 
-  constructor(private logsService: PioneerRevealLogService) { }
+  constructor(private logsService: LogsService) { }
 
   onExpandRowSelected() {
     this.log.pioneerRevelTracking.selected = !this.log.pioneerRevelTracking.selected;

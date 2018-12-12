@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { PioneerRevealLogQueryBuilder } from '../query-builder';
 import { Property } from '../models/key-value';
 import { Hit } from '../models/response/hits';
-import { PioneerRevealLogService } from '../logs.service';
+import { LogsService } from '../logs.service';
 import { StateService } from '../state.service';
 
 /**
@@ -28,7 +28,7 @@ export class RowExpandedComponent {
 
   constructor(
     public stateService: StateService,
-    private logsService: PioneerRevealLogService,
+    private logsService: LogsService,
     private queryBuilder: PioneerRevealLogQueryBuilder) { }
 
   onAddFilter(prop: Property) {

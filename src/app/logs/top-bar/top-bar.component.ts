@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import * as moment from 'moment';
 
-import { PioneerRevealLogService } from '../logs.service';
+import { LogsService } from '../logs.service';
 import { KeyValue } from '../models/key-value';
 import { PioneerRevealLogQueryBuilder } from '../query-builder';
 
@@ -40,7 +40,7 @@ export class TopBarComponent {
   }
 
   constructor(private queryBuilder: PioneerRevealLogQueryBuilder,
-    public logService: PioneerRevealLogService) {
+    public logService: LogsService) {
     this.selectedTimeRange = this.timeRanges[0].key;
     this.setDefaultRefreshRate();
   }

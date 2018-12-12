@@ -7,7 +7,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { PioneerRevealLogComponent } from './logs.component';
 import { CanvasComponent } from './canvas/canvas.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { CanvasSidebarComponent } from './canvas-sidebar/canvas-sidebar.component';
@@ -24,7 +23,6 @@ import { ServiceLocator } from './service-locator.service';
 
 @NgModule({
   declarations: [
-    PioneerRevealLogComponent,
     RowComponent,
     TableComponent,
     IndexesComponent,
@@ -46,7 +44,7 @@ import { ServiceLocator } from './service-locator.service';
     MatSlideToggleModule,
     MatSnackBarModule
   ],
-  exports: [PioneerRevealLogComponent]
+  exports: [CanvasComponent]
 })
 export class LogsModule {
   constructor(private injector: Injector) {

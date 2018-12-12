@@ -13,7 +13,7 @@ import { StateService } from './state.service';
 @Injectable({
   providedIn: 'root'
 })
-export class PioneerRevealLogService {
+export class LogsService {
   public searchResponse: SearchResponse;
   public logs = [] as Hit[];
 

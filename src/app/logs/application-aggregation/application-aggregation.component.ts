@@ -6,7 +6,7 @@ import { pioneerLogsIndices } from '../models';
 import { SearchRequest } from '../models/request/search-request';
 import { Aggregations, Bucket, Aggregation } from '../models/response/aggregations';
 import { PioneerRevealLogQueryBuilder } from '../query-builder';
-import { PioneerRevealLogService } from '../logs.service';
+import { LogsService } from '../logs.service';
 import { Sort } from '../models/request/sort';
 import { StateService } from '../state.service';
 
@@ -30,7 +30,7 @@ export class ApplicationAggregationComponent implements OnInit {
 
   constructor(
     public stateService: StateService,
-    private logsService: PioneerRevealLogService,
+    private logsService: LogsService,
     private queryBuilder: PioneerRevealLogQueryBuilder,
     private pioneerRevealRepository: PioneerRevealRepository,
   ) {

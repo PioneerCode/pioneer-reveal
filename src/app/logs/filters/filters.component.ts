@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PioneerRevealLogQueryBuilder } from '../query-builder';
 import { Property } from '../models/key-value';
-import { PioneerRevealLogService } from '../logs.service';
+import { LogsService } from '../logs.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -11,7 +11,7 @@ import { PioneerRevealLogService } from '../logs.service';
 })
 export class FiltersComponent {
 
-  constructor(public logService: PioneerRevealLogService,
+  constructor(public logService: LogsService,
     public queryBuilder: PioneerRevealLogQueryBuilder) { }
 
   onRemoveClick(filter: Property): void {

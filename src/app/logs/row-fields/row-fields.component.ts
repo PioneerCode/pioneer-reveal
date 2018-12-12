@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Hit } from '../models/response/hits';
-import { PioneerRevealLogService } from '../logs.service';
+import { LogsService } from '../logs.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -11,7 +11,7 @@ import { PioneerRevealLogService } from '../logs.service';
 export class RowFieldsComponent implements OnInit {
   @Input() log: Hit;
 
-  constructor(public logService: PioneerRevealLogService) { }
+  constructor(public logService: LogsService) { }
 
   ngOnInit() {
   }

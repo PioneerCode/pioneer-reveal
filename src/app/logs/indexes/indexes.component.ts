@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { PioneerRevealLogQueryBuilder } from '../query-builder';
-import { PioneerRevealLogService } from '../logs.service';
+import { LogsService } from '../logs.service';
 import { StateService } from '../state.service';
 import { IndexTypeEnum } from '../models/response/hits';
 
@@ -18,7 +18,7 @@ export class IndexesComponent implements OnInit {
 
   constructor(
     public stateService: StateService,
-    private logService: PioneerRevealLogService,
+    private logService: LogsService,
     private queryBuilder: PioneerRevealLogQueryBuilder,
     private formBuilder: FormBuilder
   ) { }

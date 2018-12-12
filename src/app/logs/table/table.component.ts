@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { PioneerRevealLogService } from '../logs.service';
+import { LogsService } from '../logs.service';
 
 /**
  * Log Table
@@ -13,6 +13,6 @@ import { PioneerRevealLogService } from '../logs.service';
 })
 export class TableComponent {
   constructor(
-    public logService: PioneerRevealLogService
+    public logService: LogsService
   ) { }
 }

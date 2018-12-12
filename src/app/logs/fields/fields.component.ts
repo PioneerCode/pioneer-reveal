@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PioneerRevealLogService } from '../logs.service';
+import { LogsService } from '../logs.service';
 import { StateService } from '../state.service';
 import { Property } from '../models/key-value';
 
@@ -15,7 +15,7 @@ import { Property } from '../models/key-value';
 })
 export class FieldsComponent {
   constructor(public stateService: StateService,
-    public logService: PioneerRevealLogService
+    public logService: LogsService
   ) { }
 
   onFieldClicked(field: Property): void {
