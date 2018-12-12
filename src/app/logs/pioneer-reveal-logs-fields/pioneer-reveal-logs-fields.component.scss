@@ -1,5 +1,4 @@
-@import "../../../../../src/bootstrap.scss";
-
+@import "../../../bootstrap.scss";
 ul {
   margin: 0;
   list-style: none;
@@ -11,8 +10,4 @@ ul {
 
 h5 {
   color: $gray-500;
-}
-
-h4 {
-  color: $gray-400;
 }

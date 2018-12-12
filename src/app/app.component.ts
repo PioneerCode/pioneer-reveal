@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { StateService } from 'projects/pioneer-reveal-logs/src/lib/state.service';
+import { StateService } from './logs/state.service';
 
 @Component({
   selector: 'app-root',

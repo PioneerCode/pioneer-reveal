@@ -9,7 +9,7 @@ import { SearchResponse } from './models/response/search-response';
 import { SearchRequest } from './models/request/search-request';
 import { PioneerLogsLoggingService } from 'src/app/pioneer-logs-logging.service';
 import { MessageService } from 'src/app/message.service';
-import { environment } from '../../../../src/environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
