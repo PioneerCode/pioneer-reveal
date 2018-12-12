@@ -1,5 +1,5 @@
 import { Property, KeyValue } from '../key-value';
-import { PioneerRevealLogQueryBuilder } from '../../pioneer-reveal-logs-query-builder';
+import { PioneerRevealLogQueryBuilder } from '../../query-builder';
 import { ServiceLocator } from '../../service-locator.service';
 
 export enum IndexTypeEnum {

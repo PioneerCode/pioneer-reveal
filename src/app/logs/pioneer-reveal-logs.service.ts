@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { PioneerRevealRepository } from './pioneer-reveal.repository';
-import { PioneerRevealLogQueryBuilder } from './pioneer-reveal-logs-query-builder';
+import { PioneerRevealLogQueryBuilder } from './query-builder';
 import { SearchResponse } from './models/response/search-response';
 import { KeyValue, Property } from './models/key-value';
 import { Hit, IndexTypeEnum } from './models/response/hits';

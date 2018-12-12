@@ -48,7 +48,7 @@ import { PioneerRevealLogsRowFieldsComponent } from './pioneer-reveal-logs-row-f
   ],
   exports: [PioneerRevealLogComponent]
 })
-export class PioneerRevealLogsModule {
+export class LogsModule {
   constructor(private injector: Injector) {
     ServiceLocator.injector = this.injector;
   }

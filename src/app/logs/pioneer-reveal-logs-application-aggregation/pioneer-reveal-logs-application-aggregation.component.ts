@@ -5,7 +5,7 @@ import { SearchResponse } from '../models/response/search-response';
 import { pioneerLogsIndices } from '../models';
 import { SearchRequest } from '../models/request/search-request';
 import { Aggregations, Bucket, Aggregation } from '../models/response/aggregations';
-import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
+import { PioneerRevealLogQueryBuilder } from '../query-builder';
 import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
 import { Sort } from '../models/request/sort';
 import { StateService } from '../state.service';
@@ -14,6 +14,7 @@ import { StateService } from '../state.service';
  * Filters logs by ApplicationName and ApplicationLayer
  */
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'pioneer-reveal-logs-application-aggregation',
   templateUrl: './pioneer-reveal-logs-application-aggregation.component.html',
   styleUrls: ['./pioneer-reveal-logs-application-aggregation.component.scss']

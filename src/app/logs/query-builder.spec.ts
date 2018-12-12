@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PioneerRevealLogQueryBuilder } from './pioneer-reveal-logs-query-builder';
+import { PioneerRevealLogQueryBuilder } from './query-builder';
 
 describe('PioneerRevealLogQueryBuilder', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

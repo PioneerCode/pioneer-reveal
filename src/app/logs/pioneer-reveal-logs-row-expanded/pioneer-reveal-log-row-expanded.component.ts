@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
+import { PioneerRevealLogQueryBuilder } from '../query-builder';
 import { KeyValue, Property } from '../models/key-value';
 import { Hit } from '../models/response/hits';
 import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';

@@ -3,7 +3,7 @@ import * as moment from 'moment';
 
 import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
 import { KeyValue } from '../models/key-value';
-import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
+import { PioneerRevealLogQueryBuilder } from '../query-builder';
 
 enum RefreshRateEnum {
   Paused = 'Paused',
@@ -11,6 +11,7 @@ enum RefreshRateEnum {
 }
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'pioneer-reveal-log-top-bar',
   templateUrl: './pioneer-reveal-log-top-bar.component.html',
   styleUrls: ['./pioneer-reveal-log-top-bar.component.scss']

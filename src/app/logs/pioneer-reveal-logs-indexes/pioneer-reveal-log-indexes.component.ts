@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { PioneerRevealLogQueryBuilder } from '../pioneer-reveal-logs-query-builder';
+import { PioneerRevealLogQueryBuilder } from '../query-builder';
 import { PioneerRevealLogService } from '../pioneer-reveal-logs.service';
 import { StateService } from '../state.service';
 import { IndexTypeEnum } from '../models/response/hits';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'pioneer-reveal-log-indexes',
   templateUrl: './pioneer-reveal-log-indexes.component.html',
   styleUrls: ['./pioneer-reveal-log-indexes.component.scss']
