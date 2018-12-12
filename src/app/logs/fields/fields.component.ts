@@ -8,11 +8,12 @@ import { Property } from '../models/key-value';
  * and have the row associated values show up in table.
  */
 @Component({
-  selector: 'pioneer-reveal-logs-fields',
-  templateUrl: './pioneer-reveal-logs-fields.component.html',
-  styleUrls: ['./pioneer-reveal-logs-fields.component.scss']
+  // tslint:disable-next-line:component-selector
+  selector: 'logs-fields',
+  templateUrl: './fields.component.html',
+  styleUrls: ['./fields.component.scss']
 })
-export class PioneerRevealLogsFieldsComponent {
+export class FieldsComponent {
   constructor(public stateService: StateService,
     public logService: PioneerRevealLogService
   ) { }

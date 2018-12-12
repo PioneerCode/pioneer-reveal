@@ -12,11 +12,11 @@ enum RefreshRateEnum {
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'pioneer-reveal-log-top-bar',
-  templateUrl: './pioneer-reveal-log-top-bar.component.html',
-  styleUrls: ['./pioneer-reveal-log-top-bar.component.scss']
+  selector: 'logs-top-bar',
+  templateUrl: './top-bar.component.html',
+  styleUrls: ['./top-bar.component.scss']
 })
-export class PioneerRevealLogTopBarComponent {
+export class TopBarComponent {
   public timeRanges = this.getTimeRanges();
   public refreshRates = this.getRefreshRates();
   public selectedOption: string;

@@ -7,11 +7,11 @@ import { PioneerRevealLogService } from '../logs.service';
  */
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: '[pioneer-reveal-log-row]',
-  templateUrl: './pioneer-reveal-log-row.component.html',
-  styleUrls: ['./pioneer-reveal-log-row.component.scss']
+  selector: '[logs-row]',
+  templateUrl: './row.component.html',
+  styleUrls: ['./row.component.scss']
 })
-export class PioneerRevealLogRowComponent {
+export class RowComponent {
   @Input() log: Hit;
 
   /**

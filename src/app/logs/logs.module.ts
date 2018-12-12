@@ -8,34 +8,34 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { PioneerRevealLogComponent } from './logs.component';
-import { PioneerRevealLogCanvasComponent } from './canvas/pioneer-reveal-log-canvas.component';
-import { PioneerRevealLogTopBarComponent } from './top-bar/pioneer-reveal-log-top-bar.component';
-import { PioneerRevealLogCanvasSidebarComponent } from './canvas-sidebar/pioneer-reveal-log-canvas-sidebar.component';
-import { PioneerRevealLogTableComponent } from './table/pioneer-reveal-log-table.component';
-import { PioneerRevealLogRowComponent } from './row/pioneer-reveal-log-row.component';
-import { PioneerRevealLogRowExpandedComponent } from './row-expanded/pioneer-reveal-log-row-expanded.component';
-import { PioneerRevealLogIndexesComponent } from './indexes/pioneer-reveal-log-indexes.component';
-import { PioneerRevealLogFiltersComponent } from './filters/pioneer-reveal-log-filters.component';
+import { CanvasComponent } from './canvas/canvas.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
+import { CanvasSidebarComponent } from './canvas-sidebar/canvas-sidebar.component';
+import { TableComponent } from './table/table.component';
+import { RowComponent } from './row/row.component';
+import { RowExpandedComponent } from './row-expanded/row-expanded.component';
+import { IndexesComponent } from './indexes/indexes.component';
+import { FiltersComponent } from './filters/filters.component';
 import { ApplicationAggregationComponent } from './application-aggregation/application-aggregation.component';
-import { PioneerRevealLogsFieldsComponent } from './fields/pioneer-reveal-logs-fields.component';
-import { PioneerRevealLogsRowFieldsComponent } from './row-fields/pioneer-reveal-logs-row-fields.component';
+import { FieldsComponent } from './fields/fields.component';
+import { RowFieldsComponent } from './row-fields/row-fields.component';
 
 import { ServiceLocator } from './service-locator.service';
 
 @NgModule({
   declarations: [
     PioneerRevealLogComponent,
-    PioneerRevealLogRowComponent,
-    PioneerRevealLogTableComponent,
-    PioneerRevealLogIndexesComponent,
-    PioneerRevealLogCanvasComponent,
-    PioneerRevealLogCanvasSidebarComponent,
-    PioneerRevealLogRowExpandedComponent,
-    PioneerRevealLogTopBarComponent,
+    RowComponent,
+    TableComponent,
+    IndexesComponent,
+    CanvasComponent,
+    CanvasSidebarComponent,
+    RowExpandedComponent,
+    TopBarComponent,
     ApplicationAggregationComponent,
-    PioneerRevealLogFiltersComponent,
-    PioneerRevealLogsFieldsComponent,
-    PioneerRevealLogsRowFieldsComponent
+    FiltersComponent,
+    FieldsComponent,
+    RowFieldsComponent
   ],
   imports: [
     BrowserModule,

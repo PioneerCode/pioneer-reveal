@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { PioneerRevealLogQueryBuilder } from '../query-builder';
-import { KeyValue, Property } from '../models/key-value';
+import { Property } from '../models/key-value';
 import { Hit } from '../models/response/hits';
 import { PioneerRevealLogService } from '../logs.service';
 import { StateService } from '../state.service';
@@ -12,11 +12,11 @@ import { StateService } from '../state.service';
  */
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: '[pioneer-reveal-log-row-expanded]',
-  templateUrl: './pioneer-reveal-log-row-expanded.component.html',
-  styleUrls: ['./pioneer-reveal-log-row-expanded.component.scss']
+  selector: '[logs-row-expanded]',
+  templateUrl: './row-expanded.component.html',
+  styleUrls: ['./row-expanded.component.scss']
 })
-export class PioneerRevealLogRowExpandedComponent {
+export class RowExpandedComponent {
   @Input() log: Hit;
 
   /**

@@ -5,11 +5,11 @@ import { PioneerRevealLogService } from '../logs.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'pioneer-reveal-log-canvas',
-  templateUrl: './pioneer-reveal-log-canvas.component.html',
-  styleUrls: ['./pioneer-reveal-log-canvas.component.scss']
+  selector: 'log-canvas',
+  templateUrl: './canvas.component.html',
+  styleUrls: ['./canvas.component.scss']
 })
-export class PioneerRevealLogCanvasComponent {
+export class CanvasComponent {
   constructor(
     public logService: PioneerRevealLogService,
     public queryBuilder: PioneerRevealLogQueryBuilder) {

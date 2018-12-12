@@ -5,11 +5,11 @@ import { PioneerRevealLogService } from '../logs.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'pioneer-reveal-log-filters',
-  templateUrl: './pioneer-reveal-log-filters.component.html',
-  styleUrls: ['./pioneer-reveal-log-filters.component.scss']
+  selector: 'logs-filters',
+  templateUrl: './filters.component.html',
+  styleUrls: ['./filters.component.scss']
 })
-export class PioneerRevealLogFiltersComponent {
+export class FiltersComponent {
 
   constructor(public logService: PioneerRevealLogService,
     public queryBuilder: PioneerRevealLogQueryBuilder) { }

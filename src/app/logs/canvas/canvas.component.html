@@ -1,17 +1,17 @@
 <div class="container-fluid flex-xl-nowrap">
   <div class="row">
     <div class="col-lg-2 col-md-3 p-0 pr-logs-aside">
-      <pioneer-reveal-log-canvas-sidebar></pioneer-reveal-log-canvas-sidebar>
+      <log-canvas-sidebar></log-canvas-sidebar>
     </div>
     <div class="col-lg-10 col-md-9 p-0 pr-logs-canvas">
-      <pioneer-reveal-log-top-bar></pioneer-reveal-log-top-bar>
-      <pioneer-reveal-log-filters *ngIf="queryBuilder.currentSearchFilters.length > 0"></pioneer-reveal-log-filters>
+      <logs-top-bar></logs-top-bar>
+      <logs-filters *ngIf="queryBuilder.currentSearchFilters.length > 0"></logs-filters>
       <div class="reveal-card-container">
         <div class="reveal-card">
           <div class="row">
             <div class="col-sm">
               <div class="container-fluid p-0">
-                <pioneer-reveal-log-table></pioneer-reveal-log-table>
+                <logs-table></logs-table>
               </div>
             </div>
           </div>

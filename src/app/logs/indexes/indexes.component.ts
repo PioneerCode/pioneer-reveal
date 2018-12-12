@@ -8,11 +8,11 @@ import { IndexTypeEnum } from '../models/response/hits';
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'pioneer-reveal-log-indexes',
-  templateUrl: './pioneer-reveal-log-indexes.component.html',
-  styleUrls: ['./pioneer-reveal-log-indexes.component.scss']
+  selector: 'logs-indexes',
+  templateUrl: './indexes.component.html',
+  styleUrls: ['./indexes.component.scss']
 })
-export class PioneerRevealLogIndexesComponent implements OnInit {
+export class IndexesComponent implements OnInit {
   public form: FormGroup;
   public indexTypeEnum = IndexTypeEnum;
 
