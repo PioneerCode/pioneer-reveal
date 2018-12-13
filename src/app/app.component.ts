@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { StateService } from './logs/state.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessageService } from './core/message.service';
+import { AuthenticationService } from './core/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +13,9 @@ export class AppComponent {
   title = 'reVeal: Pioneer Logs';
 
   constructor(public stateService: StateService,
-    public messageService: MessageService,
-    public snackBar: MatSnackBar) {
+    messageService: MessageService,
+    private snackBar: MatSnackBar,
+    public authService: AuthenticationService) {
 
     messageService.messageSource$.subscribe(
       message => {

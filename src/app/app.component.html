@@ -1,6 +1,6 @@
 <mat-progress-bar class="loader" mode="indeterminate" *ngIf="stateService.isLoading"></mat-progress-bar>
-<header>
-  <ul class="list-inline">
+<header class="d-flex align-items-center">
+  <ul class="list-inline ">
     <li class="list-inline-item">
       <div class="icon">
         <svg xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 208.7 161.3" x="0px"
@@ -16,5 +16,8 @@
       <h1>reVeal</h1>
     </li>
   </ul>
+  <div class="float-right" *ngIf="authService.isAuthenticated">
+    <i class="fas fa-sign-out-alt"></i> Logout
+  </div>
 </header>
 <router-outlet></router-outlet>

@@ -10,6 +10,10 @@ import { StateService } from '../logs/state.service';
 })
 export class AuthenticationService {
 
+  get isAuthenticated(): boolean {
+    return localStorage.getItem('token') != null;
+  }
+
   constructor(
     private revealRepository: PioneerRevealRepository,
     private router: Router,
@@ -30,19 +34,17 @@ export class AuthenticationService {
       });
   }
 
-  private setCurrentToken(token: IToken): void {
-    localStorage.setItem('token', JSON.stringify(token));
-  }
-
   getCurrentToken(): IToken {
     return JSON.parse(localStorage.getItem('token'));
   }
 
-  isAuthenticated(): boolean {
-    return localStorage.getItem('token') != null;
-  }
+
 
   logout() {
     localStorage.removeItem('token');
+  }
+
+  private setCurrentToken(token: IToken): void {
+    localStorage.setItem('token', JSON.stringify(token));
   }
 }

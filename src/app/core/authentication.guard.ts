@@ -15,19 +15,10 @@ export class AuthenticationGuard implements CanActivate {
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.authService.isAuthenticated()) {
+    if (localStorage.getItem('token')) {
       return true;
     }
-
-    this.router.navigate(
-      [''],
-      {
-        queryParams: {
-          returnUrl: state.url
-        }
-      }
-    );
-
+    this.router.navigate(['/'], { queryParams: { returnUrl: state.url } });
     return false;
   }
 }
