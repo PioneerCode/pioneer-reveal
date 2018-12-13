@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 import { Index } from './models';
 import { SearchRequest } from './models/request/search-request';
 import { SearchResponse } from './models/response/search-response';
-import { MessageService } from '../shared/message.service';
+import { MessageService } from './message.service';
 import { ILoginRequest, IUser } from '../user';
 
 @Injectable({
@@ -30,7 +30,7 @@ export class PioneerRevealRepository {
     };
     return this.http.post<IUser>(`${environment.elasticsearchUrl}/authenticate`, model, options)
       .pipe(
-        catchError(this.handleError('login', {} as IUser))
+        catchError(this.handleError('login', null, 'Login Failed'))
       );
   }
 
@@ -48,24 +48,21 @@ export class PioneerRevealRepository {
       );
   }
 
-  /** Log a HeroService message with the MessageService */
-  private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
-  }
-
   /**
    * Handle Http operation that failed.
    * Let the app continue.
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T>(operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T, message?: string) {
     return (error: any): Observable<T> => {
       // Send the error to remote logging infrastructure
-      this.loggingService.handleApiError('Failed getting todo!', error);
+      // this.loggingService.handleApiError(operation, error);
 
       // Better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
+      if (message) {
+        this.messageService.add(message);
+      }
 
       // Let the app keep running by returning an empty result.
       return of(result as T);

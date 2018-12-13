@@ -3,7 +3,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 /**
  * Modules
  */
@@ -30,7 +30,8 @@ import { TokenInterceptor } from './token.interceptor';
     CoreModule,
     LoginModule,
     BrowserAnimationsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSnackBarModule
   ],
   providers: [
     {

@@ -7,12 +7,12 @@
           <i class="fas fa-user-lock fa-stack-1x fa-inverse"></i>
         </div>
         <mat-form-field class="w-100">
-          <input matInput placeholder="Username" formControlName="username" type="text" [attr.disabled]="stateService.isLoading">
+          <input matInput placeholder="Username" formControlName="username" type="text" [readonly]="stateService.isLoading">
         </mat-form-field>
         <mat-form-field class="w-100">
-          <input matInput placeholder="Password" formControlName="password" type="password" [attr.disabled]="stateService.isLoading">
+          <input matInput placeholder="Password" formControlName="password" type="password" [readonly]="stateService.isLoading">
         </mat-form-field>
-        <button type="submit" mat-raised-button color="primary" [attr.disabled]="stateService.isLoading">Login</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="stateService.isLoading">Login</button>
         <p>© 2018. Developed by <a alt="Chad Ramos" href="https://twitter.com/chad_ramos">Chad
             Ramos</a> at <a alt="Pioneer Code" href="https://pioneercode.com">Pioneer Code</a> : <a href="https://github.com/PioneerCode/pioneer-reveal">
             <i class="fas fa-code-branch"></i> Github

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { AuthenticationService } from 'src/app/authentication.service';
+import { AuthenticationService } from 'src/app/core/authentication.service';
 import { StateService } from 'src/app/logs/state.service';
 
 @Component({
@@ -12,8 +12,8 @@ import { StateService } from 'src/app/logs/state.service';
 export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
-    username: new FormControl(),
-    password: new FormControl()
+    username: new FormControl({value: null, disabled: this.stateService.isLoading}),
+    password: new FormControl({value: null, disabled: this.stateService.isLoading})
   });
 
   constructor(
