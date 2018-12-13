@@ -37,14 +37,14 @@ export class PioneerRevealRepository {
   getIndices(): Observable<Index[]> {
     return this.http.get<Index[]>(`${this.url}/_cat/indices?format=json`)
       .pipe(
-        catchError(this.handleError('getIndices', null, 'Oops! We had trouble getting your data.'))
+        catchError(this.handleError('getIndices', null, 'Oops! We are having trouble getting your data.'))
       );
   }
 
   getLogs(index: string, request: SearchRequest): Observable<SearchResponse> {
     return this.http.post<SearchResponse>(`${this.url}/${index}/_search?format=json`, request)
       .pipe(
-        catchError(this.handleError('getLogs', null, 'Oops! We had trouble getting your data.'))
+        catchError(this.handleError('getLogs', null, 'Oops! We are having trouble getting your data.'))
       );
   }
 
