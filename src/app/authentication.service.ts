@@ -22,7 +22,7 @@ export class AuthenticationService {
       .subscribe(
         (resp: IUser) => {
           this.setCurrentToken({
-            session_id: resp.token
+            token: resp.token
           } as IToken);
           this.stateService.isLoading = false;
           this.router.navigateByUrl(returnUrl);

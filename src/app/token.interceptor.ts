@@ -11,9 +11,11 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const currentToken = this.authenticationService.getCurrentToken();
-    if (currentToken && currentToken.session_id) {
+    if (currentToken && currentToken.token) {
       req = req.clone({
-        withCredentials: true
+        setHeaders: {
+          Authorization: `Bearer ${currentToken.token}`
+        }
       });
     }
     return next.handle(req);

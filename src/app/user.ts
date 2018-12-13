@@ -6,7 +6,7 @@ export interface IUser {
 }
 
 export interface IToken {
-  session_id: string;
+  token: string;
 }
 
 export interface ILoginRequest {
