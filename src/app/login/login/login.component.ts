@@ -12,8 +12,8 @@ import { StateService } from 'src/app/logs/state.service';
 export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
-    username: new FormControl({value: null, disabled: this.stateService.isLoading}),
-    password: new FormControl({value: null, disabled: this.stateService.isLoading})
+    username: new FormControl(),
+    password: new FormControl()
   });
 
   constructor(
@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.authService.logout();
   }
 
   onSubmit() {

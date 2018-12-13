@@ -2,9 +2,18 @@
   <div class="row justify-content-center align-items-center">
     <div class="col-4">
       <form class="login-form text-center" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h1 class="logo">reVeal</h1>
         <div class="fa-stack fa-2x">
           <i class="fas fa-circle fa-stack-2x"></i>
-          <i class="fas fa-user-lock fa-stack-1x fa-inverse" [ngClass]="{'fa-spin':stateService.isLoading}"></i>
+          <div class="fa-stack-1x fa-spin" [ngClass]="{'fa-spin':stateService.isLoading}">
+            <svg xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 208.7 161.3"
+              x="0px" xmlns="http://www.w3.org/2000/svg" y="0px">
+              <polygon points="122.2,7.6 122.5,7.6 200.3,161.2 207.6,161.2 125.9,0.3 118.8,0.3 82.7,71.5 67.8,42.2 60.8,42.2 0.4,161.2
+                        7.7,161.2 64.1,49.5 64.5,49.5 79.2,78.5 37.2,161.2 44.5,161.2 82.7,85.6 98.7,117.2 76.3,161.2 83.6,161.2 102.3,124.3
+                        120.9,161.2 128.2,161.2 105.8,117.2 122.3,84.6 122.7,84.6 161.4,161.2 168.6,161.2 126,77.3 118.9,77.3 102.3,110.2 86.3,78.6 "
+                style="fill:#fff;"></polygon>
+            </svg>
+          </div>
         </div>
         <mat-form-field class="w-100">
           <input matInput placeholder="Username" formControlName="username" type="text" [readonly]="stateService.isLoading">

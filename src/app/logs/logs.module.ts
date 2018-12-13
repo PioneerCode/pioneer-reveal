@@ -20,6 +20,7 @@ import { FieldsComponent } from './fields/fields.component';
 import { RowFieldsComponent } from './row-fields/row-fields.component';
 
 import { ServiceLocator } from './service-locator.service';
+import { SharedModule } from '../shared/share.module';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,9 @@ import { ServiceLocator } from './service-locator.service';
     MatCheckboxModule,
     MatTabsModule,
     MatSlideToggleModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    SharedModule
+
   ],
   exports: [CanvasComponent]
 })

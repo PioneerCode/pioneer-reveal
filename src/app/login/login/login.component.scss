@@ -6,15 +6,18 @@
 }
 
 .row {
-  top: 2.875rem;
-  height: calc(100vh - 2.875rem);
+  height: calc(100vh);
 }
 
 .login-form {
   background: color('white');
-  padding: 4rem 2rem 1rem;
+  padding: 3rem 2rem 1rem;
   box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.50), 0 5px 15px 0 rgba(0, 0, 0, 0.55);
   border-radius: 4px;
+  h1 {
+    margin: 0 0 1rem;
+    font-weight: 200;
+  }
   .fa-stack {
     margin: 0 0 2rem;
     .fa-circle {
