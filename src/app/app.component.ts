@@ -18,7 +18,7 @@ export class AppComponent {
     messageService.messageSource$.subscribe(
       message => {
         console.log(message);
-        this.snackBar.open(message[0], 'close');
+        this.snackBar.open(message, 'X');
       });
   }
 }

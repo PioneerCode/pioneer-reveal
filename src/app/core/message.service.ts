@@ -5,18 +5,18 @@ import { Subject } from 'rxjs/internal/Subject';
   providedIn: 'root'
 })
 export class MessageService {
-  messages: string[] = [];
+  messages: string;
 
-  private messageAddedSource = new Subject<string[]>();
+  private messageAddedSource = new Subject<string>();
 
   messageSource$ = this.messageAddedSource.asObservable();
 
   add(message: string) {
-    this.messages.push(message);
+    this.messages = message;
     this.messageAddedSource.next(this.messages);
   }
 
   clear() {
-    this.messages = [] as string[];
+    this.messages = null;
   }
 }

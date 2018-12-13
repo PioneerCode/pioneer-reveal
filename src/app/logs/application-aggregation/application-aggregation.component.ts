@@ -21,7 +21,10 @@ import { pioneerLogsIndices } from 'src/app/core/models';
 })
 export class ApplicationAggregationComponent implements OnInit {
   get applications(): Bucket[] {
-    return this.searchResponse.aggregations.group_by_ApplicationName.buckets;
+    if (this.searchResponse != null) {
+      return this.searchResponse.aggregations.group_by_ApplicationName.buckets;
+    }
+    return [];
   }
 
   public layers = [] as string[];

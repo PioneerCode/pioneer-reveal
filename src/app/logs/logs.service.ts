@@ -94,10 +94,12 @@ export class LogsService {
     this.stateService.isLoading = true;
     this.pioneerRevealRepository.getLogs(this.queryBuilder.currentSearchIndices, this.queryBuilder.searchRequest)
       .subscribe((searchResponse) => {
-        this.searchResponse = searchResponse;
-        this.logs = searchResponse.hits.hits.map(x => new Hit(x));
-        this.bindOpenedState();
-        this.initializeFieldsSelected();
+        if (searchResponse != null) {
+          this.searchResponse = searchResponse;
+          this.logs = searchResponse.hits.hits.map(x => new Hit(x));
+          this.bindOpenedState();
+          this.initializeFieldsSelected();
+        }
         this.stateService.isLoading = false;
       });
   }

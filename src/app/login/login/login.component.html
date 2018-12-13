@@ -4,7 +4,7 @@
       <form class="login-form text-center" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="fa-stack fa-2x">
           <i class="fas fa-circle fa-stack-2x"></i>
-          <i class="fas fa-user-lock fa-stack-1x fa-inverse"></i>
+          <i class="fas fa-user-lock fa-stack-1x fa-inverse" [ngClass]="{'fa-spin':stateService.isLoading}"></i>
         </div>
         <mat-form-field class="w-100">
           <input matInput placeholder="Username" formControlName="username" type="text" [readonly]="stateService.isLoading">
