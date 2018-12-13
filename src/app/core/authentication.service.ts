@@ -38,10 +38,9 @@ export class AuthenticationService {
     return JSON.parse(localStorage.getItem('token'));
   }
 
-
-
   logout() {
     localStorage.removeItem('token');
+    this.router.navigateByUrl('');
   }
 
   private setCurrentToken(token: IToken): void {
