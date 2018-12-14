@@ -80,19 +80,23 @@ export class LogsService {
     return [];
   }
 
-  constructor(
-    private authService: AuthenticationService,
+  constructor(private authService: AuthenticationService,
     private stateService: StateService,
     private queryBuilder: PioneerRevealLogQueryBuilder,
     private pioneerRevealRepository: PioneerRevealRepository) {
-    // this.queryBuilder.setIndex(IndexTypeEnum.Error);
-    // this.getLogs();
+    this.queryBuilder.setIndex(IndexTypeEnum.Error);
+    this.getLogs();
   }
 
   /**
-   * Get Logs based on the state of the query builder vs this.logs
+   * Get Logs based on the state of the query builder
    */
   getLogs() {
+    if (!this.queryBuilder.currentSearchIndices) {
+      this.logs = [];
+      return;
+    }
+
     this.stateService.isLoading = true;
     this.pioneerRevealRepository.getLogs(this.queryBuilder.currentSearchIndices, this.queryBuilder.searchRequest)
       .subscribe((searchResponse) => {
