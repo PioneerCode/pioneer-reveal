@@ -6,6 +6,7 @@ import { StateService } from './state.service';
 import { PioneerRevealRepository } from '../core/pioneer-reveal.repository';
 import { Hit, IndexTypeEnum } from '../core/models/response/hits';
 import { SearchResponse } from '../core/models/response/search-response';
+import { AuthenticationService } from '../core/authentication.service';
 
 /**
  * Shared core functionality used across components
@@ -80,11 +81,12 @@ export class LogsService {
   }
 
   constructor(
+    private authService: AuthenticationService,
     private stateService: StateService,
     private queryBuilder: PioneerRevealLogQueryBuilder,
     private pioneerRevealRepository: PioneerRevealRepository) {
-    this.queryBuilder.setIndex(IndexTypeEnum.Error);
-    this.getLogs();
+    // this.queryBuilder.setIndex(IndexTypeEnum.Error);
+    // this.getLogs();
   }
 
   /**
@@ -163,10 +165,23 @@ export class LogsService {
     if (this.refreshInterval) {
       clearInterval(this.refreshInterval);
     }
+
     if (this.refreshRate.key !== 'Paused' || !this.realtimeChecked) {
-      this.refreshInterval = setInterval(() => {
-        this.getLogs();
-      }, this._refreshRate.value * 1000);
+      this.initSetInterval();
     }
+  }
+
+  /**
+   * Initialize a new setInterval loop
+   */
+  private initSetInterval() {
+    this.refreshInterval = setInterval(() => {
+      // if we are not authenticated, i.e. logged out, we need to short circuit
+      if (!this.authService.isAuthenticated) {
+        clearInterval(this.refreshInterval);
+      } else {
+        this.getLogs();
+      }
+    }, this._refreshRate.value * 1000);
   }
 }

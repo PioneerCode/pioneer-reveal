@@ -17,10 +17,8 @@ export class AppComponent {
     private snackBar: MatSnackBar,
     public authService: AuthenticationService) {
 
-    messageService.messageSource$.subscribe(
-      message => {
-        console.log(message);
-        this.snackBar.open(message, 'X');
-      });
+    messageService.messageSource$.subscribe(message => {
+      this.snackBar.open(message, 'X');
+    });
   }
 }
