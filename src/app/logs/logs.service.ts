@@ -84,6 +84,10 @@ export class LogsService {
     private stateService: StateService,
     private queryBuilder: PioneerRevealLogQueryBuilder,
     private pioneerRevealRepository: PioneerRevealRepository) {
+    this.initialize();
+  }
+
+  initialize(): void {
     this.queryBuilder.setIndex(IndexTypeEnum.Error);
     this.getLogs();
   }

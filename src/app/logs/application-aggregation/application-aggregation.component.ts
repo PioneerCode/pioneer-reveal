@@ -8,7 +8,7 @@ import { SearchResponse } from 'src/app/core/models/response/search-response';
 import { SearchRequest } from 'src/app/core/models/request/search-request';
 import { PioneerRevealLogQueryBuilder } from '../query-builder';
 import { Sort } from 'src/app/core/models/request/sort';
-import { pioneerLogsIndices } from 'src/app/core/models';
+import { pioneerLogsIndices, Index } from 'src/app/core/models';
 
 /**
  * Filters logs by ApplicationName and ApplicationLayer
@@ -20,6 +20,9 @@ import { pioneerLogsIndices } from 'src/app/core/models';
   styleUrls: ['./application-aggregation.component.scss']
 })
 export class ApplicationAggregationComponent implements OnInit {
+  public layers = [] as string[];
+  public indices = [] as Index[];
+
   get applications(): Bucket[] {
     if (this.searchResponse != null) {
       return this.searchResponse.aggregations.group_by_ApplicationName.buckets;
@@ -27,7 +30,6 @@ export class ApplicationAggregationComponent implements OnInit {
     return [];
   }
 
-  public layers = [] as string[];
   private searchResponse: SearchResponse;
   private request = new SearchRequest();
 
@@ -60,16 +62,12 @@ export class ApplicationAggregationComponent implements OnInit {
   }
 
   ngOnInit() {
-    let indices = '';
-    pioneerLogsIndices.forEach(index => {
-      indices = `${indices}${index},`;
-    });
-    this.pioneerRevealRepository.getLogs(indices.slice(0, -1), this.request)
+    this.pioneerRevealRepository.getLogs('pioneer*', this.request)
       .subscribe((response) => {
         this.searchResponse = response;
         this.layers = [];
         this.applications.forEach(application => {
-          application.group_by_ApplicationLayer.buckets.forEach(element => {
+          application.group_by_ApplicationLayer.buckets.forEach((element: { key: string; }) => {
             this.layers.push(element.key);
           });
         });

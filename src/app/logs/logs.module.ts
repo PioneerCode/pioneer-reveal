@@ -19,7 +19,7 @@ import { ApplicationAggregationComponent } from './application-aggregation/appli
 import { FieldsComponent } from './fields/fields.component';
 import { RowFieldsComponent } from './row-fields/row-fields.component';
 
-import { ServiceLocator } from './service-locator.service';
+import { ServiceLocator } from '../core/service-locator.service';
 import { SharedModule } from '../shared/share.module';
 
 @NgModule({
@@ -49,8 +49,4 @@ import { SharedModule } from '../shared/share.module';
   ],
   exports: [CanvasComponent]
 })
-export class LogsModule {
-  constructor(private injector: Injector) {
-    ServiceLocator.injector = this.injector;
-  }
-}
+export class LogsModule { }
