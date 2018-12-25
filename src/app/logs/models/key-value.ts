@@ -30,5 +30,10 @@ export class Property extends KeyValue {
    * Denotes if this is a property of Pioneer Logs
    */
   isPioneerProperty: boolean;
+
+  /**
+   * Human-readable version of key
+   */
+  humanKey: string;
 }
 
