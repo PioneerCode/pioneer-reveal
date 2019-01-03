@@ -12,7 +12,7 @@
       <b>Location </b>: {{log._source['ApplicationName']}} - {{log._source['ApplicationLayer']}} -
       {{log._source['ApplicationLocation']}} -
       <ng-container *ngIf="log._index === IndexTypeEnum.Error">
-        <span class="error-message"><b>Error</b>: {{log._source['InnerMostExceptionMessage']}}</span>
+        <span class="error-message"><b>Error</b>: {{log._source['InnermostExceptionMessage']}}</span>
       </ng-container>
       <ng-container *ngIf="log._index === IndexTypeEnum.Usage">
         <span class="usage-message"><b>Tracking</b>: {{log._source['Message']}}</span>
