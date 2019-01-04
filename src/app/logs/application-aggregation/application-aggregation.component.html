@@ -4,9 +4,11 @@
     <mat-checkbox [disabled]="stateService.isLoading" (change)="onApplicationClick(application.key)">{{application.key}}</mat-checkbox>
   </li>
 </ul>
-<h6>Layers</h6>
-<ul>
-  <li *ngFor="let layer of layers">
-    <mat-checkbox [disabled]="stateService.isLoading" (change)="onLayerClick(layer)">{{layer}}</mat-checkbox>
-  </li>
-</ul>
+<ng-container *ngIf="layers.length > 0">
+  <h6>Layers</h6>
+  <ul>
+    <li *ngFor="let layer of layers">
+      <mat-checkbox [disabled]="stateService.isLoading" (change)="onLayerClick(layer)">{{layer}}</mat-checkbox>
+    </li>
+  </ul>
+</ng-container>
