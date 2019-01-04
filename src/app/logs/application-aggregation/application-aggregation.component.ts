@@ -8,7 +8,7 @@ import { SearchResponse } from 'src/app/core/models/response/search-response';
 import { SearchRequest } from 'src/app/core/models/request/search-request';
 import { PioneerRevealLogQueryBuilder } from '../query-builder';
 import { Sort } from 'src/app/core/models/request/sort';
-import { pioneerLogsIndices, Index } from 'src/app/core/models';
+import { Index } from 'src/app/core/models';
 
 /**
  * Filters logs by ApplicationName and ApplicationLayer
@@ -24,7 +24,7 @@ export class ApplicationAggregationComponent implements OnInit {
   public indices = [] as Index[];
 
   get applications(): Bucket[] {
-    if (this.searchResponse != null) {
+    if (this.searchResponse != null && this.searchResponse.aggregations != null) {
       return this.searchResponse.aggregations.group_by_ApplicationName.buckets;
     }
     return [];

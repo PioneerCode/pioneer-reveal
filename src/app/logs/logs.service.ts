@@ -7,6 +7,7 @@ import { PioneerRevealRepository } from '../core/pioneer-reveal.repository';
 import { Hit, IndexTypeEnum } from '../core/models/response/hits';
 import { SearchResponse } from '../core/models/response/search-response';
 import { AuthenticationService } from '../core/authentication.service';
+import { Index } from '../core/models';
 
 /**
  * Shared core functionality used across components
@@ -35,6 +36,12 @@ export class LogsService {
   public currentFieldsSelected = {};
 
   /**
+   * Used to drive UI and disable indices that don't have and index
+   * create yet in Elastic
+   */
+  public validIndices = {} as { [x: string]: boolean; };
+
+  /**
    * If > 0 fields have been selected in the pioneer-reveal-logs-fields
    * component, return true;
    */
@@ -58,6 +65,11 @@ export class LogsService {
 
   // TODO: Figure out why NodeJs.Timer throws "Cannot find namespace NodeJS"
   private refreshInterval: any;
+
+  /**
+   * Indices available in Elastic
+   */
+  private indices = [] as Index[];
 
   private _refreshRate: KeyValue;
   set refreshRate(rate: KeyValue) {
@@ -88,8 +100,29 @@ export class LogsService {
   }
 
   initialize(): void {
-    this.queryBuilder.setIndex(IndexTypeEnum.Error);
-    this.getLogs();
+    this.validIndices[IndexTypeEnum.Diagnostic] = false;
+    this.validIndices[IndexTypeEnum.Error] = false;
+    this.validIndices[IndexTypeEnum.Performance] = false;
+    this.validIndices[IndexTypeEnum.Usage] = false;
+    this.getIndices()
+      .then(() => {
+        this.getLogs();
+      });
+  }
+
+  /**
+   * Get a list of available indices
+   */
+  getIndices(): any {
+    return this.pioneerRevealRepository.getIndices()
+      .toPromise()
+      .then((resp) => {
+        this.indices = resp;
+        this.setValidIndices();
+        if (this.validIndices[IndexTypeEnum.Error]) {
+          this.queryBuilder.setIndex(IndexTypeEnum.Error);
+        }
+      });
   }
 
   /**
@@ -102,8 +135,9 @@ export class LogsService {
     }
 
     this.stateService.isLoading = true;
-    this.pioneerRevealRepository.getLogs(this.queryBuilder.currentSearchIndices, this.queryBuilder.searchRequest)
-      .subscribe((searchResponse) => {
+    return this.pioneerRevealRepository.getLogs(this.queryBuilder.currentSearchIndices, this.queryBuilder.searchRequest)
+      .toPromise()
+      .then((searchResponse) => {
         if (searchResponse != null) {
           this.searchResponse = searchResponse;
           this.logs = searchResponse.hits.hits.map(x => new Hit(x));
@@ -191,5 +225,22 @@ export class LogsService {
         this.getLogs();
       }
     }, this._refreshRate.value * 1000);
+  }
+
+  /**
+   * Set valid indices base on current indices in elastic.
+   */
+  private setValidIndices() {
+    this.indices.forEach(index => {
+      for (const key in this.validIndices) {
+        if (!this.validIndices.hasOwnProperty(key)) {
+          continue;
+        }
+        if (key === index.index) {
+          this.validIndices[key] = true;
+          break;
+        }
+      }
+    });
   }
 }
