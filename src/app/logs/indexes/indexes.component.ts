@@ -18,7 +18,7 @@ export class IndexesComponent implements OnInit {
 
   constructor(
     public stateService: StateService,
-    private logService: LogsService,
+    public logService: LogsService,
     private queryBuilder: PioneerRevealLogQueryBuilder,
     private formBuilder: FormBuilder
   ) { }
