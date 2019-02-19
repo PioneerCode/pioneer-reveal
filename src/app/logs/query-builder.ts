@@ -38,7 +38,7 @@ export class PioneerRevealLogQueryBuilder {
 
   constructor(
   ) {
-    this.searchRequest.size = 500;
+    this.searchRequest.size = 20;
     this.searchRequest.from = 0;
     this.searchRequest.query = new Query();
   }

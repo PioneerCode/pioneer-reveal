@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { LogsService } from '../logs.service';
-import { StateService } from '../state.service';
-import { Property } from '../models/key-value';
+
+import { LogsService } from '../../logs.service';
+import { StateService } from '../../state.service';
+import { Property } from '../../models/key-value';
 
 /**
  * Allow user to select Pioneer Log fields from sidebar

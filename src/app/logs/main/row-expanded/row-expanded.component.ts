@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 
-import { PioneerRevealLogQueryBuilder } from '../query-builder';
-import { Property } from '../models/key-value';
-import { LogsService } from '../logs.service';
-import { StateService } from '../state.service';
+import { PioneerRevealLogQueryBuilder } from '../../query-builder';
+import { Property } from '../../models/key-value';
+import { LogsService } from '../../logs.service';
+import { StateService } from '../../state.service';
 import { Hit } from 'src/app/core/models/response/hits';
 
 /**

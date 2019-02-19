@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { PioneerRevealLogQueryBuilder } from '../query-builder';
-import { LogsService } from '../logs.service';
-import { StateService } from '../state.service';
+import { PioneerRevealLogQueryBuilder } from '../../query-builder';
+import { LogsService } from '../../logs.service';
+import { StateService } from '../../state.service';
 import { IndexTypeEnum } from 'src/app/core/models/response/hits';
 
 @Component({

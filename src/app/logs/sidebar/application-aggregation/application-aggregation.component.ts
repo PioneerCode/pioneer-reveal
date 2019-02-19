@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LogsService } from '../logs.service';
-import { StateService } from '../state.service';
+import { LogsService } from '../../logs.service';
+import { StateService } from '../../state.service';
 import { PioneerRevealRepository } from 'src/app/core/pioneer-reveal.repository';
 import { Bucket, Aggregations, Aggregation } from 'src/app/core/models/response/aggregations';
 import { SearchResponse } from 'src/app/core/models/response/search-response';
 import { SearchRequest } from 'src/app/core/models/request/search-request';
-import { PioneerRevealLogQueryBuilder } from '../query-builder';
+import { PioneerRevealLogQueryBuilder } from '../../query-builder';
 import { Sort } from 'src/app/core/models/request/sort';
 import { Index } from 'src/app/core/models';
 

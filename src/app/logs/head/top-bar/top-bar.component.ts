@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import * as moment from 'moment';
 
-import { LogsService } from '../logs.service';
-import { KeyValue } from '../models/key-value';
-import { PioneerRevealLogQueryBuilder } from '../query-builder';
+import { LogsService } from '../../logs.service';
+import { KeyValue } from '../../models/key-value';
+import { PioneerRevealLogQueryBuilder } from '../../query-builder';
 
 enum RefreshRateEnum {
   Paused = 'Paused',

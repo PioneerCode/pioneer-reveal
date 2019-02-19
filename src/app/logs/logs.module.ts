@@ -1,4 +1,7 @@
-import { NgModule, Injector } from '@angular/core';
+/**
+ * Core
+ */
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -6,20 +9,33 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { CanvasComponent } from './canvas/canvas.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
-import { CanvasSidebarComponent } from './canvas-sidebar/canvas-sidebar.component';
-import { TableComponent } from './table/table.component';
-import { RowComponent } from './row/row.component';
-import { RowExpandedComponent } from './row-expanded/row-expanded.component';
-import { IndexesComponent } from './indexes/indexes.component';
-import { FiltersComponent } from './filters/filters.component';
-import { ApplicationAggregationComponent } from './application-aggregation/application-aggregation.component';
-import { FieldsComponent } from './fields/fields.component';
-import { RowFieldsComponent } from './row-fields/row-fields.component';
 
-import { ServiceLocator } from '../core/service-locator.service';
+/**
+ * Header Content
+ */
+import { TopBarComponent } from './head/top-bar/top-bar.component';
+import { FiltersComponent } from './head/filters/filters.component';
+
+/**
+ * Main Content
+ */
+import { TableComponent } from './main/table/table.component';
+import { RowComponent } from './main/row/row.component';
+import { RowExpandedComponent } from './main/row-expanded/row-expanded.component';
+import { RowFieldsComponent } from './main/row-fields/row-fields.component';
+
+
+/**
+ * Sidebar Content
+ */
+import { IndexesComponent } from './sidebar/indexes/indexes.component';
+import { CanvasSidebarComponent } from './sidebar/canvas-sidebar/canvas-sidebar.component';
+import { ApplicationAggregationComponent } from './sidebar/application-aggregation/application-aggregation.component';
+import { FieldsComponent } from './sidebar/fields/fields.component';
+
 import { SharedModule } from '../shared/share.module';
 
 @NgModule({
@@ -44,8 +60,8 @@ import { SharedModule } from '../shared/share.module';
     MatTabsModule,
     MatSlideToggleModule,
     MatSnackBarModule,
-    SharedModule
-
+    SharedModule,
+    MatPaginatorModule
   ],
   exports: [CanvasComponent]
 })

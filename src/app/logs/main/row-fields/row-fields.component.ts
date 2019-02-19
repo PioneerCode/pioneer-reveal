@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { LogsService } from '../logs.service';
+
+import { LogsService } from '../../logs.service';
 import { Hit } from 'src/app/core/models/response/hits';
 
 @Component({
