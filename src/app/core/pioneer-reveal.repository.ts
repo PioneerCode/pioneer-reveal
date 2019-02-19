@@ -16,6 +16,11 @@ import { ILoginRequest, IUser } from '../user';
   providedIn: 'root'
 })
 export class PioneerRevealRepository {
+
+  private httpOptions = {
+    withCredentials: true,
+  };
+
   url = environment.elasticsearchUrl;
 
   constructor(
@@ -24,11 +29,8 @@ export class PioneerRevealRepository {
     private http: HttpClient) { }
 
   login(model: ILoginRequest): Observable<IUser> {
-    const options = {
-      headers: new HttpHeaders(),
-      withCredentials: true
-    };
-    return this.http.post<IUser>(`${environment.elasticsearchUrl}/authenticate`, model, options)
+
+    return this.http.post<IUser>(`${environment.elasticsearchUrl}/authenticate`, model)
       .pipe(
         catchError(this.handleError('login', null, 'Login Failed'))
       );
