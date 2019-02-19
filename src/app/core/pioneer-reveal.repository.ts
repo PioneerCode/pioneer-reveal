@@ -44,7 +44,9 @@ export class PioneerRevealRepository {
   }
 
   getLogs(index: string, request: SearchRequest): Observable<SearchResponse> {
-    return this.http.post<SearchResponse>(`${this.url}/${index}/_search?format=json`, request)
+    const url = `${this.url}/${index}/_search?format=json`;
+    console.log(request);
+    return this.http.post<SearchResponse>(url, request)
       .pipe(
         catchError(this.handleError('getLogs', null, 'Oops! We are having trouble getting your data.'))
       );

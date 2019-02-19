@@ -16,5 +16,5 @@
     </ng-container>
   </tbody>
 </table>
-<mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPage()">
+<mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPage($event)">
 </mat-paginator>
