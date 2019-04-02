@@ -1,5 +1,6 @@
 <td [ngClass]="{'active':active}">
-  <i class="fas" [ngClass]="{'fa-caret-right': !log.pioneerRevelTracking?.selected, 'fa-caret-down': log.pioneerRevelTracking?.selected}"
+  <i class="fas"
+    [ngClass]="{'fa-caret-right': !log.pioneerRevelTracking?.selected, 'fa-caret-down': log.pioneerRevelTracking?.selected}"
     (click)="onExpandRowSelected()"></i>
 </td>
 <td>
@@ -9,10 +10,9 @@
   <ul class="list-inline">
     <li class="list-inline-item"><i [ngClass]="log.iconClasses"></i></li>
     <li class="list-inline-item">
-      <b>Location </b>: {{log._source['ApplicationName']}} - {{log._source['ApplicationLayer']}} -
-      {{log._source['ApplicationLocation']}} -
+      <b>Location </b>: {{log._source.location}}
       <ng-container *ngIf="log._index === IndexTypeEnum.Error">
-        <span class="error-message"><b>Error</b>: {{log._source['InnermostExceptionMessage']}}</span>
+        <span class="error-message"><b>Error</b>: {{log._source.error}}</span>
       </ng-container>
       <ng-container *ngIf="log._index === IndexTypeEnum.Usage">
         <span class="usage-message"><b>Tracking</b>: {{log._source['Message']}}</span>

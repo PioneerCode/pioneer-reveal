@@ -26,6 +26,37 @@ export class PioneerLogHit {
 export class PioneerLogSource {
   Id: string;
   CreationTimestamp: string;
+  InnermostExceptionMessage: string;
+  Message: string;
+  ApplicationName: string;
+  ApplicationLayer: string;
+  ApplicationLocation: string;
+
+  /**
+   * row.component
+   */
+  get error(): string {
+    return this.InnermostExceptionMessage ? this.InnermostExceptionMessage : this.Message;
+  }
+
+  /**
+   * row.component
+   */
+  get location(): string {
+    let loc = '';
+    if (this.ApplicationName) {
+      loc += `${this.ApplicationName} -`;
+    }
+
+    if (this.ApplicationLayer) {
+      loc += `${this.ApplicationLayer} -`;
+    }
+
+    if (this.ApplicationLocation) {
+      loc += `${this.ApplicationLocation} -`;
+    }
+    return loc + ' ';
+  }
 }
 
 export class PioneerRevealTracking {
@@ -69,7 +100,7 @@ export class PioneerRevealTracking {
         isObject: typeof source[key] === 'object' && source[key] !== null,
         isFilter: this._queryBuilder.isCurrentFilter({ key: key, value: source[key] } as KeyValue),
         isPioneerProperty: key.charAt(0) === key.charAt(0).toUpperCase() && key.charAt(0) !== '@' && key.charAt(0) !== '$',
-        humanKey: key.replace( /([a-z])([A-Z])/g, '$1 $2').trim()
+        humanKey: key.replace(/([a-z])([A-Z])/g, '$1 $2').trim()
       } as Property);
     });
 
@@ -115,7 +146,7 @@ export class Hit extends PioneerLogHit {
     this._id = hit._id;
     this._index = hit._index;
     this._score = hit._score;
-    this._source = hit._source;
+    this._source = Object.assign(new PioneerLogSource(), hit._source);
     this._type = hit._type;
   }
 }
