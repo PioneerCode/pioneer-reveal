@@ -7,23 +7,18 @@
   {{log._source.CreationTimestamp | date:'M/d/yy, h:mm:ss a'}}
 </td>
 <td class="source">
-  <ul class="list-inline">
-    <li class="list-inline-item"><i [ngClass]="log.iconClasses"></i></li>
-    <li class="list-inline-item">
-      <b>Location </b>: {{log._source.location}}
-      <ng-container *ngIf="log._index === IndexTypeEnum.Error">
-        <span class="error-message"><b>Error</b>: {{log._source.error}}</span>
-      </ng-container>
-      <ng-container *ngIf="log._index === IndexTypeEnum.Usage">
-        <span class="usage-message"><b>Tracking</b>: {{log._source['Message']}}</span>
-      </ng-container>
-      <ng-container *ngIf="log._index === IndexTypeEnum.Performance">
-        <span class="performance-message"><b>Elapsed Milliseconds</b>:
-          {{log._source['PerformanceElapsedMilliseconds']}}</span>
-      </ng-container>
-      <ng-container *ngIf="log._index === IndexTypeEnum.Diagnostic">
-        <span class="diagnostic-message"><b>Message</b>: {{log._source['Message']}}</span>
-      </ng-container>
-    </li>
-  </ul>
+  <i [ngClass]="log.iconClasses"></i>&nbsp;<b>Location </b>: {{log._source.location}}
+  <ng-container *ngIf="log._index === IndexTypeEnum.Error">
+    <span class="error-message"><b>Error</b> : {{log._source.error}}</span>
+  </ng-container>
+  <ng-container *ngIf="log._index === IndexTypeEnum.Usage">
+    <span class="usage-message"><b>Tracking</b> : {{log._source['Message']}}</span>
+  </ng-container>
+  <ng-container *ngIf="log._index === IndexTypeEnum.Performance">
+    <span class="performance-message"><b>Elapsed Milliseconds</b>
+      : {{log._source['PerformanceElapsedMilliseconds']}}</span>
+  </ng-container>
+  <ng-container *ngIf="log._index === IndexTypeEnum.Diagnostic">
+    <span class="diagnostic-message"><b>Message</b> : {{log._source['Message']}}</span>
+  </ng-container>
 </td>

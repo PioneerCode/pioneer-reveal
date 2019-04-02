@@ -39,8 +39,12 @@ ul {
 }
 
 .error-message {
-  padding: 0.12rem 0.5rem;
-  background: theme-color('danger');
-  color: color('white');
+  padding: 0.12rem 0;
+  b {
+    padding: 2px 0.5rem;
+    background: theme-color('danger');
+    color: color('white');
+    font-size: 14px;
+  }
 }
 
